@@ -8,20 +8,20 @@ const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [{
+      path: '/',
+      name: 'main',
+      component: _ => {
+        return import('./views/Main.vue')
+      },
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
       path: '/login',
       name: 'login',
       component: _ => {
         return import('./views/Login.vue')
-      },
-    },
-    {
-      path: '/',
-      name: 'list',
-      component: _ => {
-        return import('./views/List.vue')
-      },
-      meta: {
-        requiresAuth: true,
       },
     },
   ]
@@ -32,7 +32,7 @@ router.beforeEach((to, from, next) => {
   let requiresAuth = to.matched.some(record => record.meta.requiresAuth)
 
   if (requiresAuth && !currentUser) next('login')
-  else if (!requiresAuth && currentUser) next('list')
+  else if (!requiresAuth && currentUser) next('main')
   else next()
 })
 

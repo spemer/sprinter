@@ -24,6 +24,7 @@ export default {
       firebase.auth().signInWithPopup(facebookProvider)
       .then((result) => {
         console.log(result)
+        this.$router.push('/')
       })
       .catch((error) => {
         console.log(error)
@@ -36,6 +37,7 @@ export default {
       firebase.auth().signInWithPopup(googleProvider)
       .then((result) => {
         console.log(result)
+        this.$router.push('/')
       })
       .catch((error) => {
         console.log(error)

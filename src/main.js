@@ -9,21 +9,8 @@ import {
 } from 'vuefire'
 Vue.use(firestorePlugin)
 
+import './firebase'
 import VueFire from 'vuefire'
-import firebase from 'firebase/app'
-import 'firebase/firestore'
-
-const config = {
-  apiKey: process.env.VUE_APP_API_KEY,
-  authDomain: 'sprinter-web.firebaseapp.com',
-  databaseURL: 'https://sprinter-web.firebaseio.com',
-  projectId: 'sprinter-web',
-  storageBucket: '',
-  messagingSenderId: process.env.VUE_APP_MSG_SENDER_ID,
-  appId: process.env.VUE_APP_APP_ID,
-}
-
-firebase.initializeApp(config)
 
 Vue.config.productionTip = false
 
