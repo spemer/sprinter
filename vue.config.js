@@ -1,0 +1,24 @@
+module.exports = {
+  css: {
+    loaderOptions: {
+      sass: {
+        data: `
+                @import "@/styles/style.scss";
+              `
+      },
+    },
+  },
+
+  devServer: {
+    port: 5000,
+  },
+
+  pwa: {
+    name: 'Sprinter',
+    themeColor: '#844DFF',
+    msTileColor: '#844DFF',
+    appleMobileWebAppStatusBarStyle: 'black-translucent',
+    appleMobileWebAppCapable: 'no',
+  },
+
+}

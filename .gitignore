@@ -1,0 +1,15 @@
+.DS_Store
+node_modules/
+.firebase/
+LEGACY/
+*.cache
+dist/
+
+# Editor directories and files
+.idea
+*.log
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.env
