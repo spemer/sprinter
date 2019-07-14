@@ -19,9 +19,9 @@ export default {
 
   methods: {
     fbLogin () {
-      const provider = new firebase.auth.FacebookAuthProvider()
+      const facebookProvider = new firebase.auth.FacebookAuthProvider()
 
-      firebase.auth().signInWithPopup(provider)
+      firebase.auth().signInWithPopup(facebookProvider)
       .then((result) => {
         console.log(result)
       })
@@ -31,9 +31,9 @@ export default {
     },
 
     googleLogin () {
-      const provider = new firebase.auth.GoogleAuthProvider()
+      const googleProvider = new firebase.auth.GoogleAuthProvider()
 
-      firebase.auth().signInWithPopup(provider)
+      firebase.auth().signInWithPopup(googleProvider)
       .then((result) => {
         console.log(result)
       })

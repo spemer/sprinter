@@ -9,7 +9,9 @@ import {
 } from 'vuefire'
 Vue.use(firestorePlugin)
 
+import VueFire from 'vuefire'
 import firebase from 'firebase/app'
+import 'firebase/firestore'
 
 const config = {
   apiKey: process.env.VUE_APP_API_KEY,
