@@ -9,7 +9,9 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    setUser: (state, user) => state.user = user,
+    SET_USER: (state, user) => {
+      return state.user = user
+    },
   },
 
   actions: {
@@ -17,7 +19,11 @@ export default new Vuex.Store({
   },
 
   getters: {
-    user: state => state.user,
-    isLogged: state => (state.user !== null),
+    user: state => {
+      return state.user
+    },
+    isLogged: state => {
+      return state.user !== null
+    },
   }
 })

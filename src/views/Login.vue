@@ -25,18 +25,24 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import firebase from 'firebase'
 
 export default {
   name: 'login',
 
   methods: {
+    ...mapMutations ([
+      'SET_USER'
+    ]),
+
     fbLogin () {
       const facebookProvider = new firebase.auth.FacebookAuthProvider()
 
       firebase.auth().signInWithPopup(facebookProvider)
       .then((result) => {
         console.log(result)
+        this.SET_USER(result.user)
         this.$router.push('/')
       })
       .catch((error) => {
@@ -50,6 +56,7 @@ export default {
       firebase.auth().signInWithPopup(googleProvider)
       .then((result) => {
         console.log(result)
+        this.SET_USER(result.user)
         this.$router.push('/')
       })
       .catch((error) => {

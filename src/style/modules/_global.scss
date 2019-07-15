@@ -1,28 +1,10 @@
 @mixin font-stack-html() {
-  -webkit-font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-  -khtml-font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-  -moz-font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-  -ms-font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-  -o-font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-  font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-
-  @supports (-webkit-overflow-scrolling: touch) {
-    -webkit-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-    -khtml-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-    -moz-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-    -ms-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-    -o-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-    font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-  }
-
-  @media screen and (-webkit-min-device-pixel-ratio: 0) {
-    -webkit-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-    -khtml-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-    -moz-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-    -ms-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-    -o-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-    font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-  }
+  -webkit-font-family: 'SF Pro Display', 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+  -khtml-font-family: 'SF Pro Display', 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+  -moz-font-family: 'SF Pro Display', 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+  -ms-font-family: 'SF Pro Display', 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+  -o-font-family: 'SF Pro Display', 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+  font-family: 'SF Pro Display', 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
 }
 
 @mixin font-settings() {
