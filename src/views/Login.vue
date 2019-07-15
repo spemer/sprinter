@@ -33,7 +33,7 @@ export default {
 
   methods: {
     ...mapMutations ([
-      'SET_USER'
+      'SET_CURRENT_USER'
     ]),
 
     fbLogin () {
@@ -42,7 +42,7 @@ export default {
       firebase.auth().signInWithPopup(facebookProvider)
       .then((result) => {
         console.log(result)
-        this.SET_USER(result.user)
+        this.SET_CURRENT_USER(result.user)
         this.$router.push('/')
       })
       .catch((error) => {
@@ -56,7 +56,7 @@ export default {
       firebase.auth().signInWithPopup(googleProvider)
       .then((result) => {
         console.log(result)
-        this.SET_USER(result.user)
+        this.SET_CURRENT_USER(result.user)
         this.$router.push('/')
       })
       .catch((error) => {

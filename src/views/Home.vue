@@ -19,7 +19,7 @@ export default {
 
   computed: {
     ...mapState([
-      'user',
+      'currentUser',
     ]),
   },
 
@@ -28,7 +28,7 @@ export default {
   ],
 
   mounted () {
-    console.log(this.user.displayName)
+    console.log(this.currentUser.displayName)
   },
 
   components: {
