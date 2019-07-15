@@ -1,6 +1,6 @@
 <template lang="pug">
-  div#main
-    div.main__container Main
+  div#home
+    div.home__container Home
     AddTodo
 </template>
 
@@ -8,7 +8,7 @@
 import AddTodo from '@/components/AddTodo'
 
 export default {
-  name: 'main',
+  name: 'home',
 
   components: {
     AddTodo,
