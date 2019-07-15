@@ -1,0 +1,170 @@
+@mixin font-stack-html() {
+  -webkit-font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+  -khtml-font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+  -moz-font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+  -ms-font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+  -o-font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+  font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+
+  @supports (-webkit-overflow-scrolling: touch) {
+    -webkit-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+    -khtml-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+    -moz-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+    -ms-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+    -o-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+    font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+  }
+
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    -webkit-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+    -khtml-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+    -moz-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+    -ms-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+    -o-font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+    font-family: 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
+  }
+}
+
+@mixin font-settings() {
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -khtml-font-feature-settings: 'liga';
+  -ms-font-feature-settings: 'liga';
+  -o-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  -moz-osx-font-smoothing: grayscale !important;
+  -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-text-decoration-skip: ink;
+}
+
+@function calculateRem($size) {
+  $remSize: $size / $grid4x;
+  @return $remSize * 1rem;
+}
+
+@mixin line-height($size) {
+  line-height: $size * 1.6;
+  line-height: calculateRem($size) * 1.6;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+  @include line-height($size);
+}
+
+body {
+  outline: none;
+  color: #fff;
+  background-color: $brand;
+  @include user-select();
+  @include font-settings();
+  @include font-stack-html();
+  @include font-size($grid4x);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+  -moz-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+  tap-highlight-color: rgba(0, 0, 0, 0) !important;
+}
+
+html {
+  background-color: $brand;
+}
+
+a {
+  color: $brand;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+  -moz-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+  tap-highlight-color: rgba(0, 0, 0, 0) !important;
+}
+
+h1 {
+  font-weight: 300;
+  text-align: center;
+  @include font-size($grid8x);
+}
+
+h3 {
+  font-weight: 700;
+  @include font-size($grid5x);
+}
+
+p,
+li,
+span {
+  @include font-size($grid4x);
+
+  b {
+    font-weight: 900;
+  }
+
+  &.section__subtitle {
+    text-align: center;
+    margin-bottom: $grid8x;
+    margin-top: -#{$grid4x};
+    font-weight: 300 !important;
+  }
+}
+
+::selection {
+  background-color: transparent !important;
+}
+
+::-webkit-input-placeholder {
+  color: $white54;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+  -moz-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+  tap-highlight-color: rgba(0, 0, 0, 0) !important;
+
+  &:focus,
+  &:active,
+    {
+    border: none;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+    -moz-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+    tap-highlight-color: rgba(0, 0, 0, 0) !important;
+  }
+}
+
+input:focus,
+select:focus,
+button:focus,
+textarea:focus {
+  outline: none;
+
+  &::-ms-clear,
+  &::-ms-reveal {
+    display: none;
+  }
+
+  &::-webkit-contacts-auto-fill-button,
+  &::-webkit-credentials-auto-fill-button {
+    right: 0;
+    position: absolute;
+    visibility: hidden;
+    pointer-events: none;
+    display: none !important;
+  }
+}
+
+.material-icons {
+  @include font-size($grid5x);
+}
+
+.noscroll {
+  position: fixed;
+  overflow: hidden;
+}
+
+.container {
+  padding: 0 $grid4x;
+}
