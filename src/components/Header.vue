@@ -7,6 +7,10 @@
       )
 
       div.header__title {{ headerTitle }}
+
+      slot.header__right(
+        name="header__right"
+      )
 </template>
 
 <script>

@@ -3,13 +3,14 @@
     Header(
       headerTitle="TODO"
     )
+      div.header__right(
+        slot="header__right"
+        @click="logout"
+      ) Logout
 
     div.container
       div.home__container
         TodoList
-        button(
-          @click="logout"
-        ) Logout
 
     AddTodo
 </template>
@@ -20,6 +21,7 @@ import AddTodo from '@/components/AddTodo'
 import TodoList from '@/components/TodoList'
 import { mapGetters } from 'vuex'
 import firebase from 'firebase/app'
+import { logout } from '@/mixins/logout'
 
 export default {
   name: 'home',
@@ -35,14 +37,9 @@ export default {
     console.log(this.getUser)
   },
 
-  methods: {
-    logout() {
-      this.$store.dispatch('signOutAction')
-      .then(() => {
-        this.$router.replace('/login')
-      })
-    }
-  },
+  mixins: [
+    logout,
+  ],
 
   components: {
     Header,

@@ -1,11 +1,16 @@
 <template lang="pug">
   div#addTodo
     div.addTodo__container
+      //- div.addTodo__colorset(
+      //-   v-for="color in colorset"
+      //- )
+      //-   div.addTodo__colorset-each(
+      //-     :style="`border: #${color} 8px solid`"
+      //-   )
       form.addTodo__form
         div.addTodo__form-input
           input(
             type="text"
-            autofocus="true"
             v-model.trim="newTodo"
             placeholder="New todo"
           )
@@ -26,6 +31,17 @@ export default {
   data: _ => ({
     newTodo: '',
     todos: [],
+    colorset: [
+      '39CCCC',
+      'FF851B',
+      '85144b',
+      '0074D9',
+      'FFDC00',
+      '2ECC40',
+      '327DE1',
+      '3D9970',
+      '8E209D',
+    ],
   }),
 
   firestore: _ => {
@@ -90,6 +106,21 @@ export default {
     @supports (padding-bottom: env(safe-area-inset-bottom)) {
       padding-bottom: calc(env(safe-area-inset-bottom) + #{$grid4x}) !important;
     }
+
+    // .addTodo__colorset {
+    //   overflow-x: scroll;
+    //   display: inline-block;
+    //   padding-bottom: $grid2x;
+
+    //   .addTodo__colorset-each {
+    //     width: $grid4x;
+    //     height: $grid4x;
+    //     margin-right: $grid4x;
+    //     display: inline-block;
+    //     background-color: #fff;
+    //     @include border-radius(100%);
+    //   }
+    // }
 
     .addTodo__form {
       height: $grid12x;
