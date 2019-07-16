@@ -19,7 +19,7 @@ import Header from '@/components/Header'
 import AddTodo from '@/components/AddTodo'
 import TodoList from '@/components/TodoList'
 import { mapGetters } from 'vuex'
-import { todosCollection } from '@/firebase'
+import firebase from 'firebase/app'
 
 export default {
   name: 'home',
@@ -29,6 +29,11 @@ export default {
       'getUser',
       'getStatus',
     ]),
+  },
+
+  mounted () {
+    let userId = firebase.auth().currentUser.uid
+    console.log(userId)
   },
 
   methods: {

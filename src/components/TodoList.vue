@@ -23,7 +23,8 @@
 </template>
 
 <script>
-import { todosCollection } from '@/firebase'
+import { db, auth } from '@/firebase'
+import { mapGetters } from 'vuex'
 import { removeItem } from '@/mixins/removeItem'
 
 export default {
@@ -33,8 +34,14 @@ export default {
 
   firestore: _ => {
     return {
-      todos: todosCollection.orderBy('createdAt', 'desc')
+      todos: db.collection(auth.currentUser.uid).orderBy('createdAt', 'desc')
     }
+  },
+
+  computed: {
+    ...mapGetters([
+      'getUser',
+    ]),
   },
 
   mixins: [
@@ -43,7 +50,7 @@ export default {
 
   methods: {
     updateTodo(todo) {
-      todosCollection.doc(todo.id).update({...todo})
+      db.collection(auth.currentUser.uid).doc(todo.id).update({...todo})
       .then(docRef => {
         console.log('Updated document with ID: ', todo.id)
       })

@@ -20,7 +20,7 @@
 <script>
 import firebase from 'firebase/app'
 import { mapGetters, mapMutations } from 'vuex'
-import { todosCollection } from '@/firebase'
+import { db, auth } from '@/firebase'
 
 export default {
   data: _ => ({
@@ -30,7 +30,7 @@ export default {
 
   firestore: _ => {
     return {
-      todos: todosCollection.orderBy('createdAt', 'desc')
+      todos: db.collection(auth.currentUser.uid).orderBy('createdAt', 'desc')
     }
   },
 
@@ -54,7 +54,7 @@ export default {
 
     addTodo () {
       if (this.newTodo) {
-        todosCollection.add({
+        db.collection(auth.currentUser.uid).add({
           text: this.newTodo,
           completed: false,
           id: this.todos.length,

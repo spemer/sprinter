@@ -15,8 +15,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 
 export const auth = firebase.auth()
-
 export const logout = firebase.auth().signOut()
-
 export const db = firebase.firestore()
 export const todosCollection = db.collection('todos')

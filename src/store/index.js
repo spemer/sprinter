@@ -18,9 +18,7 @@ import {
 } from '@/store/actions.js'
 
 export default new Vuex.Store({
-  plugins: [
-    createPersistedState()
-  ],
+  // plugins: [createPersistedState()],
   state,
   getters,
   mutations,
