@@ -14,9 +14,14 @@
         v-for="todo in todos"
         :key="todo.id"
       ) {{ todo.text }}
-        //- span(
-        //-   @click="removeItem"
-        //- ) &nbsp;remove
+        input(
+          type="checkbox"
+          v-model="todo.completed"
+          @change="updateTodo(todo)"
+        )
+        span(
+          @click="removeItem(todo)"
+        ) &nbsp;remove
 </template>
 
 <script>
@@ -48,7 +53,7 @@ export default {
         && this.SET_CURRENT_USER(user.uid)
     })
 
-    console.log(`uid: ${this.currentUser}`)
+    console.log(todosCollection.where('uid', '==', this.currentUser))
   },
 
   methods: {
@@ -56,9 +61,12 @@ export default {
       'SET_CURRENT_USER',
     ]),
 
-    // removeItem () {
-    //   todosCollection.doc(docRef.id).delete()
-    // },
+    removeItem (id) {
+      todosCollection.doc(id.id).delete()
+      .then( _ => {
+        console.log(`${id.text} Removed`)
+      })
+    },
 
     addTodo () {
       todosCollection.add({
@@ -68,13 +76,23 @@ export default {
         uid: this.currentUser,
         createdAt: new Date(),
       })
-      .then(function(docRef) {
+      .then(docRef => {
         console.log('Document written with ID: ', docRef.id)
       })
-      .catch(function(error) {
+      .catch(error => {
         console.error('Error adding document: ', error)
       })
       this.newTodo = ''
+    },
+
+    updateTodo(todo) {
+      todosCollection.doc(todo.id).update({...todo})
+      .then(docRef => {
+        console.log('Updated document with ID: ', todo.id)
+      })
+      .catch(error => {
+        console.error('Error updating document: ', error)
+      });
     }
   }
 }
