@@ -1,5 +1,5 @@
 import {
-  todosCollection
+  db
 } from '@/firebase'
 import {
   toast
@@ -8,7 +8,7 @@ import {
 export const removeItem = {
   methods: {
     removeItem(todo) {
-      todosCollection.doc(todo.id).delete()
+      db.collection(todo.uid).doc(todo.id).delete()
         .then(() => {
           this.toast(`${todo.text} Removed`)
         })

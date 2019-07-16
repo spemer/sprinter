@@ -125,10 +125,6 @@ export default {
           display: inline-block;
           background-color: $brand;
           @include border-radius(100%);
-
-          svg {
-            padding-top: $grid;
-          }
         }
       }
     }

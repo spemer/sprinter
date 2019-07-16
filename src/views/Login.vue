@@ -27,7 +27,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import firebase from 'firebase/app'
-import { auth, googleProvider, facebookProvider } from '@/firebase'
+import { auth } from '@/firebase'
 import { toast } from '@/mixins/toast'
 
 export default {
@@ -39,7 +39,7 @@ export default {
 
       this.$store.dispatch('signInAction', facebookProvider)
       .then(() => {
-        return (!this.getError)
+        return (this.getError === null)
           && this.$router.push('/')
       })
     },
@@ -49,7 +49,7 @@ export default {
 
       this.$store.dispatch('signInAction', googleProvider)
       .then(() => {
-        return (!this.getError)
+        return (this.getError === null)
           && this.$router.push('/')
       })
     }

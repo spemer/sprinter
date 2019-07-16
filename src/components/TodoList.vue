@@ -1,7 +1,7 @@
 <template lang="pug">
   div#todolist
     div.todolist_list
-      div.todolist_list-checkbox(
+      div.todolist_list-each(
         v-for="todo in todos.slice().reverse()"
         :key="todo.id"
       )
@@ -65,10 +65,60 @@ export default {
 
 <style lang="scss" scoped>
 #todolist {
+  padding-bottom: calc(#{$header} + #{$grid8x});
+
   .todolist_list {
     padding: 0;
 
-    .todolist_list-checkbox {
+    .todolist_list-each {
+      position: relative;
+      animation: popup 0.5s ease 1 forwards;
+
+      @keyframes popup {
+        from {
+          opacity: 0;
+          @include transform(translateY(16px));
+        }
+
+        to {
+          opacity: 1;
+          @include transform(translateY(0));
+        }
+      }
+
+      .todolist_list-left {
+        height: $grid12x;
+        position: absolute;
+        display: inline-block;
+        width: calc(100% - #{$grid12x} - #{$grid8x});
+        @include line-height($grid8x);
+
+        label {
+          left: 0;
+          width: 100%;
+          height: $grid12x;
+          position: absolute;
+          display: inline-block;
+          padding-left: $grid8x;
+          // width: calc(100% - #{$grid8x});
+        }
+
+        span {
+          display: inline-block;
+        }
+      }
+
+      .todolist_list-right {
+        position: absolute;
+        width: $grid12x;
+        color: $black38;
+        height: $grid12x;
+        text-align: right;
+        right: 0;
+        display: inline-block;
+        @include line-height($grid8x);
+      }
+
       cursor: pointer;
       position: relative;
       margin-top: $grid4x;
@@ -109,6 +159,7 @@ export default {
         height: $grid5x;
         position: absolute;
         background-color: $black04;
+        margin-top: $grid3x;
         @include border-radius($grid);
         @include transition(all 0.1s ease);
       }
@@ -140,22 +191,6 @@ export default {
         border-width: 0 2px 2px 0;
         @include transform(rotate(45deg));
       }
-    }
-
-    .todolist_list-left {
-      display: inline-block;
-      width: calc(100% - #{$grid12x});
-
-      label {
-        padding-left: $grid8x;
-      }
-    }
-
-    .todolist_list-right {
-      width: $grid12x;
-      text-align: right;
-      display: inline-block;
-      color: $black38;
     }
   }
 }

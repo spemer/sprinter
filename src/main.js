@@ -13,7 +13,9 @@ import '@/firebase'
 import VueFire from 'vuefire'
 
 import Toasted from 'vue-toasted'
+import DrawerLayout from 'vue-drawer-layout'
 Vue.use(Toasted)
+Vue.use(DrawerLayout)
 
 Vue.config.productionTip = false
 
