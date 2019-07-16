@@ -1,28 +1,7 @@
 @mixin font-stack-html() {
-  -webkit-font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-  -khtml-font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-  -moz-font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-  -ms-font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-  -o-font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-  font-family: 'Roboto', 'Helvetica Neue', 'Helvetica', 'Arial', Sans-serif;
-
-  @supports (-webkit-overflow-scrolling: touch) {
-    -webkit-font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    -khtml-font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    -moz-font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    -ms-font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    -o-font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  }
-
-  @media screen and (-webkit-min-device-pixel-ratio: 0) {
-    -webkit-font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    -khtml-font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    -moz-font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    -ms-font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    -o-font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  }
+  -webkit-font-family: Sans-serif !important;
+  -moz-font-family: Sans-serif !important;
+  font-family: Sans-serif !important;
 }
 
 @mixin font-settings() {
@@ -167,4 +146,8 @@ textarea:focus {
 
 .container {
   padding: 0 $grid4x;
+}
+
+div {
+  @include font-stack-html();
 }

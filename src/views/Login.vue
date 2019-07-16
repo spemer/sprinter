@@ -27,6 +27,7 @@
 <script>
 import { mapMutations } from 'vuex'
 import firebase from 'firebase'
+import { auth, googleProvider, facebookProvider } from '@/firebase.js'
 
 export default {
   name: 'login',
@@ -37,15 +38,13 @@ export default {
     ]),
 
     fbLogin () {
-      const facebookProvider = new firebase.auth.FacebookAuthProvider()
-
-      firebase.auth().signInWithPopup(facebookProvider)
-      .then((result) => {
+      auth.signInWithPopup(facebookProvider)
+      .then(result => {
         console.log(result)
         this.SET_CURRENT_USER(result.user)
         this.$router.push('/')
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error)
       })
     },
@@ -54,12 +53,12 @@ export default {
       const googleProvider = new firebase.auth.GoogleAuthProvider()
 
       firebase.auth().signInWithPopup(googleProvider)
-      .then((result) => {
+      .then(result => {
         console.log(result)
         this.SET_CURRENT_USER(result.user)
         this.$router.push('/')
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error)
       })
     }

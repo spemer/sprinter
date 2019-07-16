@@ -14,10 +14,15 @@
         v-for="todo in todos"
         :key="todo.id"
       ) {{ todo.text }}
+        //- span(
+        //-   @click="removeItem"
+        //- ) &nbsp;remove
 </template>
 
 <script>
 import { todosCollection } from '@/firebase'
+import { mapGetters, mapMutations } from 'vuex'
+import firebase from 'firebase/app'
 
 export default {
   data: _ => ({
@@ -31,12 +36,36 @@ export default {
     }
   },
 
+  computed: {
+    ...mapGetters([
+      'currentUser',
+    ]),
+  },
+
+  mounted () {
+    firebase.auth().onAuthStateChanged(user => {
+      return (user)
+        && this.SET_CURRENT_USER(user.uid)
+    })
+
+    console.log(`uid: ${this.currentUser}`)
+  },
+
   methods: {
+    ...mapMutations([
+      'SET_CURRENT_USER',
+    ]),
+
+    // removeItem () {
+    //   todosCollection.doc(docRef.id).delete()
+    // },
+
     addTodo () {
       todosCollection.add({
         text: this.newTodo,
         completed: false,
         id: this.todos.length,
+        uid: this.currentUser,
         createdAt: new Date(),
       })
       .then(function(docRef) {

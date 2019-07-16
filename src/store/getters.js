@@ -1,9 +1,9 @@
 export const getters = {
-  user: state => {
-    return state.user
+  currentUser: state => {
+    return state.currentUser
   },
   isLogged: state => {
-    return state.user !== null
+    return state.currentUser !== null
   },
 
 }
