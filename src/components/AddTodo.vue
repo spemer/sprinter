@@ -1,14 +1,19 @@
 <template lang="pug">
   div#addTodo
-    form
-      input(
-        v-model="newTodo"
-        type="text"
-      )
-      button(
-        type="submit"
-        @click.prevent="addTodo()"
-      ) Add
+    form.addTodo__form
+      div.addTodo__form-input
+        input(
+          type="text"
+          autofocus="true"
+          v-model="newTodo"
+          placeholder="Todo"
+        )
+      div.addTodo__form-btn
+        button(
+          type="submit"
+          @click.prevent="addTodo()"
+        )
+          i.fas.fa-plus
     ul
       li(
         v-for="todo in todos"
@@ -25,9 +30,10 @@
 </template>
 
 <script>
-import { todosCollection } from '@/firebase'
-import { mapGetters, mapMutations } from 'vuex'
 import firebase from 'firebase/app'
+import { mapGetters, mapMutations } from 'vuex'
+import { todosCollection } from '@/firebase'
+import { removeItem } from '@/mixins/removeItem'
 
 export default {
   data: _ => ({
@@ -41,6 +47,10 @@ export default {
     }
   },
 
+  mixins: [
+    removeItem,
+  ],
+
   computed: {
     ...mapGetters([
       'currentUser',
@@ -52,21 +62,12 @@ export default {
       return (user)
         && this.SET_CURRENT_USER(user.uid)
     })
-
-    console.log(todosCollection.where('uid', '==', this.currentUser))
   },
 
   methods: {
     ...mapMutations([
       'SET_CURRENT_USER',
     ]),
-
-    removeItem (id) {
-      todosCollection.doc(id.id).delete()
-      .then( _ => {
-        console.log(`${id.text} Removed`)
-      })
-    },
 
     addTodo () {
       todosCollection.add({
@@ -99,4 +100,50 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#addTodo {
+  $btn: $grid12x;
+
+  .addTodo__form {
+    width: 100%;
+    height: $grid12x;
+
+    .addTodo__form-input,
+    .addTodo__form-btn {
+      display: inline-block;
+    }
+
+    .addTodo__form-input {
+      width: calc(100% - #{$btn} * 2);
+
+      input {
+        width: 100%;
+        border: none;
+        outline: none;
+        height: $btn;
+        padding: 0 $grid4x;
+        background-color: $black04;
+        @include border-radius();
+      }
+    }
+
+    .addTodo__form-btn {
+      width: $btn;
+      float: right;
+
+      button {
+        width: 100%;
+        height: $btn;
+        border: none;
+        color: #fff;
+        display: inline-block;
+        background-color: $brand;
+        @include border-radius(100%);
+
+        svg {
+          padding-top: $grid;
+        }
+      }
+    }
+  }
+}
 </style>

@@ -25,9 +25,10 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
-import firebase from 'firebase'
-import { auth, googleProvider, facebookProvider } from '@/firebase.js'
+import { mapGetters, mapMutations } from 'vuex'
+import firebase from 'firebase/app'
+import { auth, googleProvider, facebookProvider } from '@/firebase'
+import { toast } from '@/mixins/toast'
 
 export default {
   name: 'login',
@@ -42,6 +43,7 @@ export default {
       .then(result => {
         console.log(result)
         this.SET_CURRENT_USER(result.user)
+        this.toast(`Welcome, ${this.currentUser.displayName}!`)
         this.$router.push('/')
       })
       .catch(error => {
@@ -50,12 +52,11 @@ export default {
     },
 
     googleLogin () {
-      const googleProvider = new firebase.auth.GoogleAuthProvider()
-
-      firebase.auth().signInWithPopup(googleProvider)
+      auth.signInWithPopup(googleProvider)
       .then(result => {
         console.log(result)
         this.SET_CURRENT_USER(result.user)
+        this.toast(`Welcome, ${this.currentUser.displayName}!`)
         this.$router.push('/')
       })
       .catch(error => {
@@ -63,6 +64,16 @@ export default {
       })
     }
   },
+
+  computed: {
+    ...mapGetters([
+      'currentUser',
+    ]),
+  },
+
+  mixins: [
+    toast,
+  ],
 }
 </script>
 

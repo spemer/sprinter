@@ -35,7 +35,7 @@
 
 body {
   outline: none;
-  color: #fff;
+  color: $black78;
   background-color: $brand;
   @include user-select();
   @include font-settings();
@@ -86,18 +86,10 @@ span {
   }
 }
 
-::selection {
-  background-color: transparent !important;
-}
-
-::-webkit-input-placeholder {
-  color: $white54;
-}
-
 button {
-  border: none;
-  outline: none;
-  cursor: pointer;
+  border: none !important;
+  outline: none !important;
+  cursor: pointer !important;
   background-color: transparent;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
   -moz-tap-highlight-color: rgba(0, 0, 0, 0) !important;
@@ -118,7 +110,9 @@ input:focus,
 select:focus,
 button:focus,
 textarea:focus {
-  outline: none;
+  border: none !important;
+  outline: none !important;
+  cursor: pointer !important;
 
   &::-ms-clear,
   &::-ms-reveal {
@@ -150,4 +144,32 @@ textarea:focus {
 
 div {
   @include font-stack-html();
+}
+
+::-webkit-input-placeholder {
+  color: $black38;
+}
+
+::-moz-placeholder {
+  color: $black38;
+}
+
+::-ms-placeholder {
+  color: $black38;
+}
+
+::-webkit-input-placeholder {
+  color: $black38;
+}
+
+:-ms-input-placeholder {
+  color: $black38;
+}
+
+::-ms-input-placeholder {
+  color: $black38;
+}
+
+::placeholder {
+  color: $black38;
 }

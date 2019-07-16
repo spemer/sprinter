@@ -1,0 +1,21 @@
+.toasted-container {
+
+  // iPhone X safearea
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    padding-bottom: calc(env(safe-area-inset-bottom));
+  }
+
+  .toasted.primary.default {
+    width: auto;
+    color: #fff;
+    margin: 0 auto;
+    font-weight: 400;
+    text-align: center;
+    background: $black78;
+    margin-bottom: $grid12x;
+    padding: $grid3x $grid4x;
+    @include font-size($grid3x);
+    @include border-radius($grid16x !important);
+    @include box-shadow($grid, $grid2x, $black16);
+  }
+}

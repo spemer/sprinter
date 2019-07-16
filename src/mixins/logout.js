@@ -1,8 +1,8 @@
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 
 export const logout = {
   methods: {
-    logout() {
+    logout: _ => {
       firebase.auth().signOut()
         .then(() => {
           this.$router.push('/login')

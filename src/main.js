@@ -9,8 +9,11 @@ import {
 } from 'vuefire'
 Vue.use(firestorePlugin)
 
-import './firebase'
+import '@/firebase'
 import VueFire from 'vuefire'
+
+import Toasted from 'vue-toasted'
+Vue.use(Toasted)
 
 Vue.config.productionTip = false
 
