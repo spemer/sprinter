@@ -8,13 +8,15 @@ import {
 export const removeItem = {
   methods: {
     removeItem(todo) {
-      db.collection(todo.uid).doc(todo.id).delete()
-        .then(() => {
-          this.toast(`${todo.text} Removed`)
-        })
-        .catch(error => {
-          console.log(error)
-        })
+      setTimeout(() => {
+        db.collection(todo.uid).doc(todo.id).delete()
+          .then(() => {
+            this.toast(`${todo.text} Removed`)
+          })
+          .catch(error => {
+            console.log(error)
+          })
+      }, 250)
     },
   },
 

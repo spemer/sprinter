@@ -7,30 +7,38 @@ export const actions = {
     commit
   }, payload) {
     commit('SET_STATUS', 'loading')
-    auth.signInWithPopup(payload)
-      .then(response => {
-        commit('SET_USER', response.user.uid)
-        commit('SET_STATUS', 'success')
-        commit('SET_ERROR', null)
-      })
-      .catch(error => {
-        commit('SET_STATUS', 'failure')
-        commit('SET_ERROR', error.message)
-      })
+    return new Promise((resolve, reject) => {
+      auth.signInWithPopup(payload)
+        .then(response => {
+          commit('SET_USER', response.user.uid)
+          commit('SET_STATUS', 'success')
+          commit('SET_ERROR', null)
+          resolve()
+        })
+        .catch(error => {
+          commit('SET_STATUS', 'failure')
+          commit('SET_ERROR', error.message)
+          reject()
+        })
+    })
   },
 
   signOutAction({
     commit
   }) {
-    auth.signOut()
-      .then(response => {
-        commit('SET_USER', null)
-        commit('SET_STATUS', 'success')
-        commit('SET_ERROR', null)
-      })
-      .catch(error => {
-        commit('SET_STATUS', 'failure')
-        commit('SET_ERROR', error.message)
-      })
+    return new Promise((resolve, reject) => {
+      auth.signOut()
+        .then(response => {
+          commit('SET_USER', null)
+          commit('SET_STATUS', 'success')
+          commit('SET_ERROR', null)
+          resolve()
+        })
+        .catch(error => {
+          commit('SET_STATUS', 'failure')
+          commit('SET_ERROR', error.message)
+          reject()
+        })
+    })
   },
 }

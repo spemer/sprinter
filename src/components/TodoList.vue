@@ -2,7 +2,7 @@
   div#todolist
     div.todolist_list
       div.todolist_list-each(
-        v-for="todo in todos.slice().reverse()"
+        v-for="todo in todos"
         :key="todo.id"
       )
         div.todolist_list-left
@@ -17,9 +17,9 @@
           )
           span.checkmark
         div.todolist_list-right(
-          @click="removeItem(todo)"
+          @click="handleRemove(todo)"
         )
-          i.fas.fa-trash
+          i.far.fa-trash-alt
 </template>
 
 <script>
@@ -30,6 +30,7 @@ import { removeItem } from '@/mixins/removeItem'
 export default {
   data: _ => ({
     todos: [],
+    isActive: true,
   }),
 
   firestore: _ => {
@@ -49,6 +50,10 @@ export default {
   ],
 
   methods: {
+    handleRemove(todo) {
+      this.removeItem(todo)
+    },
+
     updateTodo(todo) {
       db.collection(auth.currentUser.uid).doc(todo.id).update({...todo})
       .then(docRef => {
@@ -66,9 +71,26 @@ export default {
 <style lang="scss" scoped>
 #todolist {
   padding-bottom: calc(#{$header} + #{$grid8x});
+  -webkit-tap-highlight-color: transparent;
 
   .todolist_list {
     padding: 0;
+
+    .removed {
+      animation: popup 0.5s ease 1 forwards;
+
+      @keyframes popup {
+        from {
+          opacity: 1;
+          @include transform(translateY(0px));
+        }
+
+        to {
+          opacity: 0;
+          @include transform(translateY($grid4x));
+        }
+      }
+    }
 
     .todolist_list-each {
       position: relative;
@@ -77,7 +99,7 @@ export default {
       @keyframes popup {
         from {
           opacity: 0;
-          @include transform(translateY(16px));
+          @include transform(translateY(-#{$grid4x}));
         }
 
         to {
@@ -100,7 +122,6 @@ export default {
           position: absolute;
           display: inline-block;
           padding-left: $grid8x;
-          // width: calc(100% - #{$grid8x});
         }
 
         span {

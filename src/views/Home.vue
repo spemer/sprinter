@@ -32,15 +32,14 @@ export default {
   },
 
   mounted () {
-    let userId = firebase.auth().currentUser.uid
-    console.log(userId)
+    console.log(this.getUser)
   },
 
   methods: {
     logout() {
       this.$store.dispatch('signOutAction')
       .then(() => {
-        this.$router.push('/login')
+        this.$router.replace('/login')
       })
     }
   },

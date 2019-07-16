@@ -39,8 +39,9 @@ export default {
 
       this.$store.dispatch('signInAction', facebookProvider)
       .then(() => {
-        return (this.getError === null)
-          && this.$router.push('/')
+        if (this.getUser) {
+          this.$router.push('/')
+        }
       })
     },
 
@@ -49,15 +50,16 @@ export default {
 
       this.$store.dispatch('signInAction', googleProvider)
       .then(() => {
-        return (this.getError === null)
-          && this.$router.push('/')
+        if (this.getUser) {
+          this.$router.push('/')
+        }
       })
     }
   },
 
   computed: {
     ...mapGetters([
-      'getError',
+      'getUser',
     ]),
   },
 
