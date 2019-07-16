@@ -45,7 +45,8 @@ export default {
     },
 
     googleLogin () {
-      const facebookProvider = new firebase.auth.FacebookAuthProvider()
+      const googleProvider = new firebase.auth.GoogleAuthProvider()
+
       this.$store.dispatch('signInAction', googleProvider)
       .then(() => {
         return (!this.getError)

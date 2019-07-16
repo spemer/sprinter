@@ -25,6 +25,7 @@ export default {
   height: $header;
   position: fixed;
   background-color: #fff;
+  @include drop-shadow();
 
   .header__wrapper {
     position: relative;
