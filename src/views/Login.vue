@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters } from 'vuex'
 import firebase from 'firebase/app'
 import { auth, googleProvider, facebookProvider } from '@/firebase'
 import { toast } from '@/mixins/toast'
@@ -34,40 +34,29 @@ export default {
   name: 'login',
 
   methods: {
-    ...mapMutations ([
-      'SET_CURRENT_USER'
-    ]),
-
     fbLogin () {
-      auth.signInWithPopup(facebookProvider)
-      .then(result => {
-        console.log(result)
-        this.SET_CURRENT_USER(result.user)
-        this.toast(`Welcome, ${this.currentUser.displayName}!`)
-        this.$router.push('/')
-      })
-      .catch(error => {
-        console.log(error)
+      const facebookProvider = new firebase.auth.FacebookAuthProvider()
+
+      this.$store.dispatch('signInAction', facebookProvider)
+      .then(() => {
+        return (!this.getError)
+          && this.$router.push('/')
       })
     },
 
     googleLogin () {
-      auth.signInWithPopup(googleProvider)
-      .then(result => {
-        console.log(result)
-        this.SET_CURRENT_USER(result.user)
-        this.toast(`Welcome, ${this.currentUser.displayName}!`)
-        this.$router.push('/')
-      })
-      .catch(error => {
-        console.log(error)
+      const facebookProvider = new firebase.auth.FacebookAuthProvider()
+      this.$store.dispatch('signInAction', googleProvider)
+      .then(() => {
+        return (!this.getError)
+          && this.$router.push('/')
       })
     }
   },
 
   computed: {
     ...mapGetters([
-      'currentUser',
+      'getError',
     ]),
   },
 

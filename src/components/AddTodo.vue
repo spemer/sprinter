@@ -5,7 +5,7 @@
         input(
           type="text"
           autofocus="true"
-          v-model="newTodo"
+          v-model.trim="newTodo"
           placeholder="Todo"
         )
       div.addTodo__form-btn
@@ -41,7 +41,7 @@ export default {
     todos: [],
   }),
 
-  firestore: _ => {
+  firestore() {
     return {
       todos: todosCollection.orderBy('createdAt', 'desc')
     }
@@ -53,20 +53,20 @@ export default {
 
   computed: {
     ...mapGetters([
-      'currentUser',
+      'getUser',
     ]),
   },
 
   mounted () {
     firebase.auth().onAuthStateChanged(user => {
       return (user)
-        && this.SET_CURRENT_USER(user.uid)
+        && this.SET_USER(user.uid)
     })
   },
 
   methods: {
     ...mapMutations([
-      'SET_CURRENT_USER',
+      'SET_USER',
     ]),
 
     addTodo () {
@@ -74,7 +74,7 @@ export default {
         text: this.newTodo,
         completed: false,
         id: this.todos.length,
-        uid: this.currentUser,
+        uid: this.getUser,
         createdAt: new Date(),
       })
       .then(docRef => {
@@ -102,6 +102,7 @@ export default {
 <style lang="scss" scoped>
 #addTodo {
   $btn: $grid12x;
+  margin-top: calc(#{$header} + #{$grid2x});
 
   .addTodo__form {
     width: 100%;

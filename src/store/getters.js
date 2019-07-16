@@ -1,9 +1,14 @@
 export const getters = {
-  currentUser: state => {
-    return state.currentUser
+  getUser(state) {
+    return state.user
   },
-  isLogged: state => {
-    return state.currentUser !== null
+
+  getStatus(state) {
+    return state.status
+  },
+
+  getError(state) {
+    return state.error
   },
 
 }

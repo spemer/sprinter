@@ -1,3 +1,7 @@
 export const state = {
-  currentUser: null,
+  user: null,
+  status: null,
+  error: null,
+
+  todos: [],
 }

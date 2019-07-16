@@ -5,11 +5,10 @@
     )
     div.container
       div.home__container
-        h1.home__container-title TODOS
-      AddTodo
-      button(
-        @click="logout"
-      ) Logout
+        AddTodo
+        button(
+          @click="logout"
+        ) Logout
 </template>
 
 <script>
@@ -17,23 +16,28 @@ import Header from '@/components/Header'
 import AddTodo from '@/components/AddTodo'
 import { mapGetters } from 'vuex'
 import { todosCollection } from '@/firebase'
-import { logout } from '@/mixins/logout'
 
 export default {
   name: 'home',
 
   computed: {
     ...mapGetters([
-      'currentUser',
+      'getUser',
+      'getStatus',
     ]),
   },
 
-  mixins: [
-    logout,
-  ],
+  methods: {
+    logout() {
+      this.$store.dispatch('signOutAction')
+      .then(() => {
+        this.$router.push('/login')
+      })
+    }
+  },
 
   mounted () {
-    console.log(this.currentUser.displayName)
+    // console.log(this.getUser.displayName)
   },
 
   components: {
@@ -46,9 +50,6 @@ export default {
 <style lang="scss" scoped>
 #home {
   .home__container {
-    .home__container-title {
-      @include font-size($grid6x);
-    }
   }
 }
 </style>
