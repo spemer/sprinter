@@ -1,11 +1,12 @@
 <template lang="pug">
   div#todolist
-    div.todolist_list
-      div.todolist_list-each(
+    div.todolist__list
+      div.todolist__list-each(
         v-for="todo in todos"
         :key="todo.id"
+        :class="{'completed': todo.completed}"
       )
-        div.todolist_list-left
+        div.todolist__list-left
           label(
             :for="todo.id"
           ) {{ todo.text }}
@@ -16,7 +17,7 @@
             @change="updateTodo(todo)"
           )
           span.checkmark
-        div.todolist_list-right(
+        div.todolist__list-right(
           @click="handleRemove(todo)"
         )
           i.far.fa-trash-alt
@@ -70,10 +71,12 @@ export default {
 
 <style lang="scss" scoped>
 #todolist {
-  padding-bottom: calc(#{$header} + #{$grid8x});
-  -webkit-tap-highlight-color: transparent;
+  $list: $grid10x;
+  $line: $grid7x;
 
-  .todolist_list {
+  padding-bottom: calc(#{$header} + #{$grid8x});
+
+  .todolist__list {
     padding: 0;
 
     .removed {
@@ -92,8 +95,9 @@ export default {
       }
     }
 
-    .todolist_list-each {
+    .todolist__list-each {
       position: relative;
+      transition: opacity 0.5s ease;
       animation: popup 0.5s ease 1 forwards;
 
       @keyframes popup {
@@ -108,17 +112,21 @@ export default {
         }
       }
 
-      .todolist_list-left {
-        height: $grid12x;
+      &.completed {
+        opacity: 0.5;
+      }
+
+      .todolist__list-left {
+        height: $list;
         position: absolute;
         display: inline-block;
         width: calc(100% - #{$grid12x} - #{$grid8x});
-        @include line-height($grid8x);
+        @include line-height($line);
 
         label {
           left: 0;
           width: 100%;
-          height: $grid12x;
+          height: $list;
           position: absolute;
           display: inline-block;
           padding-left: $grid8x;
@@ -129,23 +137,23 @@ export default {
         }
       }
 
-      .todolist_list-right {
-        position: absolute;
+      .todolist__list-right {
+        right: 0;
+        height: $list;
         width: $grid12x;
         color: $black38;
-        height: $grid12x;
         text-align: right;
-        right: 0;
+        position: absolute;
         display: inline-block;
-        @include line-height($grid8x);
+        @include line-height($line);
       }
 
+      width: 100%;
+      height: $list;
+      display: block;
       cursor: pointer;
       position: relative;
       margin-top: $grid4x;
-      width: 100%;
-      height: $grid12x;
-      display: block;
       -webkit-user-select: none !important;
       -khtml-user-select: none !important;
       -moz-user-select: none !important;
@@ -180,7 +188,7 @@ export default {
         height: $grid5x;
         position: absolute;
         background-color: $black04;
-        margin-top: $grid3x;
+        margin-top: $grid2x;
         @include border-radius($grid);
         @include transition(all 0.1s ease);
       }

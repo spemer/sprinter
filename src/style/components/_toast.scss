@@ -1,19 +1,20 @@
-.toasted-container {
+.toasted-container.bottom-center {
+  margin-bottom: $grid16x;
 
   // iPhone X safearea
-  @supports (padding-bottom: env(safe-area-inset-bottom)) {
-    padding-bottom: calc(env(safe-area-inset-bottom));
+  @supports (margin-bottom: env(safe-area-inset-bottom)) {
+    margin-bottom: calc(env(safe-area-inset-bottom));
   }
 
   .toasted.primary.default {
-    width: auto;
-    color: #fff;
-    margin: 0 auto;
-    font-weight: 400;
-    text-align: center;
-    background: $black78;
-    margin-bottom: $grid12x;
-    padding: $grid3x $grid4x;
+    width: auto !important;
+    color: #fff !important;
+    margin: 0 auto !important;
+    font-weight: 400 !important;
+    text-align: center !important;
+    background: $black78 !important;
+    margin-bottom: $grid12x !important;
+    padding: $grid3x $grid4x !important;
     @include font-size($grid3x);
     @include border-radius($grid16x !important);
     @include box-shadow($grid, $grid2x, $black16);

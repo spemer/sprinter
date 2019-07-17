@@ -41,9 +41,12 @@ body {
   @include font-settings();
   @include font-stack-html();
   @include font-size($grid4x);
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-  -moz-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-  tap-highlight-color: rgba(0, 0, 0, 0) !important;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -moz-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
 }
 
 html {
@@ -53,9 +56,6 @@ html {
 a {
   color: $brand;
   text-decoration: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-  -moz-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-  tap-highlight-color: rgba(0, 0, 0, 0) !important;
 }
 
 h1 {
@@ -91,18 +91,12 @@ button {
   outline: none !important;
   cursor: pointer !important;
   background-color: transparent;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-  -moz-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-  tap-highlight-color: rgba(0, 0, 0, 0) !important;
 
   &:focus,
   &:active,
     {
     border: none;
     outline: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-    -moz-tap-highlight-color: rgba(0, 0, 0, 0) !important;
-    tap-highlight-color: rgba(0, 0, 0, 0) !important;
   }
 }
 

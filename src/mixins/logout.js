@@ -1,14 +1,26 @@
 export const logout = {
   methods: {
     logout() {
-      let askLogout = confirm('Do you really want to log out?')
-
-      if (askLogout) {
-        this.$store.dispatch('signOutAction')
-          .then(() => {
-            this.$router.replace('/login')
-          })
-      }
+      this.$modal.show('dialog', {
+        title: 'Logout',
+        text: 'Do you really want to log out?',
+        buttons: [{
+            title: 'Cancel',
+          },
+          {
+            title: 'Logout',
+            default: true,
+            handler: _ => {
+              this.$store.dispatch('signOutAction')
+                .then(() => {
+                  if (this.$store.getters.getUser === null) {
+                    this.$router.replace('/login')
+                  }
+                })
+            }
+          },
+        ]
+      })
     }
   },
 }

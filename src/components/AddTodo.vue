@@ -1,12 +1,6 @@
 <template lang="pug">
   div#addTodo
     div.addTodo__container
-      //- div.addTodo__colorset(
-      //-   v-for="color in colorset"
-      //- )
-      //-   div.addTodo__colorset-each(
-      //-     :style="`border: #${color} 8px solid`"
-      //-   )
       form.addTodo__form
         div.addTodo__form-input
           input(

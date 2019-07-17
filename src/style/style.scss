@@ -1,11 +1,9 @@
 @charset 'UTF-8';
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-@import './modules/grid',
-'./modules/color',
-'./modules/mixin',
-'./modules/global'
-;
+@import './modules/grid';
+@import './modules/color';
+@import './modules/mixin';
+@import './modules/global';
 
-@import './components/toast'
-;
+@import './components/toast';
+@import './components/modal';

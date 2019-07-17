@@ -13,14 +13,16 @@
         TodoList
 
     AddTodo
+
+    v-dialog.modal(:width="320")
 </template>
 
 <script>
+import firebase from 'firebase/app'
 import Header from '@/components/Header'
 import AddTodo from '@/components/AddTodo'
 import TodoList from '@/components/TodoList'
 import { mapGetters } from 'vuex'
-import firebase from 'firebase/app'
 import { logout } from '@/mixins/logout'
 
 export default {
@@ -46,6 +48,7 @@ export default {
     AddTodo,
     TodoList,
   },
+
 }
 </script>
 

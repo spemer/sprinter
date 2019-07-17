@@ -16,7 +16,7 @@ export const removeItem = {
           .catch(error => {
             console.log(error)
           })
-      }, 250)
+      }, 0)
     },
   },
 

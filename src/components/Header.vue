@@ -16,10 +16,12 @@
 <script>
 export default {
   props: {
-    headerTitle: String
+    headerTitle: String,
   },
+
 }
 </script>
+
 <style lang="scss" scoped>
 #headercomp {
   top: 0;

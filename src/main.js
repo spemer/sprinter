@@ -12,8 +12,12 @@ Vue.use(firestorePlugin)
 import '@/firebase'
 import VueFire from 'vuefire'
 
+import VModal from 'vue-js-modal'
 import Toasted from 'vue-toasted'
 import DrawerLayout from 'vue-drawer-layout'
+Vue.use(VModal, {
+  dialog: true
+})
 Vue.use(Toasted)
 Vue.use(DrawerLayout)
 
