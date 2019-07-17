@@ -2,17 +2,21 @@
   div#todolist
     div.todolist__list
       div.todolist__list-empty(
-        v-if="todos.length == 0"
+        v-if="todos.length === 0"
       )
         p Create a new todo!
         i.fas.fa-arrow-down
+
       div.todolist__list-each(
         v-if="todos"
         v-for="todo in todos"
         :key="todo.id"
         :class="{'completed': todo.completed}"
       )
-        div.todolist__list-left
+
+        div.todolist__list-left(
+          v-if="currentlyEditing !== todo.id"
+        )
           label(
             :for="todo.id"
           ) {{ todo.text }}
@@ -23,21 +27,43 @@
             @change="updateTodo(todo)"
           )
           span.checkmark
+
         div.todolist__list-right(
-          @click="handleRemove(todo)"
+          v-if="currentlyEditing !== todo.id"
         )
-          i.far.fa-trash-alt
+          div.todolist__list-edit(
+            v-if="!todo.completed"
+            @click="editTodo(todo)"
+          )
+            i.fas.fa-pen
+          div.todolist__list-remove(
+            @click="removeTodo(todo)"
+          )
+            i.far.fa-trash-alt
+
+        div.todolist__list-editing(
+          v-else
+        )
+          input(
+            type="text"
+            v-model.trim="todoEditText"
+          )
+          button(
+            type="submit"
+            @click.prevent="updateTodoText(todo)"
+          ) Save
 </template>
 
 <script>
 import { db, auth } from '@/firebase'
 import { mapGetters } from 'vuex'
-import { removeItem } from '@/mixins/removeItem'
+import { removeTodo } from '@/mixins/removeTodo'
 
 export default {
   data: _ => ({
     todos: [],
-    isActive: true,
+    currentlyEditing: null,
+    todoEditText: '',
   }),
 
   firestore: _ => {
@@ -53,23 +79,40 @@ export default {
   },
 
   mixins: [
-    removeItem,
+    removeTodo,
   ],
 
   methods: {
-    handleRemove(todo) {
-      this.removeItem(todo)
+    editTodo(todo) {
+      this.currentlyEditing = todo.id
+      this.todoEditText = todo.text
+    },
+
+    updateTodoText(todo) {
+      if (this.todoEditText.length > 0) {
+        db.collection(auth.currentUser.uid).doc(this.currentlyEditing).update({
+          text: this.todoEditText
+        })
+        .then(docRef => {
+          console.log(todo.text)
+        })
+        .catch(error => {
+          console.error(error)
+        })
+        this.currentlyEditing = null
+        this.todoEditText = ''
+      }
     },
 
     updateTodo(todo) {
       db.collection(auth.currentUser.uid).doc(todo.id).update({...todo})
       .then(docRef => {
-        console.log('Updated document with ID: ', todo.id)
+        console.log(todo.text)
       })
       .catch(error => {
-        console.error('Error updating document: ', error)
-      });
-    }
+        console.error(error)
+      })
+    },
   },
 
 }
@@ -163,11 +206,33 @@ export default {
         }
       }
 
+      .todolist__list-editing {
+        input {
+          width: calc(100% - #{$list} - #{$list} - #{$grid6x});
+          border: none;
+          height: $list;
+          outline: none;
+          padding: 0 $grid4x;
+          background-color: $black04;
+          @include border-radius();
+        }
+
+        button {
+          float: right;
+          color: $brand;
+          height: $list;
+          font-weight: 700;
+          background-color: $brand_16;
+          width: calc(#{$list} + #{$grid6x});
+          @include border-radius();
+        }
+      }
+
       .todolist__list-left {
         height: $list;
         position: absolute;
         display: inline-block;
-        width: calc(100% - #{$grid12x} - #{$grid8x});
+        width: calc(100% - #{$list} - #{$list} - #{$grid8x});
         @include line-height($line);
 
         label {
@@ -189,12 +254,22 @@ export default {
       .todolist__list-right {
         right: 0;
         height: $list;
-        width: $grid12x;
+        width: calc(#{$list} + #{$list});
         color: $black38;
         text-align: right;
         position: absolute;
         display: inline-block;
         @include line-height($line);
+
+        .todolist__list-edit {
+          float: left;
+          width: $list;
+        }
+
+        .todolist__list-remove {
+          float: right;
+          width: $list;
+        }
       }
 
       width: 100%;

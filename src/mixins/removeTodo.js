@@ -5,9 +5,9 @@ import {
   toast
 } from '@/mixins/toast'
 
-export const removeItem = {
+export const removeTodo = {
   methods: {
-    removeItem(todo) {
+    removeTodo(todo) {
       setTimeout(() => {
         db.collection(todo.uid).doc(todo.id).delete()
           .then(() => {
