@@ -14,6 +14,7 @@
               i.fab.fa-facebook-f
             div.login__btn-right
               span Continue with Facebook
+
         div.login__container-google
           button.login__btn(
             @click="googleLogin"
@@ -22,6 +23,15 @@
               i.fab.fa-google
             div.login__btn-right
               span Continue with Google
+
+        div.login__container-twitter
+          button.login__btn(
+            @click="twitterLogin"
+          )
+            div.login__btn-left
+              i.fab.fa-twitter
+            div.login__btn-right
+              span Continue with Twitter
 </template>
 
 <script>
@@ -54,7 +64,18 @@ export default {
           this.$router.push('/')
         }
       })
-    }
+    },
+
+    twitterLogin () {
+      const twitterProvider = new firebase.auth.TwitterAuthProvider()
+
+      this.$store.dispatch('signInAction', twitterProvider)
+      .then(() => {
+        if (this.getUser) {
+          this.$router.push('/')
+        }
+      })
+    },
   },
 
   computed: {
@@ -76,11 +97,6 @@ export default {
   position: fixed;
   background-color: $brand;
 
-  // iPhone X safearea
-  @supports (padding-bottom: env(safe-area-inset-bottom)) {
-    padding-bottom: calc(env(safe-area-inset-bottom));
-  }
-
   .login__launcher {
     .login__launcher-img {
       margin: 0 auto;
@@ -95,6 +111,11 @@ export default {
     position: fixed;
     margin-bottom: $grid8x;
     width: calc(100% - #{$grid8x});
+
+    // iPhone X safearea
+    @supports (padding-bottom: env(safe-area-inset-bottom)) {
+      padding-bottom: calc(env(safe-area-inset-bottom));
+    }
 
     .login__btn {
       width: 100%;
@@ -113,9 +134,9 @@ export default {
         line-height: $grid14x;
         display: inline-block;
 
-        i {
+        svg {
           width: $grid8x;
-          @include font-size($grid5x);
+          @include font-size($grid4x);
         }
       }
 

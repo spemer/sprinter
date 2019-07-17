@@ -1,7 +1,13 @@
 <template lang="pug">
   div#todolist
     div.todolist__list
+      div.todolist__list-empty(
+        v-if="todos.length == 0"
+      )
+        p Create a new todo!
+        i.fas.fa-arrow-down
       div.todolist__list-each(
+        v-if="todos"
         v-for="todo in todos"
         :key="todo.id"
         :class="{'completed': todo.completed}"
@@ -72,14 +78,51 @@ export default {
 <style lang="scss" scoped>
 #todolist {
   $list: $grid10x;
-  $line: $grid7x;
+  $line: $grid6x;
 
   padding-bottom: calc(#{$header} + #{$grid8x});
 
   .todolist__list {
     padding: 0;
 
+    .todolist__list-empty {
+      text-align: center;
+      width: 100%;
+      opacity: 0.38;
+      position: absolute;
+      top: 75%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-75%);
+
+      p,
+      svg {
+        @include font-size($grid6x);
+      }
+
+      svg {
+        -webkit-animation: slide 2.5s ease infinite;
+        -moz-animation: slide 2.5s ease infinite;
+        -o-animation: slide 2.5s ease infinite;
+        animation: slide 2.5s ease infinite;
+
+        @keyframes slide {
+          0% {
+            transform: translateY($grid);
+          }
+          50% {
+            transform: translateY($grid3x);
+          }
+          100% {
+            transform: translateY($grid);
+          }
+        }
+      }
+    }
+
     .removed {
+      -webkit-animation: popup 0.5s ease 1 forwards;
+      -moz-animation: popup 0.5s ease 1 forwards;
+      -o-animation: popup 0.5s ease 1 forwards;
       animation: popup 0.5s ease 1 forwards;
 
       @keyframes popup {
@@ -97,7 +140,6 @@ export default {
 
     .todolist__list-each {
       position: relative;
-      transition: opacity 0.5s ease;
       animation: popup 0.5s ease 1 forwards;
 
       @keyframes popup {
@@ -113,7 +155,12 @@ export default {
       }
 
       &.completed {
-        opacity: 0.5;
+        .todolist__list-left {
+          label {
+            opacity: 0.38;
+            text-decoration: line-through;
+          }
+        }
       }
 
       .todolist__list-left {
@@ -125,11 +172,13 @@ export default {
 
         label {
           left: 0;
+          opacity: 1;
           width: 100%;
           height: $list;
           position: absolute;
           display: inline-block;
           padding-left: $grid8x;
+          @include transition(opacity 0.25s ease);
         }
 
         span {
@@ -190,7 +239,7 @@ export default {
         background-color: $black04;
         margin-top: $grid2x;
         @include border-radius($grid);
-        @include transition(all 0.1s ease);
+        @include transition(all 0.25s ease);
       }
 
       &:hover input ~ .checkmark {
@@ -202,13 +251,14 @@ export default {
       }
 
       .checkmark:after {
+        opacity: 0;
         content: '';
-        display: none;
         position: absolute;
+        @include transition(all 0.25s ease);
       }
 
       input:checked ~ .checkmark:after {
-        display: block;
+        opacity: 1;
       }
 
       .checkmark:after {
