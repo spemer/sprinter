@@ -11,10 +11,12 @@ export const logout = {
             title: 'Logout',
             default: true,
             handler: _ => {
+              this.$Progress.start()
               this.$store.dispatch('signOutAction')
                 .then(() => {
                   if (this.$store.getters.getUser === null) {
                     this.$router.replace('/login')
+                    this.$Progress.finish()
                   }
                 })
             }

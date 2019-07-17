@@ -4,21 +4,29 @@ import router from '@/router'
 import store from '@/store'
 import '@/registerServiceWorker'
 
+import '@/firebase'
+import VueFire from 'vuefire'
 import {
   firestorePlugin
 } from 'vuefire'
 Vue.use(firestorePlugin)
 
-import '@/firebase'
-import VueFire from 'vuefire'
+import VueProgressBar from 'vue-progressbar'
+Vue.use(VueProgressBar, {
+  color: 'rgb(255, 255, 255)',
+  failedColor: 'rgb(255, 255, 255)',
+  height: '4px',
+})
 
 import VModal from 'vue-js-modal'
-import Toasted from 'vue-toasted'
-import DrawerLayout from 'vue-drawer-layout'
 Vue.use(VModal, {
-  dialog: true
+  dialog: true,
 })
+
+import Toasted from 'vue-toasted'
 Vue.use(Toasted)
+
+import DrawerLayout from 'vue-drawer-layout'
 Vue.use(DrawerLayout)
 
 Vue.config.productionTip = false

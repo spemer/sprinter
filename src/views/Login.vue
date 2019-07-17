@@ -45,33 +45,39 @@ export default {
 
   methods: {
     fbLogin () {
+      this.$Progress.start()
       const facebookProvider = new firebase.auth.FacebookAuthProvider()
 
       this.$store.dispatch('signInAction', facebookProvider)
       .then(() => {
         if (this.getUser) {
+          this.$Progress.finish()
           this.$router.push('/')
         }
       })
     },
 
     googleLogin () {
+      this.$Progress.start()
       const googleProvider = new firebase.auth.GoogleAuthProvider()
 
       this.$store.dispatch('signInAction', googleProvider)
       .then(() => {
         if (this.getUser) {
+          this.$Progress.finish()
           this.$router.push('/')
         }
       })
     },
 
     twitterLogin () {
+      this.$Progress.start()
       const twitterProvider = new firebase.auth.TwitterAuthProvider()
 
       this.$store.dispatch('signInAction', twitterProvider)
       .then(() => {
         if (this.getUser) {
+          this.$Progress.finish()
           this.$router.push('/')
         }
       })
