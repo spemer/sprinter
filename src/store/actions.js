@@ -10,7 +10,7 @@ export const actions = {
     return new Promise((resolve, reject) => {
       auth.signInWithPopup(payload)
         .then(response => {
-          commit('SET_USER', response.user.uid)
+          commit('SET_USER', response.user)
           commit('SET_STATUS', 'success')
           commit('SET_ERROR', null)
           resolve()

@@ -54,9 +54,11 @@ export default {
       width: $header;
       text-align: center;
 
-      i {
-        padding-top: $grid2x;
-        @include font-size($grid6x);
+      i,
+      svg {
+        width: $grid4x;
+        padding: 18px 0;
+        @include font-size($grid5x);
       }
     }
 

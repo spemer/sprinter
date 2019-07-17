@@ -1,6 +1,6 @@
 <template lang="pug">
   div#login
-    div.container
+    div.wrapper
       div.login__launcher
         img.login__launcher-img(
           src="../assets/launcher.svg"
@@ -11,7 +11,7 @@
             @click="fbLogin"
           )
             div.login__btn-left
-              i.fab.fa-facebook-f
+              i.fab.fa-facebook-square
             div.login__btn-right
               span Continue with Facebook
 
@@ -29,7 +29,7 @@
             @click="twitterLogin"
           )
             div.login__btn-left
-              i.fab.fa-twitter
+              i.fab.fa-twitter-square
             div.login__btn-right
               span Continue with Twitter
 </template>
@@ -104,10 +104,12 @@ export default {
   overflow: hidden;
   background-color: $brand;
 
-  // iPhone X safearea
   @supports (padding-top: env(safe-area-inset-top)) {
     padding-top: calc(env(safe-area-inset-top));
     padding-bottom: calc(env(safe-area-inset-bottom));
+    height: calc(
+      100vh + env(safe-area-inset-top) + env(safe-area-inset-bottom)
+    );
   }
 
   .login__launcher {
@@ -126,7 +128,6 @@ export default {
     background-color: $brand;
     width: calc(100% - #{$grid8x});
 
-    // iPhone X safearea
     @supports (padding-bottom: env(safe-area-inset-bottom)) {
       padding-bottom: calc(env(safe-area-inset-bottom));
     }
@@ -149,8 +150,8 @@ export default {
         display: inline-block;
 
         svg {
-          width: $grid8x;
-          @include font-size($grid4x);
+          padding: 15px 0;
+          @include font-size($grid6x);
         }
       }
 

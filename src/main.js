@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import './plugins/vuetify'
 import App from '@/App.vue'
 import router from '@/router'
 import store from '@/store'
@@ -26,8 +27,8 @@ Vue.use(VModal, {
 import Toasted from 'vue-toasted'
 Vue.use(Toasted)
 
-import DrawerLayout from 'vue-drawer-layout'
-Vue.use(DrawerLayout)
+import Vuetify from 'vuetify'
+Vue.use(Vuetify)
 
 Vue.config.productionTip = false
 
