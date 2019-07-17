@@ -1,6 +1,7 @@
 #toasted-container {
   z-index: 1 !important;
   padding-bottom: 64px !important;
+  font-family: Sans-serif !important;
 }
 
 @supports (padding-bottom: env(safe-area-inset-bottom)) {

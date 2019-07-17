@@ -2,7 +2,7 @@
   div#todolist
     div.todolist__list
       div.todolist__list-empty(
-        v-if="todos.length === 0"
+        v-if="todos.length === 0 && timeout"
       )
         p Create a new todo!
         i.fas.fa-arrow-down
@@ -66,12 +66,19 @@ export default {
     todos: [],
     currentlyEditing: null,
     todoEditText: '',
+    timeout: false,
   }),
 
   firestore: _ => {
     return {
       todos: db.collection(auth.currentUser.uid).orderBy('createdAt', 'desc')
     }
+  },
+
+  mounted () {
+    setTimeout(() => {
+      this.timeout = true
+    }, 1000)
   },
 
   computed: {

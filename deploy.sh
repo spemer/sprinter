@@ -22,6 +22,7 @@ dev_or_deploy() {
       [Rr]* )
         printf "\n"
         echo "${BOLD}${PURPLE}🔥 Run dev server 🔥${RESET}"
+        image_resizer
         npm_run_serve
         npm_run_build
         firebase_deploy
@@ -42,7 +43,27 @@ dev_or_deploy() {
 }
 
 #============================================================
-# serve with hot reload at localhost:3000
+# run gulpfile.js image resizer
+#============================================================
+image_resizer() {
+  while true; do
+    printf "\n"
+    read -p "${BOLD}${GREEN}Run gulpfile.js(image resizer)? (Y/n) ${RESET}" yn
+    case ${yn} in
+      [Yy]* )
+        trap 'echo Stop gulp' SIGINT
+        sudo gulp;
+        trap SIGINT
+        break;;
+
+      [Nn]* ) return 0;;
+      * ) echo "${YELLOW}Please answer yes or no.${RESET}";;
+    esac
+  done
+}
+
+#============================================================
+# serve with hot reload at localhost:5000
 #============================================================
 npm_run_serve() {
   while true; do
