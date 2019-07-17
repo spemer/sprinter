@@ -55,6 +55,7 @@ export default {
 <style lang="scss" scoped>
 #home {
   .home__container {
+    height: 100vh;
     padding-top: $grid16x;
 
     @supports (padding-top: env(safe-area-inset-top)) {

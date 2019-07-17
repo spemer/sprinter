@@ -1,5 +1,10 @@
 <template lang="pug">
   div#todolist
+
+    BarLoader.spinner(
+      v-if="!timeout"
+    )
+
     div.todolist__list
       div.todolist__list-empty(
         v-if="todos.length === 0 && timeout"
@@ -60,6 +65,7 @@
 import { db, auth } from '@/firebase'
 import { mapGetters } from 'vuex'
 import { removeTodo } from '@/mixins/removeTodo'
+import { BarLoader } from '@saeris/vue-spinners'
 
 export default {
   data: _ => ({
@@ -76,9 +82,15 @@ export default {
   },
 
   mounted () {
-    setTimeout(() => {
-      this.timeout = true
-    }, 1000)
+    this.$nextTick(() => {
+      setTimeout(() => {
+        this.timeout = true
+      }, 1000)
+    })
+  },
+
+  components: {
+    BarLoader,
   },
 
   computed: {
@@ -103,7 +115,7 @@ export default {
           text: this.todoEditText
         })
         .then(docRef => {
-          console.log(todo.text)
+          console.log(docRef)
         })
         .catch(error => {
           console.error(error)
@@ -116,7 +128,7 @@ export default {
     updateTodo(todo) {
       db.collection(auth.currentUser.uid).doc(todo.id).update({...todo})
       .then(docRef => {
-        console.log(todo.text)
+        console.log(docRef)
       })
       .catch(error => {
         console.error(error)
@@ -132,7 +144,11 @@ export default {
   $list: $grid10x;
   $line: $grid6x;
 
-  padding-bottom: calc(#{$header} + #{$grid8x});
+  padding-bottom: calc(#{$header} + #{$grid24x});
+
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    padding-bottom: calc(env(safe-area-inset-bottom) + #{$grid24x}) !important;
+  }
 
   .todolist__list {
     padding: 0;
@@ -280,12 +296,16 @@ export default {
 
         .todolist__list-edit {
           float: left;
-          width: $list;
+          height: $list;
+          text-align: center;
+          width: calc(#{$list} + #{$grid2x});
         }
 
         .todolist__list-remove {
           float: right;
-          width: $list;
+          height: $list;
+          // text-align: center;
+          width: calc(#{$list} - #{$grid2x});
         }
       }
 

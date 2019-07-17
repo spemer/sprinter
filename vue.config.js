@@ -23,6 +23,9 @@ module.exports = {
     msTileColor: '#844DFF',
     appleMobileWebAppStatusBarStyle: 'black-translucent',
     appleMobileWebAppCapable: 'yes',
+    workboxOptions: {
+      skipWaiting: true,
+    },
   },
 
 }

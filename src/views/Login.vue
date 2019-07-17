@@ -101,7 +101,14 @@ export default {
   width: 100vw;
   height: 100vh;
   position: fixed;
+  overflow: hidden;
   background-color: $brand;
+
+  // iPhone X safearea
+  @supports (padding-top: env(safe-area-inset-top)) {
+    padding-top: calc(env(safe-area-inset-top));
+    padding-bottom: calc(env(safe-area-inset-bottom));
+  }
 
   .login__launcher {
     .login__launcher-img {
@@ -116,6 +123,7 @@ export default {
     bottom: 0;
     position: fixed;
     margin-bottom: $grid8x;
+    background-color: $brand;
     width: calc(100% - #{$grid8x});
 
     // iPhone X safearea

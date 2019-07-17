@@ -1,0 +1,33 @@
+.spinner {
+  position: absolute;
+  left: 0;
+  // right: 0;
+  // top: 0;
+  // bottom: 0;
+  z-index: 3;
+  margin: auto;
+  width: 100% !important;
+  background-color: $brand_16 !important;
+  top: $header !important;
+
+  @supports (top: env(safe-area-inset-top)) {
+    top: calc(env(safe-area-inset-top) + #{$header}) !important;
+  }
+
+  div {
+    height: 4px !important;
+    color: $brand !important;
+    background-color: $brand !important;
+  }
+
+  // .cube,
+  // .diamond,
+  // .double-bounce1,
+  // .double-bounce2 {
+  //   opacity: .5;
+  //   // width: $header !important;
+  //   // height: $header !important;
+  //   background-color: $brand !important;
+  //   @include border-radius($grid16x !important);
+  // }
+}

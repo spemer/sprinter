@@ -11,7 +11,7 @@ export const removeTodo = {
       setTimeout(() => {
         db.collection(todo.uid).doc(todo.id).delete()
           .then(() => {
-            this.toast(`Todo removed`)
+            this.toast('Todo removed', 2000, 'Close')
           })
           .catch(error => {
             console.log(error)
