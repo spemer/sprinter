@@ -33,6 +33,10 @@ export default {
   background-color: #fff;
   @include drop-shadow();
 
+  @supports (padding-top: env(safe-area-inset-top)) {
+    padding-top: calc(env(safe-area-inset-top)) !important;
+  }
+
   .header__wrapper {
     position: relative;
 

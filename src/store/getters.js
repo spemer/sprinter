@@ -1,13 +1,13 @@
 export const getters = {
-  getUser(state) {
+  getUser: state => {
     return state.user
   },
 
-  getStatus(state) {
+  getStatus: state => {
     return state.status
   },
 
-  getError(state) {
+  getError: state => {
     return state.error
   },
 

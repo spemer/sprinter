@@ -19,7 +19,8 @@
         )
           label(
             :for="todo.id"
-          ) {{ todo.text }}
+          )
+            span {{ todo.text }}
           input(
             :id="todo.id"
             type="checkbox"
@@ -44,14 +45,15 @@
         div.todolist__list-editing(
           v-else
         )
-          input(
-            type="text"
-            v-model.trim="todoEditText"
-          )
-          button(
-            type="submit"
-            @click.prevent="updateTodoText(todo)"
-          ) Save
+          form
+            input(
+              type="text"
+              v-model.trim="todoEditText"
+            )
+            button(
+              type="submit"
+              @click.prevent="updateTodoText(todo)"
+            ) Save
 </template>
 
 <script>
@@ -233,17 +235,25 @@ export default {
         position: absolute;
         display: inline-block;
         width: calc(100% - #{$list} - #{$list} - #{$grid8x});
-        @include line-height($line);
 
         label {
           left: 0;
+          z-index: 1;
           opacity: 1;
-          width: 100%;
           height: $list;
           position: absolute;
-          display: inline-block;
-          padding-left: $grid8x;
+          width: calc(100% + #{$grid8x});
           @include transition(opacity 0.25s ease);
+
+          span {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            padding-left: $grid8x;
+            text-overflow: ellipsis;
+            width: calc(100% - #{$grid8x});
+            @include line-height($line);
+          }
         }
 
         span {

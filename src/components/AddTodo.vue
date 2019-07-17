@@ -89,6 +89,7 @@ export default {
   $btn: $grid12x;
 
   bottom: 0;
+  z-index: 2;
   width: 100%;
   position: fixed;
   background-color: #fff;

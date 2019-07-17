@@ -18,7 +18,7 @@ module.exports = {
     themeColor: '#844DFF',
     msTileColor: '#844DFF',
     appleMobileWebAppStatusBarStyle: 'black-translucent',
-    appleMobileWebAppCapable: 'no',
+    appleMobileWebAppCapable: 'yes',
   },
 
 }

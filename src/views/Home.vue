@@ -56,6 +56,10 @@ export default {
 #home {
   .home__container {
     padding-top: $grid16x;
+
+    @supports (padding-top: env(safe-area-inset-top)) {
+      padding-top: calc(env(safe-area-inset-top) + #{$grid16x}) !important;
+    }
   }
 }
 </style>
