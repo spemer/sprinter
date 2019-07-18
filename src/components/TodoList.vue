@@ -9,7 +9,7 @@
       div.todolist__list-empty(
         v-if="todos.length === 0 && timeout"
       )
-        p Create a new todo!
+        p {{ $t('emptyTodo') }}
         i.fas.fa-arrow-down
 
       div.todolist__list-each(

@@ -7,13 +7,10 @@
 @mixin font-settings() {
   direction: ltr;
   -webkit-font-feature-settings: 'liga';
-  -khtml-font-feature-settings: 'liga';
-  -ms-font-feature-settings: 'liga';
-  -o-font-feature-settings: 'liga';
   font-feature-settings: 'liga';
-  -moz-osx-font-smoothing: grayscale !important;
-  -webkit-font-smoothing: antialiased !important;
-  text-rendering: optimizeLegibility !important;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   -webkit-text-decoration-skip: ink;
 }
 
@@ -56,17 +53,6 @@ p,
 li,
 span {
   @include font-size($grid4x);
-
-  b {
-    font-weight: 900;
-  }
-
-  &.section__subtitle {
-    text-align: center;
-    margin-bottom: $grid8x;
-    margin-top: -#{$grid4x};
-    font-weight: 300 !important;
-  }
 }
 
 button {

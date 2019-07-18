@@ -13,6 +13,10 @@ export const getters = {
 
   getDarkmode: state => {
     return state.darkmode
-  }
+  },
+
+  getLangs: state => {
+    return state.langs
+  },
 
 }

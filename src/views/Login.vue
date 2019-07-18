@@ -13,7 +13,7 @@
             div.login__btn-left
               i.fab.fa-facebook-square
             div.login__btn-right
-              span {{ $t('fbLogin')}}
+              span {{ $t('fbLogin') }}
 
         div.login__container-google
           button.login__btn(
@@ -22,7 +22,7 @@
             div.login__btn-left
               i.fab.fa-google
             div.login__btn-right
-              span {{ $t('googleLogin')}}
+              span {{ $t('googleLogin') }}
 
         div.login__container-twitter
           button.login__btn(
@@ -31,7 +31,7 @@
             div.login__btn-left
               i.fab.fa-twitter-square
             div.login__btn-right
-              span {{ $t('twitterLogin')}}
+              span {{ $t('twitterLogin') }}
 </template>
 
 <script>
@@ -50,10 +50,10 @@ export default {
 
       this.$store.dispatch('signInAction', facebookProvider)
       .then(() => {
+        this.$Progress.finish()
         if (this.getUser) {
-          this.$Progress.finish()
           this.$router.push('/')
-          this.toast(`Welcome, ${auth.currentUser.displayName}!`, 2000, 'CLOSE')
+          this.toast(`${this.$i18n.t('welcome')}, ${auth.currentUser.displayName}!`, 2000, this.$i18n.t('close'))
         }
       })
     },
@@ -64,10 +64,10 @@ export default {
 
       this.$store.dispatch('signInAction', googleProvider)
       .then(() => {
+        this.$Progress.finish()
         if (this.getUser) {
-          this.$Progress.finish()
           this.$router.push('/')
-          this.toast(`Welcome, ${auth.currentUser.displayName}!`, 2000, 'CLOSE')
+          this.toast(`${this.$i18n.t('welcome')}, ${auth.currentUser.displayName}!`, 2000, this.$i18n.t('close'))
         }
       })
     },
@@ -78,10 +78,10 @@ export default {
 
       this.$store.dispatch('signInAction', twitterProvider)
       .then(() => {
+        this.$Progress.finish()
         if (this.getUser) {
-          this.$Progress.finish()
           this.$router.push('/')
-          this.toast(`Welcome, ${auth.currentUser.displayName}!`, 2000, 'CLOSE')
+          this.toast(`${this.$i18n.t('welcome')}, ${auth.currentUser.displayName}!`, 2000, this.$i18n.t('close'))
         }
       })
     },

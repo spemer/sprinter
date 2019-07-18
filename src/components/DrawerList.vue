@@ -28,11 +28,11 @@
             v-model="$i18n.locale"
           )
             option(
-              v-for="(lang, index, key) in langs"
+              v-for="(lang, index, key) in getLangs"
               :key="key"
               :value="index"
             ) {{ lang }}
-  </template>
+</template>
 
 <script>
 import firebase from 'firebase/app'
@@ -54,17 +54,12 @@ export default {
       email: auth.currentUser.email,
       provider: auth.currentUser.providerData[0].providerId,
     },
-    langs: {
-      'ko': '한국어',
-      'en': 'English',
-    }
   }),
 
   computed: {
     ...mapGetters([
-      'getUser',
-      'getStatus',
       'getDarkmode',
+      'getLangs',
     ]),
   },
 

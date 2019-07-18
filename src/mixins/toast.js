@@ -14,11 +14,7 @@ export const toast = {
             action: {
               text: btn,
               onClick: (e, toastObject) => {
-                if (btn === 'Refresh') {
-                  window.location.reload(true)
-                } else if (btn === 'CLOSE') {
-                  toastObject.goAway(0)
-                }
+                toastObject.goAway(0)
               }
             },
           })

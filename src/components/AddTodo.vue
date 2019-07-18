@@ -20,6 +20,7 @@
 import firebase from 'firebase/app'
 import { mapGetters, mapMutations } from 'vuex'
 import { db, auth } from '@/firebase'
+import { toast } from '@/mixins/toast'
 
 export default {
   data: _ => ({
@@ -69,8 +70,16 @@ export default {
         })
         this.newTodo = ''
       }
+      else if (!this.newTodo) {
+        this.toast(this.$i18n.t('emptyInput'), 2000, this.$i18n.t('close'))
+      }
     },
-  }
+  },
+
+  mixins: [
+    toast,
+  ],
+
 }
 </script>
 

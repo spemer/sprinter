@@ -1,5 +1,8 @@
 {
+  "welcome": "Welcome",
+  "close": "CLOSE",
   "newTodo": "New TODO",
+  "emptyInput": "Please fill in the textfield.",
   "save": "Save",
   "logout": "Logout",
   "cancel": "Cancel",
@@ -7,5 +10,6 @@
   "darkmode": "Darkmode",
   "fbLogin": "Continue with Facebook",
   "googleLogin": "Continue with Google",
-  "twitterLogin": "Continue with Twitter"
+  "twitterLogin": "Continue with Twitter",
+  "emptyTodo": "Create a new todo!"
 }

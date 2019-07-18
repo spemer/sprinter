@@ -7,5 +7,9 @@ export const state = {
 
   darkmode: false,
 
-  locale: 'en',
+  langs: {
+    'ko': '한국어',
+    'en': 'English',
+    'zh-CN': '中文',
+  },
 }
