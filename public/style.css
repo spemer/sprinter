@@ -15,19 +15,16 @@
   color: #fff !important;
   margin: 0 auto !important;
   font-size: 14px !important;
-  overflow: hidden !important;
   font-weight: 400 !important;
   padding: 4px 24px !important;
   text-align: center !important;
-  white-space: nowrap !important;
   border-radius: 64px !important;
   margin-bottom: 32px !important;
-  text-overflow: ellipsis !important;
-  width: calc(100% - 128px) !important;
+  width: calc(100% - 96px) !important;
   background: rgba(0, 0, 0, 0.78) !important;
 }
 
-a {
+.toasted.primary.default a {
   font-size: 14px !important;
   color: #327DE1 !important;
   font-weight: 700 !important;

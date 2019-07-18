@@ -52,17 +52,6 @@ a {
   text-decoration: none;
 }
 
-h1 {
-  font-weight: 300;
-  text-align: center;
-  @include font-size($grid8x);
-}
-
-h3 {
-  font-weight: 700;
-  @include font-size($grid5x);
-}
-
 p,
 li,
 span {

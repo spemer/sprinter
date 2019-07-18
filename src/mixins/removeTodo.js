@@ -27,8 +27,6 @@ export const removeTodo = {
         },
       })
 
-      // return false
-
       setTimeout(() => {
         if (this.isRemoved) {
           db.collection(todo.uid).doc(todo.id).delete()

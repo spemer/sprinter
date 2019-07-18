@@ -106,6 +106,10 @@ export default {
 
 <style lang="scss" scoped>
 #home {
+  .wrapper {
+    min-height: 100vh;
+  }
+
   .layout {
     .v-overlay,
     .drawer {

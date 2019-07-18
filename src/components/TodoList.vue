@@ -227,25 +227,16 @@ export default {
         .todolist__list-left {
           label {
             opacity: 0.38;
-            text-decoration: line-through;
+
+            span {
+              text-decoration: line-through;
+            }
           }
         }
       }
 
       &.removed {
-        animation: removing 0.5s ease 1 forwards;
-
-        @keyframes removing {
-          from {
-            opacity: 1;
-            @include transform(translateY(0));
-          }
-
-          to {
-            opacity: 0;
-            @include transform(translateY(-#{$grid4x}));
-          }
-        }
+        display: none;
       }
 
       .todolist__list-editing {
@@ -337,66 +328,6 @@ export default {
       -o-user-select: none !important;
       user-select: none !important;
       @include font-size($grid4x);
-
-      input[type='checkbox'] {
-        height: 0 !important;
-        width: 0 !important;
-        -ms-filter: 'alpha(opacity=0)' !important;
-        filter: alpha(opacity=0) !important;
-        -webkit-opacity: 0 !important;
-        -khtml-opacity: 0 !important;
-        -moz-opacity: 0 !important;
-        -ms-opacity: 0 !important;
-        -o-opacity: 0 !important;
-        opacity: 0 !important;
-        -webkit-appearance: none !important;
-        -khtml-appearance: none !important;
-        -moz-appearance: none !important;
-        -ms-appearance: none !important;
-        -o-appearance: none !important;
-        appearance: none !important;
-      }
-
-      .checkmark {
-        top: 2px;
-        left: 0;
-        width: $grid5x;
-        height: $grid5x;
-        position: absolute;
-        background-color: $black04;
-        margin-top: $grid2x;
-        @include border-radius($grid);
-        @include transition(all 0.25s ease);
-      }
-
-      &:hover input ~ .checkmark {
-        background-color: $black04;
-      }
-
-      input:checked ~ .checkmark {
-        background-color: $brand;
-      }
-
-      .checkmark:after {
-        opacity: 0;
-        content: '';
-        position: absolute;
-        @include transition(all 0.25s ease);
-      }
-
-      input:checked ~ .checkmark:after {
-        opacity: 1;
-      }
-
-      .checkmark:after {
-        top: 3px;
-        right: 7px;
-        width: $grid;
-        height: 9px;
-        border: solid #fff;
-        border-width: 0 2px 2px 0;
-        @include transform(rotate(45deg));
-      }
     }
   }
 }

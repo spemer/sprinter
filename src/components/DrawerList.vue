@@ -13,11 +13,13 @@
       div.drawer__list-darkmode
         div.drawer__list-switch(
           @click="toggleDarkmode"
-        ) Darkmode
+        )
+          span.drawer__list-switch-text Darkmode
           input(
             type="checkbox"
             :checked="getDarkmode"
           )
+          span.checkmark
 </template>
 
 <script>
@@ -103,7 +105,7 @@ export default {
 
   .drawer__userInfo {
     padding: $grid4x;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid $texteee;
 
     .drawer__userInfo-img {
       width: $grid16x;
@@ -146,13 +148,30 @@ export default {
   }
 
   .drawer__list {
-    width: 100%;
     padding: $grid4x;
+    border-bottom: 1px solid $texteee;
 
     .drawer__list-switch {
-      display: inline-block;
       width: 100%;
+      position: relative;
+      display: inline-block;
+
+      .drawer__list-switch-text {
+        padding-left: $grid8x;
+      }
+
+      .checkmark {
+        top: -#{$grid2x};
+        position: absolute;
+      }
     }
+  }
+}
+
+.darkmode {
+  .drawer__userInfo,
+  .drawer__list {
+    border-bottom: 1px solid $white10 !important;
   }
 }
 </style>

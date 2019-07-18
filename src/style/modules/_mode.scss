@@ -1,16 +1,16 @@
 // lightmode
 .lightmode {
-  color: $black78;
-  background-color: #fff;
+  color: $black78 !important;
+  background-color: #fff !important;
 
   div,
   aside {
-    color: $black78;
-    background-color: #fff;
+    color: $black78 !important;
+    background-color: #fff !important;
   }
 
   input {
-    background-color: $black04 !important;
+    background-color: $black08 !important;
   }
 }
 
@@ -63,6 +63,16 @@
     ::placeholder {
       color: $white54 !important;
     }
+  }
+
+  span {
+    &.checkmark {
+      background-color: $white10 !important;
+    }
+  }
+
+  input:checked~.checkmark {
+    background-color: $brand !important;
   }
 
   a,

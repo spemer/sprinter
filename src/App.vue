@@ -1,6 +1,6 @@
 <template lang="pug">
-  v-app(:class="{'darkmode': this.$store.getters.getDarkmode, 'lightmode': !this.$store.getters.getDarkmode}")
-    div#app
+  v-app
+    div#app(:class="{'darkmode': this.$store.getters.getDarkmode, 'lightmode': !this.$store.getters.getDarkmode}")
       router-view
       vue-progress-bar
 </template>
