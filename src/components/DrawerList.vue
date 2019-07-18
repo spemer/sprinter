@@ -14,7 +14,7 @@
         div.drawer__list-switch(
           @click="toggleDarkmode"
         )
-          span.drawer__list-switch-text Darkmode
+          span.drawer__list-switch-text {{ $t('darkmode') }}
           input(
             type="checkbox"
             :checked="getDarkmode"
@@ -161,7 +161,7 @@ export default {
       }
 
       .checkmark {
-        top: -#{$grid2x};
+        top: -6px;
         position: absolute;
       }
     }

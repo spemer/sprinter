@@ -6,7 +6,7 @@
           input(
             type="text"
             v-model.trim="newTodo"
-            placeholder="New todo"
+            :placeholder="$t('newTodo')"
           )
         div.addTodo__form-btn
           button(
@@ -25,17 +25,6 @@ export default {
   data: _ => ({
     newTodo: '',
     todos: [],
-    colorset: [
-      '39CCCC',
-      'FF851B',
-      '85144b',
-      '0074D9',
-      'FFDC00',
-      '2ECC40',
-      '327DE1',
-      '3D9970',
-      '8E209D',
-    ],
   }),
 
   firestore: _ => {
@@ -93,7 +82,7 @@ export default {
   z-index: 2;
   width: 100%;
   position: fixed;
-  @include drop-shadow();
+  @include drop-shadow(0, 0, $grid4x, $black08);
 
   .addTodo__container {
     padding: $grid4x;
@@ -101,21 +90,6 @@ export default {
     @supports (padding-bottom: env(safe-area-inset-bottom)) {
       padding-bottom: calc(env(safe-area-inset-bottom) + #{$grid4x}) !important;
     }
-
-    // .addTodo__colorset {
-    //   overflow-x: scroll;
-    //   display: inline-block;
-    //   padding-bottom: $grid2x;
-
-    //   .addTodo__colorset-each {
-    //     width: $grid4x;
-    //     height: $grid4x;
-    //     margin-right: $grid4x;
-    //     display: inline-block;
-    //     background-color: #fff;
-    //     @include border-radius(100%);
-    //   }
-    // }
 
     .addTodo__form {
       height: $grid12x;

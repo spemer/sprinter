@@ -27,7 +27,7 @@
         div.drawer__logout(
           @click="dialog = true"
         )
-          button.drawer__logout-btn Logout
+          button.drawer__logout-btn {{ $t('logout') }}
             i.fas.fa-power-off
 
     div.wrapper
@@ -41,17 +41,17 @@
       v-model="dialog"
     )
       v-card
-        v-card-title Logout
-        v-card-text Do you really want to log out?
+        v-card-title {{ $t('logout') }}
+        v-card-text {{ $t('askLogout') }}
         v-card-actions
           button.cancel(
             flat
             @click="dialog = false"
-          ) Cancel
+          ) {{ $t('cancel') }}
           button.logout(
             flat
             @click="logoutHandler"
-          ) Logout
+          ) {{ $t('logout') }}
 
 </template>
 
@@ -116,11 +116,6 @@ export default {
       max-height: 100vh;
       position: fixed;
       overflow: hidden;
-
-      @supports (padding-top: env(safe-area-inset-top)) {
-        padding-top: calc(env(safe-area-inset-top));
-        padding-bottom: calc(env(safe-area-inset-bottom));
-      }
     }
 
     .drawer {
@@ -129,6 +124,10 @@ export default {
         left: 0;
         width: $header;
         height: $header;
+
+        @supports (padding-top: env(safe-area-inset-top)) {
+          padding-top: calc(env(safe-area-inset-top));
+        }
 
         button {
           width: $header;
@@ -140,12 +139,17 @@ export default {
           }
         }
       }
+
       .drawer__logout {
         bottom: 0;
         width: 100%;
         height: $grid12x;
         position: absolute;
         padding: $grid4x;
+
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+          padding-bottom: calc(env(safe-area-inset-bottom) + #{$grid4x});
+        }
 
         .drawer__logout-btn {
           bottom: 0;
@@ -154,7 +158,7 @@ export default {
           padding: $grid4x;
           color: $brand_red;
           display: inline-block;
-          background-color: $black04;
+          background-color: $black08;
           width: calc(100% - #{$grid8x});
           @include border-radius();
 
