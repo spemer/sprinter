@@ -2,7 +2,8 @@ import {
   SET_USER,
   SET_STATUS,
   SET_ERROR,
-  SET_TODOS
+  SET_TODOS,
+  SET_DARKMODE
 } from '@/store/mutation-types'
 
 export const mutations = {
@@ -20,6 +21,10 @@ export const mutations = {
 
   [SET_TODOS]: (state, payload) => {
     return state.todos = payload
+  },
+
+  [SET_DARKMODE]: (state, payload) => {
+    return state.darkmode = payload
   },
 
 }

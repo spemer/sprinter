@@ -11,4 +11,8 @@ export const getters = {
     return state.error
   },
 
+  getDarkmode: state => {
+    return state.darkmode
+  }
+
 }

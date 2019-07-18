@@ -93,7 +93,6 @@ export default {
   z-index: 2;
   width: 100%;
   position: fixed;
-  background-color: #fff;
   @include drop-shadow();
 
   .addTodo__container {
@@ -135,7 +134,6 @@ export default {
           outline: none;
           height: $btn;
           padding: 0 $grid4x;
-          background-color: $black04;
           @include border-radius();
         }
       }

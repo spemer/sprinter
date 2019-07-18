@@ -4,4 +4,6 @@ export const state = {
   error: null,
 
   todos: [],
+
+  darkmode: false,
 }

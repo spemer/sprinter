@@ -1,0 +1,83 @@
+// lightmode
+.lightmode {
+  color: $black78;
+  background-color: #fff;
+
+  div,
+  aside {
+    color: $black78;
+    background-color: #fff;
+  }
+
+  input {
+    background-color: $black04 !important;
+  }
+}
+
+// darkmode
+.darkmode {
+  color: $white87 !important;
+  background-color: $text333 !important;
+
+  div,
+  aside {
+    color: $white87 !important;
+    background-color: $text333 !important;
+  }
+
+  .drawer__logout-btn {
+    color: $white87 !important;
+    background-color: $white10 !important;
+  }
+
+  input {
+    color: $white87 !important;
+    background-color: $white10 !important;
+  }
+
+  form {
+    ::-webkit-input-placeholder {
+      color: $white54 !important;
+    }
+
+    ::-moz-placeholder {
+      color: $white54 !important;
+    }
+
+    ::-ms-placeholder {
+      color: $white54 !important;
+    }
+
+    ::-webkit-input-placeholder {
+      color: $white54 !important;
+    }
+
+    :-ms-input-placeholder {
+      color: $white54 !important;
+    }
+
+    ::-ms-input-placeholder {
+      color: $white54 !important;
+    }
+
+    ::placeholder {
+      color: $white54 !important;
+    }
+  }
+
+  a,
+  p,
+  li,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  svg,
+  span,
+  input,
+  label {
+    color: $white87 !important;
+  }
+}

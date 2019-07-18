@@ -1,9 +1,9 @@
 @charset 'UTF-8';
 
-@import './modules/grid';
 @import './modules/color';
+@import './modules/grid';
 @import './modules/mixin';
 @import './modules/global';
+@import './modules/mode';
 
-@import './components/modal';
 @import './components/spinner';

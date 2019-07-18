@@ -18,6 +18,7 @@ export const removeTodo = {
         duration: delay,
         action: {
           text: 'UNDO',
+          dontClose: true,
           onClick: (e, toastObject) => {
             todo.removed = false
             toastObject.goAway(0)
@@ -25,6 +26,8 @@ export const removeTodo = {
           }
         },
       })
+
+      // return false
 
       setTimeout(() => {
         if (this.isRemoved) {

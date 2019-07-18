@@ -105,7 +105,7 @@ export default {
   height: 100vh;
   position: fixed;
   overflow: hidden;
-  background-color: $brand;
+  background-color: $brand !important;
 
   @supports (padding-top: env(safe-area-inset-top)) {
     padding-top: calc(env(safe-area-inset-top));
@@ -115,61 +115,72 @@ export default {
     );
   }
 
-  .login__launcher {
-    .login__launcher-img {
-      margin: 0 auto;
-      display: block;
-      width: $grid32x;
-      padding-top: $grid24x;
-    }
-  }
+  .wrapper {
+    background-color: $brand !important;
 
-  .login__container {
-    bottom: 0;
-    position: fixed;
-    margin-bottom: $grid8x;
-    background-color: $brand;
-    width: calc(100% - #{$grid8x});
+    .login__launcher {
+      background-color: $brand !important;
 
-    @supports (padding-bottom: env(safe-area-inset-bottom)) {
-      padding-bottom: calc(env(safe-area-inset-bottom));
+      .login__launcher-img {
+        margin: 0 auto;
+        display: block;
+        width: $grid32x;
+        padding-top: $grid24x;
+      }
     }
 
-    .login__btn {
-      width: 100%;
-      color: $brand;
-      cursor: pointer;
-      height: $grid14x;
-      font-weight: 700;
-      margin-bottom: $grid2x;
-      background-color: $brand_16;
-      @include border-radius();
+    .login__container {
+      bottom: 0;
+      position: fixed;
+      margin-bottom: $grid8x;
+      width: calc(100% - #{$grid8x});
+      background-color: $brand !important;
 
-      .login__btn-left {
-        float: left;
-        width: $grid12x;
-        height: $grid14x;
-        line-height: $grid14x;
-        display: inline-block;
-
-        svg {
-          padding: 15px 0;
-          @include font-size($grid6x);
-        }
+      div {
+        background-color: transparent !important;
       }
 
-      .login__btn-right {
-        margin: 0 auto;
-        height: $grid14x;
-        margin-right: $grid6x;
-        display: inline-block;
-        width: calc(100% - #{$grid12x} - #{$grid12x});
+      @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        padding-bottom: calc(env(safe-area-inset-bottom));
+      }
 
-        span {
-          margin-right: $grid2x;
-          display: inline-block;
-          @include font-size($grid4x);
+      .login__btn {
+        width: 100%;
+        cursor: pointer;
+        height: $grid14x;
+        font-weight: 700;
+        margin-bottom: $grid2x;
+        background-color: $brand_16 !important;
+        @include border-radius();
+
+        .login__btn-left {
+          float: left;
+          width: $grid12x;
+          height: $grid14x;
           line-height: $grid14x;
+          display: inline-block;
+
+          svg {
+            padding: 15px 0;
+            color: $brand !important;
+            @include font-size($grid6x);
+          }
+        }
+
+        .login__btn-right {
+          margin: 0 auto;
+          height: $grid14x;
+          margin-right: $grid6x;
+          display: inline-block;
+          width: calc(100% - #{$grid12x} - #{$grid12x});
+
+          span {
+            color: $brand !important;
+            margin-right: $grid2x;
+            display: inline-block;
+            @include font-size($grid4x);
+            line-height: $grid14x;
+          }
         }
       }
     }

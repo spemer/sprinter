@@ -35,8 +35,6 @@
 
 body {
   outline: none;
-  color: $black78;
-  background-color: $brand;
   @include user-select();
   @include font-settings();
   @include font-stack-html();
@@ -47,10 +45,6 @@ body {
   -webkit-tap-highlight-color: transparent;
   -moz-tap-highlight-color: transparent;
   tap-highlight-color: transparent;
-}
-
-html {
-  background-color: $brand;
 }
 
 a {
@@ -121,10 +115,6 @@ textarea:focus {
     pointer-events: none;
     display: none !important;
   }
-}
-
-.material-icons {
-  @include font-size($grid5x);
 }
 
 .noscroll {

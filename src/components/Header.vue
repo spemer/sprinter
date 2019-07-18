@@ -32,7 +32,6 @@ export default {
   width: 100%;
   height: $header;
   position: fixed;
-  background-color: #fff;
   @include drop-shadow();
 
   @supports (padding-top: env(safe-area-inset-top)) {
@@ -44,7 +43,6 @@ export default {
 
     .header__left,
     .header__right {
-      color: $black78;
       height: $header;
       cursor: pointer;
       position: absolute;
@@ -73,7 +71,6 @@ export default {
     }
 
     .header__title {
-      color: $black78;
       height: $header;
       overflow: hidden;
       font-weight: 700;

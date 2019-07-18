@@ -319,6 +319,10 @@ export default {
           height: $list;
           width: calc(#{$list} - #{$grid2x});
         }
+
+        svg {
+          color: $black38;
+        }
       }
 
       width: 100%;

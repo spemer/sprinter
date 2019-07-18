@@ -23,15 +23,7 @@
         )
           button
             i.fas.fa-times
-        div.drawer__userInfo
-          img.drawer__userInfo-img(
-            :src="setPhotoUrl(userInfo.provider)"
-          )
-          p.drawer__userInfo-displayName {{ userInfo.displayName }}
-            i.fab(
-              :class="getProvider(userInfo.provider)"
-            )
-          p.drawer__userInfo-email {{ userInfo.email }}
+        DrawerList
         div.drawer__logout(
           @click="dialog = true"
         )
@@ -68,9 +60,9 @@ import firebase from 'firebase/app'
 import Header from '@/components/Header'
 import AddTodo from '@/components/AddTodo'
 import TodoList from '@/components/TodoList'
+import DrawerList from '@/components/DrawerList'
 import { mapGetters } from 'vuex'
 import { logout } from '@/mixins/logout'
-import { auth } from '@/firebase'
 
 export default {
   name: 'home',
@@ -78,17 +70,14 @@ export default {
   data: _ => ({
     dialog: false,
     drawer: false,
-    userInfo: {
-      displayName: auth.currentUser.displayName,
-      email: auth.currentUser.email,
-      provider: auth.currentUser.providerData[0].providerId,
-    },
+    isDarkmode: false,
   }),
 
   computed: {
     ...mapGetters([
       'getUser',
       'getStatus',
+      'getDarkmode',
     ]),
   },
 
@@ -99,28 +88,6 @@ export default {
         this.logout()
       }, 250)
     },
-
-    setPhotoUrl (provider) {
-      return (provider === 'facebook.com')
-        ? `${auth.currentUser.photoURL}/picture?height=500`
-        : auth.currentUser.photoURL
-    },
-
-    getProvider (provider) {
-      if (provider === 'facebook.com') {
-        return 'fa-facebook-square'
-      }
-      else if (provider === 'google.com') {
-        return 'fa-google'
-      }
-      else if (provider === 'twitter.com') {
-        return 'fa-twitter-square'
-      }
-    },
-  },
-
-  mounted () {
-    console.log(this.userInfo)
   },
 
   mixins: [
@@ -131,6 +98,7 @@ export default {
     Header,
     AddTodo,
     TodoList,
+    DrawerList,
   },
 
 }
@@ -168,51 +136,6 @@ export default {
           }
         }
       }
-
-      .drawer__userInfo {
-        padding: $grid4x;
-        border-bottom: 1px solid #ccc;
-
-        .drawer__userInfo-img {
-          width: $grid16x;
-          height: $grid16x;
-          display: inline-block;
-          margin-bottom: $grid4x;
-          @include border-radius($grid16x);
-        }
-
-        .drawer__userInfo-displayName,
-        .drawer__userInfo-email {
-          margin: 0 auto;
-        }
-
-        .drawer__userInfo-displayName {
-          font-weight: 700;
-          @include font-size($grid5x);
-
-          svg {
-            margin-left: $grid2x;
-
-            &.fa-facebook-square {
-              color: $facebook;
-            }
-
-            &.fa-google {
-              color: $google;
-            }
-
-            &.fa-twitter-square {
-              color: $twitter;
-            }
-          }
-        }
-
-        .drawer__userInfo-email {
-          font-weight: 400;
-          color: $black54;
-        }
-      }
-
       .drawer__logout {
         bottom: 0;
         width: 100%;
@@ -222,13 +145,13 @@ export default {
 
         .drawer__logout-btn {
           bottom: 0;
-          padding: $grid4x;
-          width: calc(100% - #{$grid8x});
-          height: $grid12x;
           margin: 0 auto;
+          height: $grid12x;
+          padding: $grid4x;
+          color: $brand_red;
           display: inline-block;
           background-color: $black04;
-          color: $brand_red;
+          width: calc(100% - #{$grid8x});
           @include border-radius();
 
           svg {
@@ -253,6 +176,7 @@ export default {
   padding: $grid2x 0;
   border-radius: $grid4x;
   background: transparent;
+  max-width: 320px !important;
   width: calc(100% - #{$grid32x}) !important;
 
   .v-card {

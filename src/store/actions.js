@@ -8,7 +8,8 @@ export const actions = {
   }, payload) {
     commit('SET_STATUS', 'loading')
     return new Promise((resolve, reject) => {
-      auth.signInWithPopup(payload)
+      auth
+        .signInWithPopup(payload)
         .then(response => {
           commit('SET_USER', response.user)
           commit('SET_STATUS', 'success')
@@ -27,7 +28,8 @@ export const actions = {
     commit
   }) {
     return new Promise((resolve, reject) => {
-      auth.signOut()
+      auth
+        .signOut()
         .then(response => {
           commit('SET_USER', null)
           commit('SET_STATUS', 'success')
