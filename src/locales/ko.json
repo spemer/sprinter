@@ -1,5 +1,11 @@
 {
   "newTodo": "새로운 할 일",
+  "save": "저장",
   "logout": "로그아웃",
-  "darkmode": "다크모드"
+  "darkmode": "다크모드",
+  "cancel": "취소",
+  "askLogout": "정말 로그아웃 하시겠습니까?",
+  "fbLogin": "페이스북 계정으로 계속하기",
+  "googleLogin": "구글 계정으로 계속하기",
+  "twitterLogin": "트위터 계정으로 계속하기"
 }

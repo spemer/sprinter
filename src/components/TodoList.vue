@@ -58,7 +58,7 @@
             button(
               type="submit"
               @click.prevent="updateTodoText(todo)"
-            ) Save
+            ) {{ $t('save') }}
 </template>
 
 <script>

@@ -10,17 +10,29 @@
         )
       p.drawer__userInfo-email {{ userInfo.email }}
     div.drawer__list
-      div.drawer__list-darkmode
-        div.drawer__list-switch(
-          @click="toggleDarkmode"
-        )
-          span.drawer__list-switch-text {{ $t('darkmode') }}
-          input(
-            type="checkbox"
-            :checked="getDarkmode"
+      div.drawer__list-each
+        div.drawer__list-darkmode
+          div.drawer__list-switch(
+            @click="toggleDarkmode"
           )
-          span.checkmark
-</template>
+            span.drawer__list-switch-text {{ $t('darkmode') }}
+            input(
+              type="checkbox"
+              :checked="getDarkmode"
+            )
+            span.checkmark
+      div.drawer__list-each
+        div.drawer__list-locale
+          i.fas.fa-globe
+          select(
+            v-model="$i18n.locale"
+          )
+            option(
+              v-for="(lang, index, key) in langs"
+              :key="key"
+              :value="index"
+            ) {{ lang }}
+  </template>
 
 <script>
 import firebase from 'firebase/app'
@@ -42,6 +54,10 @@ export default {
       email: auth.currentUser.email,
       provider: auth.currentUser.providerData[0].providerId,
     },
+    langs: {
+      'ko': '한국어',
+      'en': 'English',
+    }
   }),
 
   computed: {
@@ -148,21 +164,47 @@ export default {
   }
 
   .drawer__list {
-    padding: $grid4x;
-    border-bottom: 1px solid $texteee;
+    $list: $grid8x;
 
-    .drawer__list-switch {
+    padding: $grid4x $grid4x;
+
+    .drawer__list-each {
       width: 100%;
-      position: relative;
-      display: inline-block;
+      padding: $grid2x 0;
+      border-bottom: 1px solid $texteee;
+      height: calc(#{$list} + #{$grid2x});
 
-      .drawer__list-switch-text {
-        padding-left: $grid8x;
+      .drawer__list-switch {
+        width: 100%;
+        height: $list;
+        position: relative;
+        display: inline-block;
+
+        .drawer__list-switch-text {
+          padding-left: $grid8x;
+        }
+
+        .checkmark {
+          top: -6px;
+          position: absolute;
+        }
       }
 
-      .checkmark {
-        top: -6px;
-        position: absolute;
+      .drawer__list-locale {
+        padding-bottom: $grid4x;
+        height: calc(#{$list} + #{$grid4x});
+
+        svg {
+          padding-top: $grid4x;
+          @include font-size(20px);
+        }
+
+        select {
+          float: right;
+          padding-top: $grid4x;
+          width: calc(100% - #{$list});
+          height: calc(#{$list} + #{$grid2x});
+        }
       }
     }
   }
@@ -170,7 +212,7 @@ export default {
 
 .darkmode {
   .drawer__userInfo,
-  .drawer__list {
+  .drawer__list-each {
     border-bottom: 1px solid $white10 !important;
   }
 }

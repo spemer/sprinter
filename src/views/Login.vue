@@ -13,7 +13,7 @@
             div.login__btn-left
               i.fab.fa-facebook-square
             div.login__btn-right
-              span Continue with Facebook
+              span {{ $t('fbLogin')}}
 
         div.login__container-google
           button.login__btn(
@@ -22,7 +22,7 @@
             div.login__btn-left
               i.fab.fa-google
             div.login__btn-right
-              span Continue with Google
+              span {{ $t('googleLogin')}}
 
         div.login__container-twitter
           button.login__btn(
@@ -31,7 +31,7 @@
             div.login__btn-left
               i.fab.fa-twitter-square
             div.login__btn-right
-              span Continue with Twitter
+              span {{ $t('twitterLogin')}}
 </template>
 
 <script>

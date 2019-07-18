@@ -6,4 +6,6 @@ export const state = {
   todos: [],
 
   darkmode: false,
+
+  locale: 'en',
 }

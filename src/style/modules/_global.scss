@@ -146,3 +146,19 @@ div {
 ::placeholder {
   color: $black38;
 }
+
+select {
+  background-color: transparent;
+  -webkit-appearance: none;
+  -khtml-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+}
+
+select::-ms-expand {
+  display: none;
+}

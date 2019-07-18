@@ -1,7 +1,11 @@
 {
   "newTodo": "New TODO",
+  "save": "Save",
   "logout": "Logout",
   "cancel": "Cancel",
   "askLogout": "Do you really want to log out?",
-  "darkmode": "Darkmode"
+  "darkmode": "Darkmode",
+  "fbLogin": "Continue with Facebook",
+  "googleLogin": "Continue with Google",
+  "twitterLogin": "Continue with Twitter"
 }
