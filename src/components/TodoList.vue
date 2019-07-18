@@ -16,7 +16,7 @@
         v-if="todos"
         v-for="todo in todos"
         :key="todo.id"
-        :class="{'completed': todo.completed}"
+        :class="{'completed': todo.completed, 'removed': todo.removed}"
       )
 
         div.todolist__list-left(
@@ -43,7 +43,7 @@
           )
             i.fas.fa-pen
           div.todolist__list-remove(
-            @click="removeTodo(todo)"
+            @click="removeTodo(todo, 2000)"
           )
             i.far.fa-trash-alt
 
@@ -144,10 +144,10 @@ export default {
   $list: $grid10x;
   $line: $grid6x;
 
-  padding-bottom: calc(#{$header} + #{$grid24x});
+  padding-bottom: calc(#{$header} + #{$grid32x});
 
   @supports (padding-bottom: env(safe-area-inset-bottom)) {
-    padding-bottom: calc(env(safe-area-inset-bottom) + #{$grid24x}) !important;
+    padding-bottom: calc(env(safe-area-inset-bottom) + #{$grid32x}) !important;
   }
 
   .todolist__list {
@@ -207,17 +207,18 @@ export default {
     }
 
     .todolist__list-each {
-      position: relative;
       animation: popup 0.5s ease 1 forwards;
 
       @keyframes popup {
         from {
           opacity: 0;
+          display: inline-block !important;
           @include transform(translateY(-#{$grid4x}));
         }
 
         to {
           opacity: 1;
+          display: none !important;
           @include transform(translateY(0));
         }
       }
@@ -227,6 +228,22 @@ export default {
           label {
             opacity: 0.38;
             text-decoration: line-through;
+          }
+        }
+      }
+
+      &.removed {
+        animation: removing 0.5s ease 1 forwards;
+
+        @keyframes removing {
+          from {
+            opacity: 1;
+            @include transform(translateY(0));
+          }
+
+          to {
+            opacity: 0;
+            @include transform(translateY(-#{$grid4x}));
           }
         }
       }
@@ -254,28 +271,23 @@ export default {
       }
 
       .todolist__list-left {
-        height: $list;
-        position: absolute;
-        display: inline-block;
-        width: calc(100% - #{$list} - #{$list} - #{$grid8x});
+        width: calc(100% - #{$grid8x} - #{$grid12x});
 
         label {
           left: 0;
           z-index: 1;
           opacity: 1;
-          height: $list;
-          position: absolute;
-          width: calc(100% + #{$grid8x});
+          width: 100%;
           @include transition(opacity 0.25s ease);
 
           span {
             width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
+            hyphens: auto;
+            padding-top: $grid2x;
             padding-left: $grid8x;
-            text-overflow: ellipsis;
+            overflow-wrap: break-word;
             width: calc(100% - #{$grid8x});
-            @include line-height($line);
+            @include font-size($grid4x);
           }
         }
 
@@ -285,13 +297,14 @@ export default {
       }
 
       .todolist__list-right {
+        top: 0;
         right: 0;
+        float: right;
         height: $list;
-        width: calc(#{$list} + #{$list});
         color: $black38;
         text-align: right;
         position: absolute;
-        display: inline-block;
+        width: calc(#{$list} + #{$list});
         @include line-height($line);
 
         .todolist__list-edit {
@@ -304,17 +317,15 @@ export default {
         .todolist__list-remove {
           float: right;
           height: $list;
-          // text-align: center;
           width: calc(#{$list} - #{$grid2x});
         }
       }
 
       width: 100%;
-      height: $list;
-      display: block;
+      height: auto;
       cursor: pointer;
+      margin: $grid4x 0;
       position: relative;
-      margin-top: $grid4x;
       -webkit-user-select: none !important;
       -khtml-user-select: none !important;
       -moz-user-select: none !important;

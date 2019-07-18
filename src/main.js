@@ -30,6 +30,9 @@ Vue.use(Toasted)
 import Vuetify from 'vuetify'
 Vue.use(Vuetify)
 
+import VueScrollTo from 'vue-scrollto'
+Vue.use(VueScrollTo)
+
 Vue.config.productionTip = false
 
 new Vue({

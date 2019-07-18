@@ -67,6 +67,7 @@ export default {
         db.collection(auth.currentUser.uid).add({
           text: this.newTodo,
           completed: false,
+          removed: false,
           id: this.todos.length,
           uid: this.getUser,
           createdAt: new Date(),

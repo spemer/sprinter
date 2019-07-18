@@ -53,6 +53,7 @@ export default {
         if (this.getUser) {
           this.$Progress.finish()
           this.$router.push('/')
+          this.toast(`Welcome, ${auth.currentUser.displayName}!`, 2000, 'CLOSE')
         }
       })
     },
@@ -66,6 +67,7 @@ export default {
         if (this.getUser) {
           this.$Progress.finish()
           this.$router.push('/')
+          this.toast(`Welcome, ${auth.currentUser.displayName}!`, 2000, 'CLOSE')
         }
       })
     },
@@ -79,6 +81,7 @@ export default {
         if (this.getUser) {
           this.$Progress.finish()
           this.$router.push('/')
+          this.toast(`Welcome, ${auth.currentUser.displayName}!`, 2000, 'CLOSE')
         }
       })
     },

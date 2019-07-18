@@ -1,7 +1,7 @@
 <template lang="pug">
   div#home
     Header(
-      headerTitle="TODO"
+      headerTitle="Sprinter"
     )
       div.header__left(
         slot="header__left"
@@ -81,7 +81,6 @@ export default {
     userInfo: {
       displayName: auth.currentUser.displayName,
       email: auth.currentUser.email,
-      photoUrl: `${auth.currentUser.photoURL}/picture?height=500`,
       provider: auth.currentUser.providerData[0].providerId,
     },
   }),

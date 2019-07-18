@@ -6,7 +6,9 @@
         name="header__left"
       )
 
-      div.header__title {{ headerTitle }}
+      div.header__title(
+        v-scroll-to="{el: 'body', duration: 0}"
+      ) {{ headerTitle }}
 
       slot.header__right(
         name="header__right"
