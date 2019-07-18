@@ -190,6 +190,7 @@ export default {
         height: calc(#{$list} + #{$grid4x});
 
         svg {
+          color: $black54;
           padding-top: $grid4x;
           @include font-size(20px);
         }
@@ -209,6 +210,12 @@ export default {
   .drawer__userInfo,
   .drawer__list-each {
     border-bottom: 1px solid $white10 !important;
+
+    .drawer__list-locale {
+      svg {
+        color: $white87;
+      }
+    }
   }
 }
 </style>

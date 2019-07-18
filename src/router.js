@@ -7,7 +7,10 @@ Vue.use(Router)
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [{
+  routes: [
+
+    // router
+    {
       path: '/',
       name: 'home',
       component: _ => {
@@ -26,9 +29,18 @@ const router = new Router({
       path: '*',
       redirect: '/',
     },
-  ]
+  ],
+
+  // scrollBehavior
+  scrollBehavior: (to, from, savedPosition) => {
+    return (savedPosition) ? savedPosition : {
+      x: 0,
+      y: 0,
+    }
+  },
 })
 
+// firebase requireAuth
 function requireAuth(to, from, next) {
   firebase.auth().onAuthStateChanged((user) => {
     return (!user) ?
