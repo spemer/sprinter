@@ -38,6 +38,12 @@
         )
           i.fas.fa-code
           span {{ $t('ops') }}
+      div.drawer__list-each
+        div.drawer__list-ops(
+          @click="shareApi"
+        )
+          i.fas.fa-share-square
+          span {{ $t('share') }}
 </template>
 
 <script>
@@ -49,6 +55,7 @@ import DrawerList from '@/components/DrawerList'
 import { mapGetters, mapMutations } from 'vuex'
 import { logout } from '@/mixins/logout'
 import { auth } from '@/firebase'
+import { globalVar } from '@/globalVar'
 
 export default {
   name: 'home',
@@ -73,6 +80,16 @@ export default {
     ...mapMutations([
       'SET_DARKMODE',
     ]),
+
+    shareApi () {
+      if (navigator.share) {
+        navigator.share({
+          title: globalVar.appName,
+          text: globalVar.appDescription,
+          url: 'https://sprinter-web.web.app',
+        })
+      }
+    },
 
     opensource () {
       this.$router.push('/opensource')
@@ -222,6 +239,10 @@ export default {
           position: absolute;
           padding-top: $grid3x;
           @include font-size($grid4x);
+
+          &.fa-share-square {
+            padding-left: 2px;
+          }
         }
 
         span {
