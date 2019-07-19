@@ -43,7 +43,7 @@
           )
             i.fas.fa-pen
           div.todolist__list-remove(
-            @click="removeTodo(todo, 2000)"
+            @click="removeTodo(todo, 2500)"
           )
             i.far.fa-trash-alt
 
@@ -321,12 +321,7 @@ export default {
       cursor: pointer;
       margin: $grid4x 0;
       position: relative;
-      -webkit-user-select: none !important;
-      -khtml-user-select: none !important;
-      -moz-user-select: none !important;
-      -ms-user-select: none !important;
-      -o-user-select: none !important;
-      user-select: none !important;
+      @include user-select();
       @include font-size($grid4x);
     }
   }

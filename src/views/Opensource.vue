@@ -42,7 +42,7 @@ export default {
 
   methods: {
     openNewTab: href => {
-      window.open(href)
+      return window.open(href)
     }
   },
 

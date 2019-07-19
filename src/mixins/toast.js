@@ -27,8 +27,8 @@ export const toast = {
         }
       },
       1000, {
-        leading: false,
-        trailing: true,
+        leading: true,
+        trailing: false,
       },
     ),
   },

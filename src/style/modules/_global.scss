@@ -7,6 +7,7 @@
 @mixin font-settings() {
   direction: ltr;
   -webkit-font-feature-settings: 'liga';
+  -moz-font-feature-settings: 'liga';
   font-feature-settings: 'liga';
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -32,7 +33,6 @@
 
 body {
   outline: none;
-  @include user-select();
   @include font-settings();
   @include font-stack-html();
   @include font-size($grid4x);
@@ -109,15 +109,11 @@ div {
   color: $black38;
 }
 
+:-moz-placeholder {
+  color: $black38;
+}
+
 ::-moz-placeholder {
-  color: $black38;
-}
-
-::-ms-placeholder {
-  color: $black38;
-}
-
-::-webkit-input-placeholder {
   color: $black38;
 }
 
@@ -137,8 +133,6 @@ select {
   background-color: transparent;
   -webkit-appearance: none;
   -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
   appearance: none;
   outline: none;
   border: none;

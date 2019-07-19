@@ -1,37 +1,38 @@
 @mixin box-shadow ($val:$grid, $val2:$grid2x, $color:$black08) {
   -webkit-box-shadow: 0 $val $val2 $color !important;
-  -ms-box-shadow: 0 $val $val2 $color;
-  -o-box-shadow: 0 $val $val2 $color;
+  -mox-box-shadow: 0 $val $val2 $color !important;
   box-shadow: 0 $val $val2 $color !important;
 }
 
 @mixin drop-shadow ($val:0, $val2:$grid, $val3:$grid2x, $color:$black08) {
   -webkit-filter: drop-shadow($val $val2 $val3 $color) !important;
-  -moz-filter: drop-shadow($val $val2 $val3 $color);
-  -ms-filter: drop-shadow($val $val2 $val3 $color);
-  -o-filter: drop-shadow($val $val2 $val3 $color);
   filter: drop-shadow($val $val2 $val3 $color) !important;
 }
 
 @mixin border-radius ($val:$grid4x) {
+  -webkit-border-radius: $val !important;
+  -moz-border-radius: $val !important;
   border-radius: $val !important;
 }
 
 @mixin user-select () {
   -webkit-user-select: none !important;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
   user-select: none !important;
 }
 
 @mixin transform ($val) {
   -webkit-transform: $val !important;
-  -khtml-transform: $val;
+  -moz-transform: $val !important;
+  -ms-transform: $val !important;
+  -o-transform: $val !important;
   transform: $val !important;
 }
 
 @mixin transition ($transition...) {
   -webkit-transition: $transition !important;
+  -o-transition: $transition !important;
+  -moz-transition: $transition !important;
   transition: $transition !important;
 }

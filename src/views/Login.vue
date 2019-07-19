@@ -53,8 +53,9 @@ export default {
 
   mounted () {
     window.onpopstate = event => {
-      return (auth.currentUser !== null && this.$route.path == '/login')
-        && this.$router.push('/')
+      if (auth.currentUser !== null && this.$route.path == '/login') {
+        this.$router.push('/')
+      }
     }
   },
 
