@@ -32,6 +32,8 @@ const router = new Router({
         return import('./views/Opensource.vue')
       },
     },
+
+    // redirect
     {
       path: '*',
       redirect: '/',

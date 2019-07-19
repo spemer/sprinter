@@ -7,7 +7,8 @@
         slot="header__left"
         @click="$router.push('/')"
       )
-        i.fas.fa-times
+        button
+          i.fas.fa-times
 
     div(
       v-for="(section, index) in Object.keys(opsEntries)"
@@ -62,18 +63,24 @@ export default {
 #opensource {
   padding-left: $grid4x;
   padding-right: $grid4x;
-  padding-top: calc(#{$header} + #{$grid2x});
+  padding-top: calc(#{$header} + #{$grid4x});
   padding-bottom: calc(#{$header} + #{$grid32x});
 
   @supports (padding-bottom: env(safe-area-inset-bottom)) {
-    padding-bottom: calc(env(safe-area-inset-bottom) + #{$grid32x}) !important;
+    padding-bottom: calc(env(safe-area-inset-bottom) + #{$header}) !important;
+  }
+
+  @supports (padding-top: env(safe-area-inset-top)) {
+    padding-top: calc(
+      env(safe-area-inset-top) + #{$header} + #{$grid4x}
+    ) !important;
   }
 
   .notices__list {
     p {
       cursor: pointer;
       font-weight: 700;
-      margin-bottom: $grid4x;
+      margin-bottom: $grid2x;
       @include font-size($grid5x);
 
       svg {
@@ -84,7 +91,7 @@ export default {
 
     span {
       display: inline-block;
-      margin-bottom: $grid4x;
+      margin-bottom: $grid8x;
     }
   }
 }

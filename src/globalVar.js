@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 export const globalVar = new Vue({
-  data: {
-    appName: 'Sprinter'
-  }
+  data: _ => ({
+    appName: 'Sprinter',
+  }),
 })

@@ -7,7 +7,8 @@
         slot="header__left"
         @click.stop="drawer = !drawer"
       )
-        i.fas.fa-bars
+        button
+          i.fas.fa-bars
 
     v-layout(
       data-app
@@ -68,12 +69,10 @@ import { globalVar } from '@/globalVar'
 export default {
   name: 'home',
 
-  metaInfo () {
-    return {
-      title: globalVar.appName,
-      titleTemplate: `%s`,
-    }
-  },
+  metaInfo: _ => ({
+    title: globalVar.appName,
+    titleTemplate: `%s`,
+  }),
 
   data: _ => ({
     dialog: false,

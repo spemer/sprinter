@@ -20,7 +20,6 @@ export default {
   props: {
     headerTitle: String,
   },
-
 }
 </script>
 
@@ -54,11 +53,15 @@ export default {
       width: $header;
       text-align: center;
 
-      svg {
-        width: $grid4x;
-        color: $black54;
-        padding: $grid4x 0;
-        @include font-size($grid5x);
+      button {
+        width: $header;
+        height: $header;
+
+        svg {
+          width: $grid4x;
+          color: $black54;
+          @include font-size($grid5x);
+        }
       }
     }
 
