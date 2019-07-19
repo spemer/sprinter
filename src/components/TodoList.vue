@@ -243,9 +243,9 @@ export default {
         input {
           width: calc(100% - #{$list} - #{$list} - #{$grid6x});
           border: none;
-          height: $list;
           outline: none;
           padding: 0 $grid4x;
+          height: $list !important;
           background-color: $black04;
           @include border-radius();
         }
@@ -253,8 +253,8 @@ export default {
         button {
           float: right;
           color: $brand;
-          height: $list;
           font-weight: 700;
+          height: $list !important;
           background-color: $brand_16;
           width: calc(#{$list} + #{$grid6x});
           @include border-radius();

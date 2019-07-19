@@ -32,6 +32,12 @@
               :key="key"
               :value="index"
             ) {{ lang }}
+      div.drawer__list-each
+        div.drawer__list-ops(
+          @click="opensource"
+        )
+          i.fas.fa-code
+          span {{ $t('ops') }}
 </template>
 
 <script>
@@ -67,6 +73,10 @@ export default {
     ...mapMutations([
       'SET_DARKMODE',
     ]),
+
+    opensource () {
+      this.$router.push('/opensource')
+    },
 
     toggleDarkmode () {
       this.SET_DARKMODE(!this.getDarkmode)
@@ -161,7 +171,7 @@ export default {
   .drawer__list {
     $list: $grid8x;
 
-    padding: $grid4x $grid4x;
+    padding: $grid2x $grid4x $grid4x;
 
     .drawer__list-each {
       width: 100%;
@@ -174,32 +184,50 @@ export default {
         height: $list;
         position: relative;
         display: inline-block;
+        padding-top: $grid2x;
 
         .drawer__list-switch-text {
           padding-left: $grid8x;
         }
 
         .checkmark {
-          top: -6px;
+          top: -0px;
           position: absolute;
         }
       }
 
       .drawer__list-locale {
-        padding-bottom: $grid4x;
         height: calc(#{$list} + #{$grid4x});
 
         svg {
           color: $black54;
-          padding-top: $grid4x;
+          position: absolute;
+          padding-top: $grid2x;
           @include font-size(20px);
         }
 
         select {
+          margin-top: -#{$grid};
+          padding-left: $grid8x;
+          width: calc(100% - #{$grid8x});
+          height: calc(#{$list} + #{$grid4x});
+        }
+      }
+
+      .drawer__list-ops {
+        height: calc(#{$list} + #{$grid4x});
+
+        svg {
+          color: $black54;
+          position: absolute;
+          padding-top: $grid3x;
+          @include font-size($grid4x);
+        }
+
+        span {
           float: right;
-          padding-top: $grid4x;
+          padding-top: $grid2x;
           width: calc(100% - #{$list});
-          height: calc(#{$list} + #{$grid2x});
         }
       }
     }

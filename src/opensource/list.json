@@ -1,0 +1,43 @@
+{
+  "opensource": [{
+      "id": "vue",
+      "href": "https://github.com/vuejs/vue",
+      "desc": "🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web."
+    },
+    {
+      "id": "vue-i18n",
+      "href": "https://github.com/kazupon/vue-i18n",
+      "desc": "🌐 Internationalization plugin for Vue.js"
+    },
+    {
+      "id": "vuetify",
+      "href": "https://github.com/vuetifyjs/vuetify",
+      "desc": "🐉 Material Component Framework for Vue.js 2"
+    },
+    {
+      "id": "vue-meta",
+      "href": "https://github.com/nuxt/vue-meta",
+      "desc": "Manage HTML metadata in Vue.js components with SSR support"
+    },
+    {
+      "id": "vue-toasted",
+      "href": "https://github.com/shakee93/vue-toasted",
+      "desc": "🖖 Responsive Touch Compatible Toast plugin for VueJS 2+"
+    },
+    {
+      "id": "vue-scrollto",
+      "href": "https://github.com/rigor789/vue-scrollto",
+      "desc": "Adds a directive that listens for click events and scrolls to elements."
+    },
+    {
+      "id": "vue-progressbar",
+      "href": "https://github.com/hilongjw/vue-progressbar",
+      "desc": "A lightweight progress bar for vue"
+    },
+    {
+      "id": "vuefire",
+      "href": "https://github.com/vuejs/vuefire",
+      "desc": "🔥 Firebase bindings for Vue.js & Vuex"
+    }
+  ]
+}

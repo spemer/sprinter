@@ -5,7 +5,7 @@ export const state = {
 
   todos: [],
 
-  darkmode: false,
+  darkmode: true,
 
   langs: {
     'ko': '한국어',

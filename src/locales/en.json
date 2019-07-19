@@ -5,11 +5,13 @@
   "emptyInput": "Please fill in the textfield.",
   "save": "Save",
   "logout": "Logout",
+  "login": "Login",
   "cancel": "Cancel",
   "askLogout": "Do you really want to log out?",
   "darkmode": "Darkmode",
   "fbLogin": "Continue with Facebook",
   "googleLogin": "Continue with Google",
   "twitterLogin": "Continue with Twitter",
-  "emptyTodo": "Create a new todo!"
+  "emptyTodo": "Create a new todo!",
+  "ops": "Open Source Libraries"
 }

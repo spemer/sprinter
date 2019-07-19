@@ -21,18 +21,13 @@ Vue.use(VueProgressBar, {
   height: '4px',
 })
 
-import VModal from 'vue-js-modal'
-Vue.use(VModal, {
-  dialog: true,
-})
-
-import Toasted from 'vue-toasted'
-Vue.use(Toasted)
-
 import Vuetify from 'vuetify'
-Vue.use(Vuetify)
-
+import VueMeta from 'vue-meta'
+import Toasted from 'vue-toasted'
 import VueScrollTo from 'vue-scrollto'
+Vue.use(Vuetify)
+Vue.use(VueMeta)
+Vue.use(Toasted)
 Vue.use(VueScrollTo)
 
 Vue.config.productionTip = false

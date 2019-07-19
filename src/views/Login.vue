@@ -39,9 +39,24 @@ import { mapGetters } from 'vuex'
 import firebase from 'firebase/app'
 import { auth } from '@/firebase'
 import { toast } from '@/mixins/toast'
+import { globalVar } from '@/globalVar'
 
 export default {
   name: 'login',
+
+  metaInfo () {
+    return {
+      title: globalVar.appName,
+      titleTemplate: `%s - ${this.$t('login')}`,
+    }
+  },
+
+  mounted () {
+    window.onpopstate = event => {
+      return (auth.currentUser !== null && this.$route.path == '/login')
+        && this.$router.push('/')
+    }
+  },
 
   methods: {
     fbLogin () {

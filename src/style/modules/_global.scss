@@ -136,7 +136,6 @@ div {
 select {
   background-color: transparent;
   -webkit-appearance: none;
-  -khtml-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
   -o-appearance: none;
@@ -147,4 +146,8 @@ select {
 
 select::-ms-expand {
   display: none;
+}
+
+::selection {
+  background-color: transparent !important;
 }

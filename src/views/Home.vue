@@ -63,9 +63,17 @@ import TodoList from '@/components/TodoList'
 import DrawerList from '@/components/DrawerList'
 import { mapGetters } from 'vuex'
 import { logout } from '@/mixins/logout'
+import { globalVar } from '@/globalVar'
 
 export default {
   name: 'home',
+
+  metaInfo () {
+    return {
+      title: globalVar.appName,
+      titleTemplate: `%s`,
+    }
+  },
 
   data: _ => ({
     dialog: false,
@@ -183,14 +191,14 @@ export default {
   margin: 0 auto;
   padding: $grid2x 0;
   border-radius: $grid4x;
-  background: transparent;
+  background-color: transparent;
   max-width: 320px !important;
   width: calc(100% - #{$grid32x}) !important;
 
   .v-card {
-    background: #fff;
-    @include border-radius();
-    @include drop-shadow($grid4x, $grid8x, $black16);
+    background-color: #fff;
+    background-color: $text333 !important;
+    @include border-radius(0);
 
     .v-card__title,
     .v-card__text {
@@ -203,17 +211,19 @@ export default {
     .v-card__title {
       font-weight: 700;
       padding-bottom: 0;
+      color: $white87 !important;
       @include font-size($grid5x);
     }
 
     .v-card__text {
       padding-top: 0;
       color: $black54;
+      color: $white87 !important;
       @include font-size($grid4x);
     }
 
     .v-card__actions {
-      padding: 0;
+      padding: 0 0 $grid2x 0;
       width: 100%;
 
       button {
@@ -222,6 +232,7 @@ export default {
 
         &.cancel {
           color: $black54;
+          color: $white54 !important;
         }
 
         &.logout {
