@@ -121,11 +121,11 @@ export default {
   z-index: 2;
   width: 100%;
   position: fixed;
+  padding-bottom: $grid4x;
   @include drop-shadow(0, 0, $grid4x, $black08);
 
   .addTodo__container {
     padding: $grid4x;
-    margin-bottom: $grid10x;
 
     @supports (padding-bottom: env(safe-area-inset-bottom)) {
       padding-bottom: calc(env(safe-area-inset-bottom) + #{$grid8x}) !important;

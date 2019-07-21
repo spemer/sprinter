@@ -93,9 +93,9 @@ textarea:focus {
 }
 
 .noscroll {
-  width: 100vw;
-  position: fixed;
-  overflow: hidden;
+  width: 100vw !important;
+  position: fixed !important;
+  overflow: hidden !important;
 }
 
 .wrapper {

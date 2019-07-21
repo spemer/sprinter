@@ -118,9 +118,11 @@ export default {
 
   .bottomsheet__sheet-wrapper {
     .bottomsheet__sheet-box {
+      bottom: 0;
       z-index: 15;
-      max-width: 100%;
-      position: relative;
+      height: 100vh;
+      position: fixed;
+      @include drop-shadow(0, 0, $grid4x, $black24);
 
       .bottomsheet__sheet {
         bottom: 0;
@@ -133,7 +135,6 @@ export default {
         margin-bottom: -#{$grid48x};
         border-radius: $grid4x $grid4x 0 0;
         animation: 0.35s slide_up ease-in-out;
-        @include drop-shadow(0, 0, $grid4x, $black38);
 
         // android softkey
         @media screen and (device-aspect-ratio: 36/59) {
@@ -151,7 +152,7 @@ export default {
             padding-bottom: $grid52x;
           }
           to {
-            opacity: 0.5;
+            opacity: 0;
             padding-bottom: 0;
           }
         }
@@ -161,7 +162,7 @@ export default {
 
           @keyframes slide_down {
             from {
-              opacity: 0.5;
+              opacity: 0;
               padding-bottom: 0;
             }
             to {
@@ -176,13 +177,13 @@ export default {
 
           .bottomsheet__header {
             width: 100%;
-            position: fixed;
+            position: absolute;
             height: $grid12x;
             padding-top: $grid2x;
             @include border-radius();
 
             .bottomsheet__header-left {
-              position: fixed;
+              position: absolute;
 
               button {
                 width: $grid12x;
@@ -192,7 +193,7 @@ export default {
 
             .bottomsheet__header-title {
               .bottomsheet__header-title-text {
-                position: fixed;
+                position: absolute;
                 height: $grid12x;
                 overflow: hidden;
                 font-weight: 700;
