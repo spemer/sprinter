@@ -1,7 +1,7 @@
 <template lang="pug">
-  div#todolist
+  div#todolist.bg
 
-    BarLoader.spinner(
+    BarLoader.spinner.bg(
       v-if="!timeout"
     )
 
@@ -25,6 +25,9 @@
           label(
             :for="todo.id"
           )
+            div.todolist__list-left-color(
+              :style="[{'background-color': todo.color}]"
+            )
             span {{ todo.text }}
           input(
             :id="todo.id"
@@ -158,9 +161,9 @@ export default {
       width: 100%;
       opacity: 0.38;
       position: absolute;
-      top: 75%;
+      top: 60%;
       left: 50%;
-      transform: translateX(-50%) translateY(-75%);
+      transform: translateX(-50%) translateY(-60%);
 
       p,
       svg {
@@ -264,6 +267,16 @@ export default {
       .todolist__list-left {
         width: calc(100% - #{$grid8x} - #{$grid12x});
 
+        .todolist__list-left-color {
+          top: $grid4x;
+          width: $grid2x;
+          height: $grid2x;
+          position: absolute;
+          margin-left: $grid8x;
+          display: inline-block;
+          @include border-radius();
+        }
+
         label {
           left: 0;
           z-index: 1;
@@ -275,9 +288,9 @@ export default {
             width: 100%;
             hyphens: auto;
             padding-top: $grid2x;
-            padding-left: $grid8x;
+            padding-left: $grid12x;
             overflow-wrap: break-word;
-            width: calc(100% - #{$grid8x});
+            width: calc(100% - #{$grid12x});
             @include font-size($grid4x);
           }
         }

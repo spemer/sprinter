@@ -1,5 +1,5 @@
 <template lang="pug">
-  div#opensource
+  div#opensource.bg
     Header(
       :headerTitle="$t('ops')"
     )

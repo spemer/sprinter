@@ -1,13 +1,13 @@
 #toasted-container {
   z-index: 1 !important;
-  padding-bottom: 64px !important;
+  padding-bottom: 128px !important;
   font-family: Sans-serif !important;
 }
 
 @supports (padding-bottom: env(safe-area-inset-bottom)) {
   #toasted-container {
     --safe-area-inset-bottom: env(safe-area-inset-bottom);
-    padding-bottom: calc(var(--safe-area-inset-bottom) + 64px) !important;
+    padding-bottom: calc(var(--safe-area-inset-bottom) + 128px) !important;
   }
 }
 

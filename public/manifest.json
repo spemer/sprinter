@@ -1,6 +1,7 @@
 {
   "name": "Sprinter - Todo management application",
   "short_name": "Sprinter",
+  "description": "Sprinter - Todo management application",
   "icons": [{
       "src": "./img/icons/android-icon-36x36.png",
       "sizes": "36x36",
@@ -42,4 +43,13 @@
   "display": "standalone",
   "background_color": "#327DE1",
   "theme_color": "#327DE1",
+  "permissions": [
+    "bookmarks",
+    "tabs"
+  ],
+  "homepage_url": "https://sprinter-web.web.app",
+  "browser_action": {
+    "default_icon": "./img/icons/android-icon-192x192.png",
+    "default_title": "Sprinter"
+  }
 }

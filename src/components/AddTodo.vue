@@ -1,7 +1,13 @@
 <template lang="pug">
-  div#addTodo
+  div#addTodo.bg
     div.addTodo__container
       form.addTodo__form
+        div.addTodo__color
+          div.addTodo__color-each(
+            v-for="(color, i) in getColors"
+            @click="setColor(color, i)"
+            :style="{ border: '6px solid ' + `${color[0]}` }"
+          )
         div.addTodo__form-input
           input(
             type="text"
@@ -26,6 +32,7 @@ export default {
   data: _ => ({
     newTodo: '',
     todos: [],
+    selectedColor: 'transparent',
   }),
 
   firestore: _ => {
@@ -37,6 +44,7 @@ export default {
   computed: {
     ...mapGetters([
       'getUser',
+      'getColors',
     ]),
   },
 
@@ -52,6 +60,20 @@ export default {
       'SET_USER',
     ]),
 
+    setColor (color, i) {
+      let el = document.querySelectorAll('.addTodo__color-each')
+
+      for (let j = 0; j < el.length; j++) {
+        if (i === j) {
+          el[i].style.backgroundColor = this.getColors[i][0]
+        } else {
+          el[j].style.backgroundColor = 'transparent'
+        }
+      }
+      this.selectedColor = this.getColors[i][0]
+      this.getColors[i][1] = this.getColors[i][0]
+    },
+
     addTodo () {
       if (this.newTodo) {
         db.collection(auth.currentUser.uid).add({
@@ -60,6 +82,7 @@ export default {
           removed: false,
           id: this.todos.length,
           uid: this.getUser,
+          color: this.selectedColor,
           createdAt: new Date(),
         })
         .then(docRef => {
@@ -68,7 +91,14 @@ export default {
         .catch(error => {
           console.error('Error adding document: ', error)
         })
+
         this.newTodo = ''
+        this.selectedColor = 'transparent'
+
+        let el = document.querySelectorAll('.addTodo__color-each');
+        [...el].forEach(e => {
+          e.style.backgroundColor = 'transparent'
+        })
       }
       else if (!this.newTodo) {
         this.toast(this.$i18n.t('emptyInput'), 2000, this.$i18n.t('close'))
@@ -95,9 +125,26 @@ export default {
 
   .addTodo__container {
     padding: $grid4x;
+    margin-bottom: $grid10x;
 
     @supports (padding-bottom: env(safe-area-inset-bottom)) {
-      padding-bottom: calc(env(safe-area-inset-bottom) + #{$grid4x}) !important;
+      padding-bottom: calc(env(safe-area-inset-bottom) + #{$grid8x}) !important;
+    }
+
+    .addTodo__color {
+      padding-bottom: $grid4x;
+
+      .addTodo__color-each {
+        width: $grid6x;
+        height: $grid6x;
+        cursor: pointer;
+        display: inline-block;
+        @include border-radius(100%);
+
+        &:not(:first-child) {
+          margin-left: $grid2x;
+        }
+      }
     }
 
     .addTodo__form {

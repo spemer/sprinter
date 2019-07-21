@@ -1,5 +1,5 @@
 <template lang="pug">
-  div#drawerlist.drawer
+  div#drawerlist.drawer.bg
     div.drawer__userInfo
       img.drawer__userInfo-img(
         :src="setPhotoUrl(userInfo.provider)"
@@ -54,6 +54,7 @@ import TodoList from '@/components/TodoList'
 import DrawerList from '@/components/DrawerList'
 import { mapGetters, mapMutations } from 'vuex'
 import { logout } from '@/mixins/logout'
+import { toast } from '@/mixins/toast'
 import { auth } from '@/firebase'
 import { globalVar } from '@/globalVar'
 
@@ -117,10 +118,6 @@ export default {
         return 'fa-twitter-square'
       }
     },
-  },
-
-  mounted () {
-    console.log(this.userInfo)
   },
 
   mixins: [

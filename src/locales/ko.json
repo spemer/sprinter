@@ -14,5 +14,6 @@
   "twitterLogin": "트위터 계정으로 계속하기",
   "emptyTodo": "새로운 할 일을 등록해보세요!",
   "ops": "오픈소스 라이브러리",
-  "share": "Sprinter 공유하기"
+  "share": "Sprinter 공유하기",
+  "filter": "필터"
 }

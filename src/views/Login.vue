@@ -1,5 +1,5 @@
 <template lang="pug">
-  div#login
+  div#login.bg
     div.wrapper
       div.login__launcher
         img.login__launcher-img(

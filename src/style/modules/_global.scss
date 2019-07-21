@@ -93,6 +93,7 @@ textarea:focus {
 }
 
 .noscroll {
+  width: 100vw;
   position: fixed;
   overflow: hidden;
 }
@@ -143,5 +144,10 @@ select::-ms-expand {
 }
 
 ::selection {
-  background-color: transparent !important;
+  color: #fff;
+  background-color: $brand !important;
+
+  &:not(input) {
+    background-color: transparent !important;
+  }
 }

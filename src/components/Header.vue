@@ -1,5 +1,5 @@
 <template lang="pug">
-  div#headercomp
+  div#headercomp.bg
     div.header__wrapper
 
       slot.header__left(
@@ -31,7 +31,7 @@ export default {
   width: 100%;
   height: $header;
   position: fixed;
-  @include drop-shadow();
+  @include drop-shadow(0, 0, $grid4x, $black08);
 
   @supports (padding-top: env(safe-area-inset-top)) {
     padding-top: calc(env(safe-area-inset-top)) !important;

@@ -3,10 +3,14 @@
   color: $black78 !important;
   background-color: #fff !important;
 
-  div,
+  div.bg,
   aside {
     color: $black78 !important;
     background-color: #fff !important;
+  }
+
+  .bottomsheet__header-left>button {
+    color: $black54 !important;
   }
 
   input {
@@ -19,7 +23,7 @@
   color: $white87 !important;
   background-color: $text333 !important;
 
-  div,
+  div.bg,
   aside {
     color: $white87 !important;
     background-color: $text333 !important;
@@ -85,10 +89,10 @@
   h5,
   h6,
   svg,
-  span,
   input,
   label,
-  select {
+  select,
+  .header__right>button {
     color: $white87 !important;
   }
 

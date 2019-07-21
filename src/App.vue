@@ -1,8 +1,15 @@
-<template lang="pug">
-  v-app
-    div#app(:class="{'darkmode': this.$store.getters.getDarkmode, 'lightmode': !this.$store.getters.getDarkmode}")
-      router-view
-      vue-progress-bar
+<template>
+  <v-app>
+    <div id="app"
+      :class="{
+        'noscroll': this.$store.getters.getBottomSheet,
+        'darkmode': this.$store.getters.getDarkmode,
+        'lightmode': !this.$store.getters.getDarkmode
+      }">
+      <router-view></router-view>
+      <vue-progress-bar></vue-progress-bar>
+    </div>
+  </v-app>
 </template>
 
 <style lang="scss">

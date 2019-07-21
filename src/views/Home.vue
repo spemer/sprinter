@@ -1,5 +1,5 @@
 <template lang="pug">
-  div#home
+  div#home.bg
     Header(
       headerTitle="Sprinter"
     )
@@ -9,6 +9,16 @@
       )
         button
           i.fas.fa-bars
+      div.header__right(
+        slot="header__right"
+        @click="toggleSheet(true)"
+      )
+        button {{ $t('filter') }}
+
+    BottomSheet.bottomsheet(
+      v-if="getBottomSheet"
+      :bottomSheetTitle="$t('filter')"
+    )
 
     v-layout(
       data-app
@@ -62,7 +72,8 @@ import Header from '@/components/Header'
 import AddTodo from '@/components/AddTodo'
 import TodoList from '@/components/TodoList'
 import DrawerList from '@/components/DrawerList'
-import { mapGetters } from 'vuex'
+import BottomSheet from '@/components/BottomSheet'
+import { mapGetters, mapMutations } from 'vuex'
 import { logout } from '@/mixins/logout'
 import { globalVar } from '@/globalVar'
 
@@ -85,15 +96,24 @@ export default {
       'getUser',
       'getStatus',
       'getDarkmode',
+      'getBottomSheet',
     ]),
   },
 
   methods: {
+    ...mapMutations([
+      'SET_BOTTOM_SHEET',
+    ]),
+
     logoutHandler () {
       this.dialog = false
       setTimeout(() => {
         this.logout()
       }, 250)
+    },
+
+    toggleSheet(bool) {
+      this.SET_BOTTOM_SHEET(bool)
     },
   },
 
@@ -106,6 +126,7 @@ export default {
     AddTodo,
     TodoList,
     DrawerList,
+    BottomSheet,
   },
 
 }
