@@ -12,6 +12,7 @@
   "fbLogin": "Continue with Facebook",
   "googleLogin": "Continue with Google",
   "twitterLogin": "Continue with Twitter",
+  "githubLogin": "Continue with GitHub",
   "emptyTodo": "Create a new todo!",
   "ops": "Open Source Libraries",
   "share": "Share Sprinter",

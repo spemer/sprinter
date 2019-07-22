@@ -34,7 +34,7 @@ export const mutations = {
   },
 
 
-  // darkmode
+  // appearance
   [SET_DARKMODE]: (state, payload) => {
     return state.darkmode = payload
   },

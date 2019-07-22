@@ -1,4 +1,6 @@
 export const getters = {
+
+  // user auth
   getUser: (state) => {
     return state.user
   },
@@ -11,20 +13,24 @@ export const getters = {
     return state.error
   },
 
-  getDarkmode: (state) => {
-    return state.darkmode
-  },
 
-  getLangs: (state) => {
-    return state.langs
-  },
-
+  // todo list
   getColors: (state) => {
     return state.colors
   },
 
   getBottomSheet: (state) => {
     return state.bottomSheet
+  },
+
+
+  // appearance
+  getDarkmode: (state) => {
+    return state.darkmode
+  },
+
+  getLangs: (state) => {
+    return state.langs
   },
 
 }

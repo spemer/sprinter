@@ -4,6 +4,7 @@ export const state = {
   error: null,
 
   todos: [],
+  bottomSheet: false,
   colors: [
     ['#80CFA9', 'transparent', 'true'],
     ['#AF8D86', 'transparent', 'true'],
@@ -15,9 +16,6 @@ export const state = {
   ],
 
   darkmode: true,
-
-  bottomSheet: false,
-
   langs: {
     'en': 'Language',
     'ko': '한국어',

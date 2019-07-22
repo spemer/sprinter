@@ -67,7 +67,6 @@
 </template>
 
 <script>
-import firebase from 'firebase/app'
 import Header from '@/components/Header'
 import AddTodo from '@/components/AddTodo'
 import TodoList from '@/components/TodoList'
@@ -75,6 +74,7 @@ import DrawerList from '@/components/DrawerList'
 import BottomSheet from '@/components/BottomSheet'
 import { mapGetters, mapMutations } from 'vuex'
 import { logout } from '@/mixins/logout'
+import { auth } from '@/firebase'
 import { globalVar } from '@/globalVar'
 
 export default {
@@ -84,6 +84,14 @@ export default {
     title: globalVar.appName,
     titleTemplate: `%s`,
   }),
+
+  mounted () {
+    window.onpopstate = event => {
+      if (auth.currentUser !== null && this.$route.path == '/login') {
+        this.$router.replace('/')
+      }
+    }
+  },
 
   data: _ => ({
     dialog: false,

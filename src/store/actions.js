@@ -19,6 +19,7 @@ export const actions = {
         .catch(error => {
           commit('SET_STATUS', 'failure')
           commit('SET_ERROR', error.message)
+          console.error(error)
           reject()
         })
     })
@@ -39,6 +40,7 @@ export const actions = {
         .catch(error => {
           commit('SET_STATUS', 'failure')
           commit('SET_ERROR', error.message)
+          console.error(error)
           reject()
         })
     })

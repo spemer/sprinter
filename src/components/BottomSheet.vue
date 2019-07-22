@@ -135,6 +135,7 @@ export default {
         margin-bottom: -#{$grid48x};
         border-radius: $grid4x $grid4x 0 0;
         animation: 0.35s slide_up ease-in-out;
+        will-change: opacity, padding-bottom !important;
 
         // android softkey
         @media screen and (device-aspect-ratio: 36/59) {
@@ -149,7 +150,7 @@ export default {
         @keyframes slide_up {
           from {
             opacity: 1;
-            padding-bottom: $grid52x;
+            padding-bottom: $grid56x;
           }
           to {
             opacity: 0;
@@ -167,7 +168,7 @@ export default {
             }
             to {
               opacity: 1;
-              padding-bottom: $grid52x;
+              padding-bottom: $grid56x;
             }
           }
         }

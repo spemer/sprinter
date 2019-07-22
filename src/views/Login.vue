@@ -51,14 +51,6 @@ export default {
     }
   },
 
-  mounted () {
-    window.onpopstate = event => {
-      if (auth.currentUser !== null && this.$route.path == '/login') {
-        this.$router.push('/')
-      }
-    }
-  },
-
   methods: {
     fbLogin () {
       this.$Progress.start()
