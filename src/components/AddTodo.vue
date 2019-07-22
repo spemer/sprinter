@@ -80,6 +80,7 @@ export default {
           text: this.newTodo,
           completed: false,
           removed: false,
+          selected: true,
           id: this.todos.length,
           uid: this.getUser,
           color: this.selectedColor,

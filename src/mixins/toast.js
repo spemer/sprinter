@@ -14,7 +14,7 @@ export const toast = {
             action: {
               text: btn,
               onClick: (e, toastObject) => {
-                toastObject.goAway(0)
+                return toastObject.goAway(0)
               }
             },
           })

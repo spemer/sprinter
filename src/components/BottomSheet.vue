@@ -37,10 +37,15 @@
               Button(
                 :btnLabel="$t('applyFilter')"
               )
+                div.btn_slot(
+                  slot="btn_slot"
+                  @click="applyFilter"
+                )
 </template>
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
+import { db, auth } from '@/firebase'
 import Button from '@/components/Button'
 
 export default {
@@ -71,7 +76,22 @@ export default {
 
     toggleFilter (i) {
       this.SET_FILTER_SHOW(i)
+      this.SET_BOTTOM_SHEET(false)
+      this.isActive = false
       console.log(this.getColors[i][2])
+
+      db.collection(auth.currentUser.uid)
+    // '.doc' param needs doc id, by field name 'color'
+        .doc(this.getAllDocs)
+        .update({
+          selected: this.getColors[i][2]
+        })
+    },
+
+
+    applyFilter () {
+      this.SET_BOTTOM_SHEET(false)
+      this.isActive = false
     },
 
   },
@@ -103,9 +123,10 @@ export default {
     width: 100vw;
     height: 100vh;
     opacity: 0.46;
-    position: relative;
+    position: fixed !important;
+    overflow: hidden !important;
     background-color: #212121;
-    animation: 0.25s dim_ease_in ease-in-out;
+    animation: 0.25s dim_ease_in ease;
 
     @keyframes dim_ease_in {
       from {
@@ -117,7 +138,7 @@ export default {
     }
 
     &.active {
-      animation: 0.25s dim_ease_out ease-in-out;
+      animation: 0.25s dim_ease_out ease;
 
       @keyframes dim_ease_out {
         from {
@@ -147,9 +168,10 @@ export default {
         padding: 0 0 $grid4x;
         max-height: 80vh !important;
         margin-bottom: -#{$grid48x};
+        animation: 0.35s slide_up ease;
+        transform: rotate3d(0, 0, 0, 0deg);
         border-radius: $grid4x $grid4x 0 0;
-        animation: 0.35s slide_up ease-in-out;
-        will-change: opacity, padding-bottom !important;
+        will-change: opacity, padding-bottom, transform;
 
         // android softkey
         @media screen and (device-aspect-ratio: 36/59) {
@@ -173,7 +195,9 @@ export default {
         }
 
         &.active {
-          animation: 0.35s slide_down ease-in-out;
+          animation: 0.35s slide_down ease;
+          transform: rotate3d(0, 0, 0, 0deg);
+          will-change: opacity, padding-bottom, transform;
 
           @keyframes slide_down {
             from {

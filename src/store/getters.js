@@ -15,12 +15,12 @@ export const getters = {
 
 
   // todo list
-  getColors: (state) => {
-    return state.colors
+  getTodos: (state) => {
+    return state.todos
   },
 
-  getBottomSheet: (state) => {
-    return state.bottomSheet
+  getColors: (state) => {
+    return state.colors
   },
 
 
@@ -31,6 +31,12 @@ export const getters = {
 
   getLangs: (state) => {
     return state.langs
+  },
+
+
+  // bottom sheet
+  getBottomSheet: (state) => {
+    return state.bottomSheet
   },
 
 }

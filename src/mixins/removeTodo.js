@@ -22,7 +22,7 @@ export const removeTodo = {
           onClick: (e, toastObject) => {
             todo.removed = false
             toastObject.goAway(0)
-            return this.isRemoved = false
+            this.isRemoved = false
           }
         },
       })
@@ -31,10 +31,10 @@ export const removeTodo = {
         if (this.isRemoved) {
           db.collection(todo.uid).doc(todo.id).delete()
             .then((response) => {
-              console.log(response)
+              return console.log(response)
             })
             .catch(error => {
-              console.log(error)
+              return console.log(error)
             })
         }
       }, delay)

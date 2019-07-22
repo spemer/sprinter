@@ -1,10 +1,12 @@
 export const state = {
+
+  // user auth
   user: null,
   status: null,
   error: null,
 
+  // todo list
   todos: [],
-  bottomSheet: false,
   colors: [
     ['#80CFA9', 'transparent', 'true'],
     ['#AF8D86', 'transparent', 'true'],
@@ -15,6 +17,7 @@ export const state = {
     ['#FF9F1C', 'transparent', 'true'],
   ],
 
+  // appearance
   darkmode: true,
   langs: {
     'en': 'Language',
@@ -22,4 +25,7 @@ export const state = {
     'en': 'English',
     'zh-CN': '中文',
   },
+
+  // bottom sheet
+  bottomSheet: false,
 }

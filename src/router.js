@@ -13,7 +13,7 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: _ => {
+      component: () => {
         return import('./views/Home.vue')
       },
       beforeEnter: requireAuth,
@@ -21,14 +21,14 @@ const router = new Router({
     {
       path: '/login',
       name: 'login',
-      component: _ => {
+      component: () => {
         return import('./views/Login.vue')
       },
     },
     {
       path: '/opensource',
       name: 'opensource',
-      component: _ => {
+      component: () => {
         return import('./views/Opensource.vue')
       },
     },

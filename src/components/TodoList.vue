@@ -66,7 +66,7 @@
 
 <script>
 import { db, auth } from '@/firebase'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 import { removeTodo } from '@/mixins/removeTodo'
 import { BarLoader } from '@saeris/vue-spinners'
 
@@ -79,8 +79,9 @@ export default {
   }),
 
   firestore: _ => {
+    let _todos = db.collection(auth.currentUser.uid).orderBy('createdAt', 'desc')
     return {
-      todos: db.collection(auth.currentUser.uid).orderBy('createdAt', 'desc')
+      todos: _todos.where('selected', '==', true)
     }
   },
 
@@ -99,6 +100,7 @@ export default {
   computed: {
     ...mapGetters([
       'getUser',
+      'getTodos',
     ]),
   },
 
@@ -107,6 +109,10 @@ export default {
   ],
 
   methods: {
+    ...mapMutations([
+      'SET_TODOS',
+    ]),
+
     editTodo(todo) {
       this.currentlyEditing = todo.id
       this.todoEditText = todo.text
@@ -114,28 +120,20 @@ export default {
 
     updateTodoText(todo) {
       if (this.todoEditText.length > 0) {
-        db.collection(auth.currentUser.uid).doc(this.currentlyEditing).update({
-          text: this.todoEditText
-        })
-        .then(docRef => {
-          console.log(docRef)
-        })
-        .catch(error => {
-          console.error(error)
-        })
+        db.collection(auth.currentUser.uid)
+          .doc(this.currentlyEditing)
+          .update({
+            text: this.todoEditText
+          })
         this.currentlyEditing = null
         this.todoEditText = ''
       }
     },
 
     updateTodo(todo) {
-      db.collection(auth.currentUser.uid).doc(todo.id).update({...todo})
-      .then(docRef => {
-        console.log(docRef)
-      })
-      .catch(error => {
-        console.error(error)
-      })
+      db.collection(auth.currentUser.uid)
+        .doc(todo.id)
+        .update({...todo})
     },
   },
 
