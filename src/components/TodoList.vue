@@ -16,7 +16,7 @@
         v-if="todos"
         v-for="todo in todos"
         :key="todo.id"
-        :class="{'completed': todo.completed, 'removed': todo.removed}"
+        :class="{'completed': todo.isCompleted, 'removed': todo.isRemoved}"
       )
 
         div.todolist__list-left(
@@ -32,7 +32,7 @@
           input(
             :id="todo.id"
             type="checkbox"
-            v-model="todo.completed"
+            v-model="todo.isCompleted"
             @change="updateTodo(todo)"
           )
           span.checkmark
@@ -41,7 +41,7 @@
           v-if="currentlyEditing !== todo.id"
         )
           div.todolist__list-edit(
-            v-if="!todo.completed"
+            v-if="!todo.isCompleted"
             @click="editTodo(todo)"
           )
             i.fas.fa-pen
@@ -81,7 +81,7 @@ export default {
   firestore: _ => {
     let _todos = db.collection(auth.currentUser.uid).orderBy('createdAt', 'desc')
     return {
-      todos: _todos.where('selected', '==', true)
+      todos: _todos.where('isSelected', '==', true)
     }
   },
 
@@ -168,58 +168,38 @@ export default {
         @include font-size($grid6x);
       }
 
+      p {
+        margin-bottom: $grid4x;
+      }
+
       svg {
-        -webkit-animation: slide 2.5s ease infinite;
-        -moz-animation: slide 2.5s ease infinite;
-        -o-animation: slide 2.5s ease infinite;
-        animation: slide 2.5s ease infinite;
+        @include animation(slide 2.5s ease infinite);
 
         @keyframes slide {
           0% {
-            transform: translateY($grid);
+            @include transform(translateY(0));
           }
           50% {
-            transform: translateY($grid3x);
+            @include transform(translateY($grid4x));
           }
           100% {
-            transform: translateY($grid);
+            @include transform(translateY(0));
           }
-        }
-      }
-    }
-
-    .removed {
-      -webkit-animation: popup 0.5s ease 1 forwards;
-      -moz-animation: popup 0.5s ease 1 forwards;
-      -o-animation: popup 0.5s ease 1 forwards;
-      animation: popup 0.5s ease 1 forwards;
-
-      @keyframes popup {
-        from {
-          opacity: 1;
-          @include transform(translateY(0px));
-        }
-
-        to {
-          opacity: 0;
-          @include transform(translateY($grid4x));
         }
       }
     }
 
     .todolist__list-each {
-      animation: popup 0.5s ease 1 forwards;
+      @include animation(addedTodo 0.25s normal forwards ease);
 
-      @keyframes popup {
+      @keyframes addedTodo {
         from {
           opacity: 0;
-          display: inline-block !important;
           @include transform(translateY(-#{$grid4x}));
         }
 
         to {
           opacity: 1;
-          display: none !important;
           @include transform(translateY(0));
         }
       }

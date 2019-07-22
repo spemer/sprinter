@@ -65,22 +65,31 @@ export default {
 
       for (let j = 0; j < el.length; j++) {
         if (i === j) {
-          el[i].style.backgroundColor = this.getColors[i][0]
+          let getBgColor = getComputedStyle(el[i]).backgroundColor
+
+          if (getBgColor == 'rgba(0, 0, 0, 0)') {
+            el[i].style.backgroundColor = this.getColors[i][0]
+            this.selectedColor = this.getColors[i][0]
+            this.getColors[i][1] = this.getColors[i][0]
+          }
+          else {
+            el[i].style.backgroundColor = 'transparent'
+            this.selectedColor = 'transparent'
+            this.getColors[i][1] = 'transparent'
+          }
         } else {
           el[j].style.backgroundColor = 'transparent'
         }
       }
-      this.selectedColor = this.getColors[i][0]
-      this.getColors[i][1] = this.getColors[i][0]
     },
 
     addTodo () {
       if (this.newTodo) {
         db.collection(auth.currentUser.uid).add({
           text: this.newTodo,
-          completed: false,
-          removed: false,
-          selected: true,
+          isCompleted: false,
+          isRemoved: false,
+          isSelected: true,
           id: this.todos.length,
           uid: this.getUser,
           color: this.selectedColor,
@@ -147,6 +156,7 @@ export default {
         cursor: pointer;
         display: inline-block;
         @include border-radius(100%);
+        @include transition(background-color 0.25s ease);
 
         &:not(:first-child) {
           margin-left: $grid2x;

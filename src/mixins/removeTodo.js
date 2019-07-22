@@ -9,7 +9,7 @@ export const removeTodo = {
     }),
 
     removeTodo(todo, delay) {
-      todo.removed = true
+      todo.isRemoved = true
       this.isRemoved = true
 
       this.$toasted.show(`${todo.text} removed`, {
@@ -20,7 +20,7 @@ export const removeTodo = {
           text: 'UNDO',
           dontClose: true,
           onClick: (e, toastObject) => {
-            todo.removed = false
+            todo.isRemoved = false
             toastObject.goAway(0)
             this.isRemoved = false
           }

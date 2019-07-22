@@ -1,6 +1,7 @@
 import {
   auth
 } from '@/firebase'
+import router from '@/router'
 
 export const actions = {
   signInAction({
@@ -14,6 +15,7 @@ export const actions = {
           commit('SET_USER', response.user)
           commit('SET_STATUS', 'success')
           commit('SET_ERROR', null)
+          router.replace('/')
           resolve()
         })
         .catch(error => {

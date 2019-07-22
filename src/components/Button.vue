@@ -19,8 +19,8 @@ export default {
 #bottombutton {
   bottom: 0;
   padding: 0 $grid4x;
-  margin-bottom: -#{$grid8x} !important;
   height: calc(#{$bottom} + #{$grid4x});
+  margin-bottom: -#{$grid8x} !important;
   width: calc(100% - #{$grid8x}) !important;
 
   @supports (padding-bottom: env(safe-area-inset-bottom)) {

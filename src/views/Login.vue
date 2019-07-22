@@ -54,13 +54,12 @@ export default {
   methods: {
     fbLogin () {
       this.$Progress.start()
-      const facebookProvider = new firebase.auth.FacebookAuthProvider()
+      let facebookProvider = new firebase.auth.FacebookAuthProvider()
 
       this.$store.dispatch('signInAction', facebookProvider)
       .then(() => {
         this.$Progress.finish()
         if (this.getUser) {
-          this.$router.push('/')
           this.toast(`${this.$i18n.t('welcome')}, ${auth.currentUser.displayName}!`, 2000, this.$i18n.t('close'))
         }
       })
@@ -68,13 +67,12 @@ export default {
 
     googleLogin () {
       this.$Progress.start()
-      const googleProvider = new firebase.auth.GoogleAuthProvider()
+      let googleProvider = new firebase.auth.GoogleAuthProvider()
 
       this.$store.dispatch('signInAction', googleProvider)
       .then(() => {
         this.$Progress.finish()
         if (this.getUser) {
-          this.$router.push('/')
           this.toast(`${this.$i18n.t('welcome')}, ${auth.currentUser.displayName}!`, 2000, this.$i18n.t('close'))
         }
       })
@@ -82,13 +80,12 @@ export default {
 
     twitterLogin () {
       this.$Progress.start()
-      const twitterProvider = new firebase.auth.TwitterAuthProvider()
+      let twitterProvider = new firebase.auth.TwitterAuthProvider()
 
       this.$store.dispatch('signInAction', twitterProvider)
       .then(() => {
         this.$Progress.finish()
         if (this.getUser) {
-          this.$router.push('/')
           this.toast(`${this.$i18n.t('welcome')}, ${auth.currentUser.displayName}!`, 2000, this.$i18n.t('close'))
         }
       })
