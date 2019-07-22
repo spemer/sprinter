@@ -16,5 +16,6 @@
   "emptyTodo": "Create a new todo!",
   "ops": "Open Source Libraries",
   "share": "Share Sprinter",
-  "filter": "Filter"
+  "filter": "Filter",
+  "applyFilter": "Apply Filter"
 }

@@ -144,10 +144,12 @@ select::-ms-expand {
 }
 
 ::selection {
-  color: #fff;
-  background-color: $brand !important;
+  background-color: transparent !important;
+}
 
-  &:not(input) {
-    background-color: transparent !important;
+input {
+  &::selection {
+    color: #fff !important;
+    background-color: $brand !important;
   }
 }

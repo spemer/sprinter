@@ -244,12 +244,12 @@ export default {
 
       .todolist__list-editing {
         input {
-          width: calc(100% - #{$list} - #{$list} - #{$grid6x});
           border: none;
           outline: none;
           padding: 0 $grid4x;
           height: $list !important;
           background-color: $black04;
+          width: calc(100% - #{$list} - #{$list} - #{$grid6x});
           @include border-radius();
         }
 
@@ -279,12 +279,13 @@ export default {
 
         label {
           left: 0;
-          z-index: 1;
+          z-index: 2;
           opacity: 1;
           width: 100%;
           @include transition(opacity 0.25s ease);
 
           span {
+            z-index: 1;
             width: 100%;
             hyphens: auto;
             padding-top: $grid2x;
@@ -296,6 +297,7 @@ export default {
         }
 
         span {
+          z-index: 0;
           display: inline-block;
         }
       }

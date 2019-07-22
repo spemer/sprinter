@@ -29,7 +29,7 @@ export const mutations = {
     return state.todos = payload
   },
 
-  [SET_FILTER_SHOW]: (state, i, bool) => {
+  [SET_FILTER_SHOW]: (state, i) => {
     return state.colors[i][2] = !state.colors[i][2]
   },
 

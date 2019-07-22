@@ -33,6 +33,10 @@ export default {
   position: fixed;
   @include drop-shadow(0, 0, $grid4x, $black08);
 
+  ::selection {
+    background-color: transparent !important;
+  }
+
   @supports (padding-top: env(safe-area-inset-top)) {
     padding-top: calc(env(safe-area-inset-top)) !important;
   }

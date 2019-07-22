@@ -24,18 +24,24 @@
             div.bottomsheet__list-wrapper
               div.bottomsheet__list(
                 v-for="(color, i) in getColors"
+                :key="i"
               )
                 div.bottomsheet__list-each(
                   @click="toggleFilter(i)"
                   :style="{'background-color': color[0]}"
                 )
                   i.fas.fa-check(
-                    v-if="getColors[2]"
+                    v-if="getColors[i][2]"
                   )
+
+              Button(
+                :btnLabel="$t('applyFilter')"
+              )
 </template>
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
+import Button from '@/components/Button'
 
 export default {
   props: {
@@ -65,13 +71,17 @@ export default {
 
     toggleFilter (i) {
       this.SET_FILTER_SHOW(i)
-      console.log(this.getColors[3])
+      console.log(this.getColors[i][2])
     },
 
   },
 
   beforeDestroy () {
     this.SET_BOTTOM_SHEET(false)
+  },
+
+  components: {
+    Button,
   },
 
 }
@@ -83,6 +93,10 @@ export default {
   left: 0;
   z-index: 5;
   position: absolute;
+
+  ::selection {
+    background-color: transparent !important;
+  }
 
   .bottomSheet__dim {
     z-index: 10;

@@ -16,5 +16,6 @@
   "emptyTodo": "創建一個新的待辦事項！",
   "ops": "開源庫",
   "share": "分享 Sprinter",
-  "filter": "篩選"
+  "filter": "篩選",
+  "applyFilter": "應用過濾器"
 }

@@ -138,6 +138,10 @@ export default {
 .drawer {
   width: 100%;
 
+  ::selection {
+    background-color: transparent !important;
+  }
+
   .drawer__userInfo {
     padding: $grid4x;
     border-bottom: 1px solid $texteee;
