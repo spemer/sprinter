@@ -14,6 +14,11 @@
             v-model.trim="newTodo"
             :placeholder="$t('newTodo')"
           )
+          button.addTodo__form-clear(
+            v-if="newTodo"
+            @click="clearForm"
+          )
+            i.fas.fa-times-circle
         div.addTodo__form-btn
           button(
             type="submit"
@@ -59,6 +64,10 @@ export default {
     ...mapMutations([
       'SET_USER',
     ]),
+
+    clearForm () {
+      this.newTodo = ''
+    },
 
     setColor (color, i) {
       let el = document.querySelectorAll('.addTodo__color-each')
@@ -169,18 +178,43 @@ export default {
 
       .addTodo__form-input,
       .addTodo__form-btn {
+        position: relative;
         display: inline-block;
       }
 
       .addTodo__form-input {
-        width: calc(100% - #{$btn} * 2);
+        width: calc(100% - #{$btn} - #{$btn} - #{$grid8x});
+
+        .addTodo__form-clear {
+          top: 0;
+          width: $btn;
+          height: $btn;
+          position: absolute;
+          right: -#{$grid16x};
+          @include animation(clearBtn 0.5s normal forwards ease);
+
+          @keyframes clearBtn {
+            from {
+              opacity: 0;
+            }
+
+            to {
+              opacity: 0.5;
+            }
+          }
+
+          svg {
+            top: 50%;
+            left: 50%;
+          }
+        }
 
         input {
           width: 100%;
           border: none;
           outline: none;
           height: $btn;
-          padding: 0 $grid4x;
+          padding: 0 $grid12x 0 $grid4x;
           @include border-radius();
 
           &::selection {

@@ -1,3 +1,5 @@
+const ansiRegex = require('ansi-regex')
+
 module.exports = {
   chainWebpack: config => {
     config.module.rules.delete('eslint')
@@ -35,5 +37,9 @@ module.exports = {
       localeDir: 'locales',
       enableInSFC: true
     }
-  }
+  },
+
+  transpileDependencies: [
+    ansiRegex
+  ],
 }
