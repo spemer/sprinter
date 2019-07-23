@@ -58,7 +58,12 @@
               type="text"
               v-model.trim="todoEditText"
             )
-            button(
+            button.todolist__list-undo(
+              type="button"
+              @click="undoEditText(todo)"
+            )
+              i.fas.fa-undo
+            button.todolist__list-save(
               type="submit"
               @click.prevent="updateTodoText(todo)"
             ) {{ $t('save') }}
@@ -113,6 +118,10 @@ export default {
       'SET_TODOS',
     ]),
 
+    undoEditText (todo) {
+      this.todoEditText = todo.text
+    },
+
     editTodo(todo) {
       this.currentlyEditing = todo.id
       this.todoEditText = todo.text
@@ -127,6 +136,9 @@ export default {
           })
         this.currentlyEditing = null
         this.todoEditText = ''
+      } else {
+        this.currentlyEditing = null
+        this.todoEditText = todo.text
       }
     },
 
@@ -224,20 +236,28 @@ export default {
         input {
           border: none;
           outline: none;
-          padding: 0 $grid4x;
+          padding: 0 $grid10x 0 $grid4x;
           height: $list !important;
           background-color: $black04;
-          width: calc(100% - #{$list} - #{$list} - #{$grid6x});
+          width: calc(100% - #{$list} - #{$list} - #{$grid14x});
           @include border-radius();
         }
 
-        button {
+        .todolist__list-undo {
+          top: 0;
+          width: $list;
+          right: $grid20x;
+          position: absolute;
+          height: $list !important;
+        }
+
+        .todolist__list-save {
           float: right;
           color: $brand;
           font-weight: 700;
           height: $list !important;
           background-color: $brand_16;
-          width: calc(#{$list} + #{$grid6x});
+          width: calc(#{$list} + #{$grid8x});
           @include border-radius();
         }
       }

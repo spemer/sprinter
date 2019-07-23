@@ -127,6 +127,8 @@ export default {
     overflow: hidden !important;
     background-color: #212121;
     animation: 0.25s dim_ease_in ease;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
 
     @keyframes dim_ease_in {
       from {
@@ -171,6 +173,8 @@ export default {
         animation: 0.35s slide_up ease;
         transform: rotate3d(0, 0, 0, 0deg);
         border-radius: $grid4x $grid4x 0 0;
+        -webkit-backface-visibility: hidden;
+        -webkit-transform-style: preserve-3d;
         will-change: opacity, padding-bottom, transform;
 
         // android softkey
