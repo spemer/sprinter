@@ -43,6 +43,7 @@
   padding: 16px;
   text-decoration: none;
   border-top: 1px solid #555;
+  font-family: Sans-serif !important;
 }
 
 @supports (padding-bottom: env(safe-area-inset-bottom)) {

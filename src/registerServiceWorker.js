@@ -20,6 +20,10 @@ if (process.env.NODE_ENV === 'production') {
     },
     updatefound() {
       console.log('New content is downloading.')
+      caches.keys().then((names) => {
+        for (let name of names)
+          return caches.delete(name)
+      })
     },
     updated() {
       console.log('New content is available please refresh.')
@@ -37,14 +41,13 @@ if (process.env.NODE_ENV === 'production') {
 // show update notification
 function displayUpdateNotification() {
 
-  const link = document.createElement('a')
+  const link = document.createElement('span')
   link.classList.add('update-notification')
-  link.setAttribute('href', '#')
   link.innerHTML = 'Update is available. Click here to install.'
 
   link.addEventListener('click', (e) => {
     e.preventDefault()
-    window.location.reload()
+    location.reload(true)
   })
 
   document.querySelector('body').appendChild(link)
