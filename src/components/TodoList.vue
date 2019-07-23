@@ -81,6 +81,7 @@ export default {
     currentlyEditing: null,
     todoEditText: '',
     timeout: false,
+    editTextChanged: true,
   }),
 
   firestore: _ => {

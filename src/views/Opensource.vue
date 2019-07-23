@@ -5,7 +5,7 @@
     )
       div.header__left(
         slot="header__left"
-        @click="$router.push('/')"
+        @click="$router.replace('/')"
       )
         button
           i.fas.fa-times

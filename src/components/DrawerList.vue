@@ -34,7 +34,7 @@
             ) {{ lang }}
       div.drawer__list-each
         div.drawer__list-ops(
-          @click="opensource"
+          @click="goOpensource"
         )
           i.fas.fa-code
           span {{ $t('ops') }}
@@ -52,7 +52,7 @@ import Header from '@/components/Header'
 import AddTodo from '@/components/AddTodo'
 import TodoList from '@/components/TodoList'
 import DrawerList from '@/components/DrawerList'
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters, mapMutations, mapActions } from 'vuex'
 import { logout } from '@/mixins/logout'
 import { toast } from '@/mixins/toast'
 import { auth } from '@/firebase'
@@ -78,8 +78,8 @@ export default {
   },
 
   methods: {
-    ...mapMutations([
-      'SET_DARKMODE',
+    ...mapActions([
+      'setDarkmodeAction',
     ]),
 
     shareApi () {
@@ -92,13 +92,12 @@ export default {
       }
     },
 
-    opensource () {
+    goOpensource () {
       this.$router.push('/opensource')
     },
 
     toggleDarkmode () {
-      this.SET_DARKMODE(!this.getDarkmode)
-      console.log(`Darkmode: ${this.getDarkmode}`)
+      this.setDarkmodeAction(!this.getDarkmode)
     },
 
     setPhotoUrl (provider) {
@@ -193,6 +192,7 @@ export default {
 
     .drawer__list-each {
       width: 100%;
+      cursor: pointer;
       padding: $grid2x 0;
       border-bottom: 1px solid $texteee;
       height: calc(#{$list} + #{$grid2x});

@@ -27,12 +27,13 @@
                 :key="i"
               )
                 div.bottomsheet__list-each(
-                  @click="toggleFilter(i)"
+                  v-if="refresh"
+                  @click="toggleEachFilter(color, i)"
                   :style="{'background-color': color[0]}"
+                  :class="{'selected': color[2]}"
                 )
-                  i.fas.fa-check(
-                    v-if="getColors[i][2]"
-                  )
+                  i.fas.fa-check
+                  //- span {{ color[0] }}
 
               Button(
                 :btnLabel="$t('applyFilter')"
@@ -44,7 +45,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters, mapMutations, mapActions } from 'vuex'
 import { db, auth } from '@/firebase'
 import Button from '@/components/Button'
 
@@ -55,49 +56,66 @@ export default {
 
   data: _ => ({
     isActive: true,
+    refresh: true,
   }),
+
+  firestore: _ => {
+    let _todos = db.collection(auth.currentUser.uid).orderBy('createdAt', 'desc')
+    return {
+      todos: _todos.where('isSelected', '==', true)
+    }
+  },
 
   computed: {
     ...mapGetters([
       'getColors',
     ]),
+
+    getIdByColor(color) {
+      console.log(db.collection(auth.currentUser.uid).where('color', '==', color))
+    }
   },
 
   methods: {
     ...mapMutations([
-      'SET_BOTTOM_SHEET',
       'SET_FILTER_SHOW',
     ]),
 
+    ...mapActions([
+      'setBottomsheetAction',
+    ]),
+
     toggleHandler (bool) {
-      this.SET_BOTTOM_SHEET(bool)
+      this.setBottomsheetAction(bool)
       this.isActive = !this.isActive
     },
 
-    toggleFilter (i) {
+    toggleEachFilter (color, i) {
       this.SET_FILTER_SHOW(i)
-      this.SET_BOTTOM_SHEET(false)
-      this.isActive = false
-      console.log(this.getColors[i][2])
+      this.refresh = false
+      this.$nextTick(() => {
+        this.refresh = true
+      })
 
-      db.collection(auth.currentUser.uid)
-    // '.doc' param needs doc id, by field name 'color'
-        .doc(this.getAllDocs)
-        .update({
-          selected: this.getColors[i][2]
-        })
+    //   let swap = db.collection(auth.currentUser.uid).where('color', '==', color[0]);
+
+    //   db.collection(auth.currentUser.uid)
+    // // '.doc' param needs doc id, by field name 'color'
+    //     .doc(String(swap))
+    //     .update({
+    //       isSelected: color[2]
+    //     })
     },
 
-
     applyFilter () {
-      this.SET_BOTTOM_SHEET(false)
+      this.setBottomsheetAction(false)
       this.isActive = false
     },
 
   },
 
   beforeDestroy () {
-    this.SET_BOTTOM_SHEET(false)
+    this.setBottomsheetAction(false)
   },
 
   components: {
@@ -123,12 +141,11 @@ export default {
     width: 100vw;
     height: 100vh;
     opacity: 0.46;
+    will-change: opacity;
     position: fixed !important;
     overflow: hidden !important;
     background-color: #212121;
     animation: 0.25s dim_ease_in ease;
-    -webkit-backface-visibility: hidden;
-    -webkit-transform-style: preserve-3d;
 
     @keyframes dim_ease_in {
       from {
@@ -173,8 +190,6 @@ export default {
         animation: 0.35s slide_up ease;
         transform: rotate3d(0, 0, 0, 0deg);
         border-radius: $grid4x $grid4x 0 0;
-        -webkit-backface-visibility: hidden;
-        -webkit-transform-style: preserve-3d;
         will-change: opacity, padding-bottom, transform;
 
         // android softkey
@@ -271,13 +286,33 @@ export default {
               .bottomsheet__list-each {
                 width: 100%;
                 height: 100%;
+                opacity: 0.38;
                 cursor: pointer;
+                position: relative;
                 display: inline-block;
                 @include border-radius();
+                @include transition(opacity 0.25s ease);
 
                 svg {
                   padding: $grid4x;
+                  visibility: hidden;
                   color: #fff !important;
+                }
+
+                span {
+                  bottom: 10px;
+                  color: #fff;
+                  position: absolute;
+                  visibility: hidden;
+                }
+
+                &.selected {
+                  opacity: 1;
+
+                  svg,
+                  span {
+                    visibility: visible;
+                  }
                 }
               }
             }

@@ -48,4 +48,22 @@ export const actions = {
     })
   },
 
+  setDarkmodeAction({
+    commit
+  }, payload) {
+    return commit('SET_DARKMODE', payload)
+  },
+
+  setBottomsheetAction({
+    commit
+  }, bool) {
+    if (bool === false) {
+      setTimeout(() => {
+        return commit('SET_BOTTOM_SHEET', false)
+      }, 250)
+    } else {
+      return commit('SET_BOTTOM_SHEET', true)
+    }
+  },
+
 }

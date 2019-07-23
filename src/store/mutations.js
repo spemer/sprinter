@@ -42,13 +42,7 @@ export const mutations = {
 
   // bottom sheet
   [SET_BOTTOM_SHEET]: (state, bool) => {
-    if (!bool) {
-      setTimeout(() => {
-        return state.bottomSheet = bool
-      }, 250)
-    } else {
-      return state.bottomSheet = bool
-    }
+    return state.bottomSheet = bool
   },
 
 }

@@ -15,6 +15,7 @@
             :placeholder="$t('newTodo')"
           )
           button.addTodo__form-clear(
+            type="button"
             v-if="newTodo"
             @click="clearForm"
           )

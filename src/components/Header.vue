@@ -78,6 +78,7 @@ export default {
     }
 
     .header__title {
+      cursor: pointer;
       height: $header;
       overflow: hidden;
       font-weight: 700;
