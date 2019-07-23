@@ -59,21 +59,10 @@ export default {
     refresh: true,
   }),
 
-  firestore: _ => {
-    let _todos = db.collection(auth.currentUser.uid).orderBy('createdAt', 'desc')
-    return {
-      todos: _todos.where('isSelected', '==', true)
-    }
-  },
-
   computed: {
     ...mapGetters([
       'getColors',
     ]),
-
-    getIdByColor(color) {
-      console.log(db.collection(auth.currentUser.uid).where('color', '==', color))
-    }
   },
 
   methods: {

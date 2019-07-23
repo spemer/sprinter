@@ -29,3 +29,25 @@
   color: #327DE1 !important;
   font-weight: 700 !important;
 }
+
+.update-notification {
+  cursor: pointer;
+  z-index: 100;
+  width: calc(100% - 32px);
+  background-color: #333;
+  color: #fff;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 16px;
+  text-decoration: none;
+  border-top: 1px solid #555;
+}
+
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .update-notification {
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+    padding-bottom: calc(var(--safe-area-inset-bottom) + 16px) !important;
+  }
+}

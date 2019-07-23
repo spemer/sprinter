@@ -7,28 +7,45 @@ import {
 if (process.env.NODE_ENV === 'production') {
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready() {
-      return console.log(
+      console.log(
         'App is being served from cache by a service worker.\n' +
         'For more details, visit https://goo.gl/AFskqB'
       )
     },
     registered() {
-      return console.log('Service worker has been registered.')
+      console.log('Service worker has been registered.')
     },
     cached() {
-      return console.log('Content has been cached for offline use.')
+      console.log('Content has been cached for offline use.')
     },
     updatefound() {
-      return console.log('New content is downloading.')
+      console.log('New content is downloading.')
     },
     updated() {
-      return console.log('New content is available; please refresh.')
+      console.log('New content is available please refresh.')
+      displayUpdateNotification()
     },
     offline() {
-      return console.log('No internet connection found. App is running in offline mode.')
+      console.log('No internet connection found. App is running in offline mode.')
     },
     error(error) {
-      return console.error('Error during service worker registration:', error)
+      console.error('Error during service worker registration:', error)
     }
   })
+}
+
+// show update notification
+function displayUpdateNotification() {
+
+  const link = document.createElement('a')
+  link.classList.add('update-notification')
+  link.setAttribute('href', '#')
+  link.innerHTML = 'Update is available. Click here to install.'
+
+  link.addEventListener('click', (e) => {
+    e.preventDefault()
+    window.location.reload()
+  })
+
+  document.querySelector('body').appendChild(link)
 }
