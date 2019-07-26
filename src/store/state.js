@@ -18,7 +18,7 @@ export const state = {
   ],
 
   // appearance
-  darkmode: true,
+  darkmode: false,
   langs: {
     'en': 'Language',
     'ko': '한국어',

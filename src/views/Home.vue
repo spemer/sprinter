@@ -9,16 +9,16 @@
       )
         button
           i.fas.fa-bars
-      div.header__right(
-        slot="header__right"
-        @click="toggleSheet(true)"
-      )
-        button {{ $t('filter') }}
+      //- div.header__right(
+      //-   slot="header__right"
+      //-   @click="toggleSheet(true)"
+      //- )
+      //-   button {{ $t('filter') }}
 
-    BottomSheet.bottomsheet(
-      v-if="getBottomSheet"
-      :bottomSheetTitle="$t('filter')"
-    )
+    //- BottomSheet.bottomsheet(
+    //-   v-if="getBottomSheet"
+    //-   :bottomSheetTitle="$t('filter')"
+    //- )
 
     v-layout(
       data-app
@@ -85,6 +85,12 @@ export default {
     titleTemplate: `%s`,
   }),
 
+  data: _ => ({
+    dialog: false,
+    drawer: false,
+    isDarkmode: false,
+  }),
+
   mounted () {
     window.onpopstate = event => {
       if (auth.currentUser !== null && this.$route.path == '/login') {
@@ -92,12 +98,6 @@ export default {
       }
     }
   },
-
-  data: _ => ({
-    dialog: false,
-    drawer: false,
-    isDarkmode: false,
-  }),
 
   computed: {
     ...mapGetters([
@@ -107,6 +107,10 @@ export default {
       'getBottomSheet',
     ]),
   },
+
+  mixins: [
+    logout,
+  ],
 
   methods: {
     ...mapMutations([
@@ -124,10 +128,6 @@ export default {
       this.SET_BOTTOM_SHEET(bool)
     },
   },
-
-  mixins: [
-    logout,
-  ],
 
   components: {
     Header,
@@ -149,9 +149,9 @@ export default {
   .layout {
     .v-overlay,
     .drawer {
-      max-height: 100vh;
       position: fixed;
       overflow: hidden;
+      max-height: 100vh;
     }
 
     .drawer {

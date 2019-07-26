@@ -85,9 +85,8 @@ export default {
   }),
 
   firestore: _ => {
-    let _todos = db.collection(auth.currentUser.uid).orderBy('createdAt', 'desc')
     return {
-      todos: _todos.where('isSelected', '==', true)
+      todos: db.collection(auth.currentUser.uid).orderBy('createdAt', 'desc')
     }
   },
 

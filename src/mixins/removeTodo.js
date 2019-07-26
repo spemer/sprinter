@@ -31,10 +31,10 @@ export const removeTodo = {
         if (this.isRemoved) {
           db.collection(todo.uid).doc(todo.id).delete()
             .then((response) => {
-              return console.log(response)
+              console.log(response)
             })
             .catch(error => {
-              return console.log(error)
+              console.log(error)
             })
         }
       }, delay)

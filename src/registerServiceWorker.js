@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === 'production') {
     },
     updated() {
       console.log('New content is available please refresh.')
-      displayUpdateNotification()
+      // displayUpdateNotification()
     },
     offline() {
       console.log('No internet connection found. App is running in offline mode.')
@@ -45,7 +45,7 @@ function displayUpdateNotification() {
   link.classList.add('update-notification')
   link.innerHTML = 'Update is available. Click here to install.'
 
-  link.addEventListener('click', (e) => {
+  link.addEventListener('click', e => {
     e.preventDefault()
     location.reload(true)
   })

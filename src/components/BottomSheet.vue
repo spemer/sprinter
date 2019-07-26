@@ -1,15 +1,13 @@
 <template lang="pug">
-  div#bottomSheet(
-    :aria-hidden="{true: isActive}"
-  )
+  div#bottomSheet
     div.bottomSheet__dim(
       @click="toggleHandler(false)"
-      :class="{active: !isActive}"
+      :class="{'active': !isActive}"
     )
     div.bottomsheet__sheet-wrapper
       div.bottomsheet__sheet-box
         div.bottomsheet__sheet.bg(
-          :class="{active: isActive}"
+          :class="{'active': isActive}"
         )
           div.bottomsheet__wrapper
             div.bottomsheet__header.bg

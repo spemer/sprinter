@@ -134,6 +134,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.v-overlay {
+  // top: 0 !important;
+  // left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  position: fixed !important;
+  overflow: hidden !important;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .drawer {
   width: 100%;
 

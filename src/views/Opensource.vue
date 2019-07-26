@@ -40,16 +40,16 @@ export default {
     }
   },
 
-  methods: {
-    openNewTab: href => {
-      return window.open(href)
-    }
-  },
-
   computed: {
     opsEntries: _ => {
       return OPS_ENTRIES
     },
+  },
+
+  methods: {
+    openNewTab: href => {
+      return window.open(href)
+    }
   },
 
   components: {
