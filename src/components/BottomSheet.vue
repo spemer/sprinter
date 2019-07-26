@@ -31,7 +31,6 @@
                   :class="{'selected': color[2]}"
                 )
                   i.fas.fa-check
-                  //- span {{ color[0] }}
 
               Button(
                 :btnLabel="$t('applyFilter')"
@@ -60,12 +59,14 @@ export default {
   computed: {
     ...mapGetters([
       'getColors',
+      'getSelectedColors',
     ]),
   },
 
   methods: {
     ...mapMutations([
       'SET_FILTER_SHOW',
+      'SET_SELECTED_COLORS',
     ]),
 
     ...mapActions([
@@ -84,14 +85,13 @@ export default {
         this.refresh = true
       })
 
-    //   let swap = db.collection(auth.currentUser.uid).where('color', '==', color[0]);
-
-    //   db.collection(auth.currentUser.uid)
-    // // '.doc' param needs doc id, by field name 'color'
-    //     .doc(String(swap))
-    //     .update({
-    //       isSelected: color[2]
-    //     })
+      let el = document.querySelectorAll('.bottomsheet__list-each')
+      if (! el[i].classList.contains('selected')) {
+        this.SET_SELECTED_COLORS(['add', getComputedStyle(el[i]).backgroundColor])
+      }
+      else {
+        this.SET_SELECTED_COLORS(['remove', getComputedStyle(el[i]).backgroundColor])
+      }
     },
 
     applyFilter () {

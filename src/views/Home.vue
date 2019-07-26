@@ -9,16 +9,16 @@
       )
         button
           i.fas.fa-bars
-      //- div.header__right(
-      //-   slot="header__right"
-      //-   @click="toggleSheet(true)"
-      //- )
-      //-   button {{ $t('filter') }}
+      div.header__right(
+        slot="header__right"
+        @click="toggleSheet(true)"
+      )
+        button {{ $t('filter') }}
 
-    //- BottomSheet.bottomsheet(
-    //-   v-if="getBottomSheet"
-    //-   :bottomSheetTitle="$t('filter')"
-    //- )
+    BottomSheet.bottomsheet(
+      v-if="getBottomSheet"
+      :bottomSheetTitle="$t('filter')"
+    )
 
     v-layout(
       data-app

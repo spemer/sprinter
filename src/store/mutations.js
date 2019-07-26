@@ -4,6 +4,7 @@ import {
   SET_ERROR,
   SET_TODOS,
   SET_FILTER_SHOW,
+  SET_SELECTED_COLORS,
   SET_DARKMODE,
   SET_BOTTOM_SHEET
 } from '@/store/mutation-types'
@@ -31,6 +32,14 @@ export const mutations = {
 
   [SET_FILTER_SHOW]: (state, i) => {
     return state.colors[i][2] = !state.colors[i][2]
+  },
+
+  [SET_SELECTED_COLORS]: (state, [type, payload]) => {
+    if (type == 'add') {
+      return state.selectedColors.push(payload)
+    } else if (type == 'remove') {
+      return state.selectedColors.splice(state.selectedColors.indexOf(payload), 1)
+    }
   },
 
 

@@ -23,6 +23,10 @@ export const getters = {
     return state.colors
   },
 
+  getSelectedColors: (state) => {
+    return state.selectedColors
+  },
+
 
   // appearance
   getDarkmode: (state) => {

@@ -8,13 +8,22 @@ export const state = {
   // todo list
   todos: [],
   colors: [
-    ['#80CFA9', 'transparent', 'true'],
-    ['#AF8D86', 'transparent', 'true'],
-    ['#FC7A57', 'transparent', 'true'],
-    ['#2D848A', 'transparent', 'true'],
-    ['#9D6381', 'transparent', 'true'],
-    ['#95A78D', 'transparent', 'true'],
-    ['#FF9F1C', 'transparent', 'true'],
+    ['rgb(128, 207, 169)', 'transparent', 'true'],
+    ['rgb(175, 141, 134)', 'transparent', 'true'],
+    ['rgb(252, 122, 87)', 'transparent', 'true'],
+    ['rgb(45, 132, 138)', 'transparent', 'true'],
+    ['rgb(157, 99, 129)', 'transparent', 'true'],
+    ['rgb(149, 167, 141)', 'transparent', 'true'],
+    ['rgb(255, 159, 28)', 'transparent', 'true'],
+  ],
+  selectedColors: [
+    'rgb(128, 207, 169)',
+    'rgb(175, 141, 134)',
+    'rgb(252, 122, 87)',
+    'rgb(45, 132, 138)',
+    'rgb(157, 99, 129)',
+    'rgb(149, 167, 141)',
+    'rgb(255, 159, 28)',
   ],
 
   // appearance

@@ -39,6 +39,7 @@ export default {
     newTodo: '',
     todos: [],
     selectedColor: 'transparent',
+    selectedArray: [],
   }),
 
   firestore: _ => {
@@ -100,9 +101,9 @@ export default {
           isCompleted: false,
           isRemoved: false,
           isSelected: true,
+          color: this.selectedColor,
           id: this.todos.length,
           uid: this.getUser,
-          color: this.selectedColor,
           createdAt: new Date(),
         })
         .then(docRef => {

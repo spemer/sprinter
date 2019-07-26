@@ -26,7 +26,7 @@
             :for="todo.id"
           )
             div.todolist__list-left-color(
-              :style="[{'background-color': todo.color}]"
+              :style="{'background-color': todo.color}"
             )
             span {{ todo.text }}
           input(
@@ -98,14 +98,29 @@ export default {
     })
   },
 
-  components: {
-    BarLoader,
+  watch: {
+    getSelectedColors() {
+      let todoListEach = document.querySelectorAll('.todolist__list-each')
+      let getTodoColor = document.querySelectorAll('.todolist__list-left-color')
+
+      for (let j = 0; j < getTodoColor.length; j++) {
+        if (this.getSelectedColors.includes(getComputedStyle(getTodoColor[j]).backgroundColor)) {
+          todoListEach[j].style.display = 'block'
+        }
+        else {
+          todoListEach[j].style.display = 'none'
+        }
+      }
+    },
+    deep: true,
   },
 
   computed: {
     ...mapGetters([
       'getUser',
       'getTodos',
+      'getColors',
+      'getSelectedColors',
     ]),
   },
 
@@ -147,6 +162,10 @@ export default {
         .doc(todo.id)
         .update({...todo})
     },
+  },
+
+  components: {
+    BarLoader,
   },
 
 }
