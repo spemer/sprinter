@@ -1,3 +1,7 @@
+import {
+  globalVar
+} from '@/globalVar'
+
 export const state = {
 
   // user auth
@@ -8,22 +12,22 @@ export const state = {
   // todo list
   todos: [],
   colors: [
-    ['rgb(128, 207, 169)', 'transparent', 'true'],
-    ['rgb(175, 141, 134)', 'transparent', 'true'],
-    ['rgb(252, 122, 87)', 'transparent', 'true'],
-    ['rgb(45, 132, 138)', 'transparent', 'true'],
-    ['rgb(157, 99, 129)', 'transparent', 'true'],
-    ['rgb(149, 167, 141)', 'transparent', 'true'],
-    ['rgb(255, 159, 28)', 'transparent', 'true'],
+    [globalVar.todoColors[0], 'transparent', 'true'],
+    [globalVar.todoColors[1], 'transparent', 'true'],
+    [globalVar.todoColors[2], 'transparent', 'true'],
+    [globalVar.todoColors[3], 'transparent', 'true'],
+    [globalVar.todoColors[4], 'transparent', 'true'],
+    [globalVar.todoColors[5], 'transparent', 'true'],
+    [globalVar.todoColors[6], 'transparent', 'true'],
   ],
   selectedColors: [
-    'rgb(128, 207, 169)',
-    'rgb(175, 141, 134)',
-    'rgb(252, 122, 87)',
-    'rgb(45, 132, 138)',
-    'rgb(157, 99, 129)',
-    'rgb(149, 167, 141)',
-    'rgb(255, 159, 28)',
+    globalVar.todoColors[0],
+    globalVar.todoColors[1],
+    globalVar.todoColors[2],
+    globalVar.todoColors[3],
+    globalVar.todoColors[4],
+    globalVar.todoColors[5],
+    globalVar.todoColors[6],
   ],
 
   // appearance

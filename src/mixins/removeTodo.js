@@ -21,8 +21,8 @@ export const removeTodo = {
           dontClose: true,
           onClick: (e, toastObject) => {
             todo.isRemoved = false
-            toastObject.goAway(0)
             this.isRemoved = false
+            toastObject.goAway(0)
           }
         },
       })

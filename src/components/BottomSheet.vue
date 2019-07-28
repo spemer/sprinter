@@ -186,7 +186,9 @@ export default {
 
         // iPhone X safearea
         @supports (padding-bottom: env(safe-area-inset-bottom)) {
-          padding-bottom: calc(env(safe-area-inset-bottom) + #{$grid56x});
+          padding-bottom: calc(
+            env(safe-area-inset-bottom) + #{$grid56x}
+          ) !important;
         }
 
         @keyframes slide_up {

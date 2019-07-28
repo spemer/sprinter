@@ -176,10 +176,10 @@ export default {
   $list: $grid10x;
   $line: $grid6x;
 
-  padding-bottom: calc(#{$header} + #{$grid32x});
+  padding-bottom: calc(#{$header} + #{$grid40x});
 
   @supports (padding-bottom: env(safe-area-inset-bottom)) {
-    padding-bottom: calc(env(safe-area-inset-bottom) + #{$grid32x}) !important;
+    padding-bottom: calc(env(safe-area-inset-bottom) + #{$grid40x}) !important;
   }
 
   .todolist__list {
