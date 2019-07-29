@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { globalVar } from '@/globalVar'
+
 export default {
   metaInfo: _ => ({
     title: globalVar.appName,

@@ -177,14 +177,13 @@ export default {
         animation: 0.35s slide_up ease;
         transform: rotate3d(0, 0, 0, 0deg);
         border-radius: $grid4x $grid4x 0 0;
-        will-change: opacity, padding-bottom, transform;
+        will-change: opacity, transform !important;
 
         // android softkey
         @media screen and (device-aspect-ratio: 36/59) {
           padding-bottom: calc(#{$grid48x} + #{$grid16x}) !important;
         }
 
-        // iPhone X safearea
         @supports (padding-bottom: env(safe-area-inset-bottom)) {
           padding-bottom: calc(
             env(safe-area-inset-bottom) + #{$grid56x}
@@ -194,11 +193,11 @@ export default {
         @keyframes slide_up {
           from {
             opacity: 1;
-            padding-bottom: $grid56x;
+            @include transform(translateY(0));
           }
           to {
             opacity: 0;
-            padding-bottom: 0;
+            @include transform(translateY($grid56x));
           }
         }
 
@@ -210,11 +209,11 @@ export default {
           @keyframes slide_down {
             from {
               opacity: 0;
-              padding-bottom: 0;
+              @include transform(translateY($grid56x));
             }
             to {
               opacity: 1;
-              padding-bottom: $grid56x;
+              @include transform(translateY(0));
             }
           }
         }
