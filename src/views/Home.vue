@@ -155,6 +155,8 @@ export default {
     }
 
     .drawer {
+      @include user-select();
+
       .drawer__close {
         top: 0;
         left: 0;
@@ -180,8 +182,8 @@ export default {
         bottom: 0;
         width: 100%;
         height: $grid12x;
-        position: absolute;
         padding: $grid4x;
+        position: absolute;
 
         @supports (padding-bottom: env(safe-area-inset-bottom)) {
           padding-bottom: calc(env(safe-area-inset-bottom) + #{$grid4x});
@@ -218,6 +220,7 @@ export default {
 }
 
 .v-dialog {
+  opacity: 0;
   margin: 0 auto;
   padding: $grid2x 0;
   border-radius: $grid4x;
@@ -226,6 +229,7 @@ export default {
   width: calc(100% - #{$grid32x}) !important;
 
   .v-card {
+    @include user-select();
     @include border-radius(0);
 
     .v-card__title,

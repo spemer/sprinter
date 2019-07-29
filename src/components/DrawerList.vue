@@ -9,6 +9,7 @@
           :class="getProvider(userInfo.provider)"
         )
       p.drawer__userInfo-email {{ userInfo.email }}
+
     div.drawer__list
       div.drawer__list-each
         div.drawer__list-darkmode
@@ -21,6 +22,7 @@
               :checked="getDarkmode"
             )
             span.checkmark
+
       div.drawer__list-each
         div.drawer__list-locale
           i.fas.fa-globe
@@ -33,12 +35,14 @@
               :key="key"
               :value="index"
             ) {{ lang }}
+
       div.drawer__list-each
         div.drawer__list-ops(
           @click="goOpensource"
         )
           i.fas.fa-code
           span {{ $t('ops') }}
+
       div.drawer__list-each
         div.drawer__list-ops(
           @click="shareApi"
@@ -56,8 +60,8 @@ import DrawerList from '@/components/DrawerList'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import { logout } from '@/mixins/logout'
 import { toast } from '@/mixins/toast'
+import { shareApi } from '@/mixins/shareApi'
 import { auth } from '@/firebase'
-import { globalVar } from '@/globalVar'
 
 export default {
   name: 'home',
@@ -88,19 +92,8 @@ export default {
       'SET_CURRENT_LANG'
     ]),
 
-    shareApi () {
-      if (navigator.share) {
-        navigator.share({
-          title: globalVar.appName,
-          text: globalVar.appDescription,
-          url: 'https://sprinter-web.web.app',
-        })
-      }
-    },
-
     setCurrentLang (index) {
       this.SET_CURRENT_LANG(index)
-      console.log(this.getCurrentLang)
     },
 
     goOpensource () {
@@ -132,6 +125,7 @@ export default {
 
   mixins: [
     logout,
+    shareApi,
   ],
 
   components: {
@@ -158,6 +152,7 @@ export default {
 
 .drawer {
   width: 100%;
+  @include user-select();
 
   ::selection {
     background-color: transparent !important;

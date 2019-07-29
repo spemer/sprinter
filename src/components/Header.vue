@@ -31,6 +31,7 @@ export default {
   width: 100%;
   height: $header;
   position: fixed;
+  @include user-select();
   @include drop-shadow(0, 0, $grid4x, $black08);
 
   ::selection {

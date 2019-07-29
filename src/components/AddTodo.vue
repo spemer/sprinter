@@ -6,6 +6,7 @@
           div.addTodo__color-each(
             v-for="(color, i) in getColors"
             @click="setColor(color, i)"
+            ref="addColorEach"
             :style="{ border: '6px solid ' + `${color[0]}` }"
           )
         div.addTodo__form-input
@@ -68,10 +69,11 @@ export default {
   $btn: $grid12x;
 
   bottom: 0;
-  z-index: 2;
+  z-index: 5;
   width: 100%;
   position: fixed;
   padding-bottom: $grid4x;
+  @include user-select();
   @include drop-shadow(0, 0, $grid4x, $black08);
 
   ::selection {

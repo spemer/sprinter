@@ -23,7 +23,7 @@ export const addTodo = {
     },
 
     setColor(color, i) {
-      let el = document.querySelectorAll('.addTodo__color-each')
+      let el = this.$refs.addColorEach
 
       for (let j = 0; j < el.length; j++) {
         if (i === j) {
@@ -66,7 +66,7 @@ export const addTodo = {
         this.newTodo = ''
         this.selectedColor = 'transparent'
 
-        let el = document.querySelectorAll('.addTodo__color-each');
+        let el = this.$refs.addColorEach;
         [...el].forEach(e => {
           e.style.backgroundColor = 'transparent'
         })

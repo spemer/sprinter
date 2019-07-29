@@ -2,7 +2,6 @@ import firebase from 'firebase/app'
 import {
   auth
 } from '@/firebase'
-
 import {
   toast
 } from '@/mixins/toast'
@@ -17,7 +16,11 @@ export const fbLogin = {
         .then(() => {
           this.$Progress.finish()
           if (this.getUser) {
-            this.toast(`${this.$i18n.t('welcome')}, ${auth.currentUser.displayName}!`, 2000, this.$i18n.t('close'))
+            if (this.$store.getters.getCurrentLang == 'ko') {
+              this.toast(`${this.$t('welcome')}, ${auth.currentUser.displayName}님!`, 2000, this.$t('close'))
+            } else {
+              this.toast(`${this.$t('welcome')}, ${auth.currentUser.displayName}!`, 2000, this.$t('close'))
+            }
           }
         })
     }
@@ -38,7 +41,11 @@ export const googleLogin = {
         .then(() => {
           this.$Progress.finish()
           if (this.getUser) {
-            this.toast(`${this.$i18n.t('welcome')}, ${auth.currentUser.displayName}!`, 2000, this.$i18n.t('close'))
+            if (this.$store.getters.getCurrentLang == 'ko') {
+              this.toast(`${this.$t('welcome')}, ${auth.currentUser.displayName}님!`, 2000, this.$t('close'))
+            } else {
+              this.toast(`${this.$t('welcome')}, ${auth.currentUser.displayName}!`, 2000, this.$t('close'))
+            }
           }
         })
     }
@@ -59,7 +66,11 @@ export const twitterLogin = {
         .then(() => {
           this.$Progress.finish()
           if (this.getUser) {
-            this.toast(`${this.$i18n.t('welcome')}, ${auth.currentUser.displayName}!`, 2000, this.$i18n.t('close'))
+            if (this.$store.getters.getCurrentLang == 'ko') {
+              this.toast(`${this.$t('welcome')}, ${auth.currentUser.displayName}님!`, 2000, this.$t('close'))
+            } else {
+              this.toast(`${this.$t('welcome')}, ${auth.currentUser.displayName}!`, 2000, this.$t('close'))
+            }
           }
         })
     }

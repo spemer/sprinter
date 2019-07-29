@@ -72,6 +72,7 @@ export default {
   position: fixed;
   overflow: hidden;
   background-color: $brand !important;
+  @include user-select();
 
   @supports (padding-top: env(safe-area-inset-top)) {
     padding-top: calc(env(safe-area-inset-top));

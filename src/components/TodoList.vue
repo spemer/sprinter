@@ -15,6 +15,7 @@
       div.todolist__list-each(
         v-if="todos"
         v-for="todo in todos"
+        ref="todoListEach"
         :key="todo.id"
         :class="{'completed': todo.isCompleted, 'removed': todo.isRemoved}"
       )
@@ -26,6 +27,7 @@
             :for="todo.id"
           )
             div.todolist__list-left-color(
+              ref="todoListEachColor"
               :style="{'background-color': todo.color}"
             )
             span {{ todo.text }}
@@ -100,8 +102,8 @@ export default {
 
   watch: {
     getSelectedColors () {
-      let todoListEach = document.querySelectorAll('.todolist__list-each')
-      let getTodoColor = document.querySelectorAll('.todolist__list-left-color')
+      let todoListEach = this.$refs.todoListEach
+      let getTodoColor = this.$refs.todoListEachColor
 
       for (let j = 0; j < getTodoColor.length; j++) {
         if (this.getSelectedColors.includes(getComputedStyle(getTodoColor[j]).backgroundColor)) {

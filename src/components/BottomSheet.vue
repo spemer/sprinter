@@ -26,6 +26,7 @@
               )
                 div.bottomsheet__list-each(
                   v-if="refresh"
+                  ref="colorEach"
                   @click="toggleEachFilter(color, i)"
                   :style="{'background-color': color[0]}"
                   :class="{'selected': color[2]}"
@@ -93,7 +94,7 @@ export default {
         this.refresh = true
       })
 
-      let el = document.querySelectorAll('.bottomsheet__list-each')
+      let el = this.$refs.colorEach
       if (! el[i].classList.contains('selected')) {
         this.SET_SELECTED_COLORS(['add', getComputedStyle(el[i]).backgroundColor])
       }
@@ -126,6 +127,7 @@ export default {
   left: 0;
   z-index: 5;
   position: absolute;
+  @include user-select();
 
   ::selection {
     background-color: transparent !important;
@@ -282,12 +284,11 @@ export default {
               .bottomsheet__list-each {
                 width: 100%;
                 height: 100%;
-                opacity: 0.38;
+                opacity: 0.24;
                 cursor: pointer;
                 position: relative;
                 display: inline-block;
                 @include border-radius();
-                @include transition(opacity 0.25s ease);
 
                 svg {
                   padding: $grid4x;

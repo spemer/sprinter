@@ -1,5 +1,5 @@
 #toasted-container {
-  z-index: 1 !important;
+  z-index: 50 !important;
   padding-bottom: 128px !important;
   font-family: Sans-serif !important;
 }

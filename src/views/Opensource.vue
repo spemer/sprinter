@@ -65,6 +65,7 @@ export default {
   padding-right: $grid4x;
   padding-top: calc(#{$header} + #{$grid4x});
   padding-bottom: calc(#{$header} + #{$grid32x});
+  @include user-select();
 
   @supports (padding-bottom: env(safe-area-inset-bottom)) {
     padding-bottom: calc(env(safe-area-inset-bottom) + #{$header}) !important;
