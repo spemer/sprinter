@@ -70,9 +70,9 @@ export default {
     }
 
     .header__right {
-      right: 0;
-      text-align: right;
-      padding: 0 $grid4x;
+      right: 0 !important;
+      text-align: right !important;
+      padding: 0 $grid4x !important;
       @include font-size(14px);
       @include line-height($grid9x);
     }
