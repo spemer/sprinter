@@ -18,11 +18,12 @@ import {
 } from '@/store/actions.js'
 
 export default new Vuex.Store({
-
-  // keep state.darkmode value
+  // keep state value
   plugins: [createPersistedState({
     paths: [
       'darkmode',
+      'langs',
+      'currentLang',
     ],
   })],
 

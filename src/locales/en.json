@@ -2,6 +2,7 @@
   "welcome": "Welcome",
   "close": "CLOSE",
   "newTodo": "New TODO",
+  "todos": "Todos",
   "emptyInput": "Please fill in the textfield.",
   "save": "Save",
   "logout": "Logout",
@@ -17,5 +18,7 @@
   "ops": "Open Source Libraries",
   "share": "Share Sprinter",
   "filter": "Filter",
-  "applyFilter": "Apply Filter"
+  "applyFilter": "Apply Filter",
+  "removed": "removed",
+  "undo": "UNDO"
 }

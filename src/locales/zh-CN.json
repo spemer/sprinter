@@ -2,6 +2,7 @@
   "welcome": "问候",
   "close": "关闭",
   "newTodo": "新的待辦事項",
+  "todos": "待辦事項",
   "emptyInput": "請填寫文本字段。",
   "save": "保存",
   "logout": "登出",
@@ -17,5 +18,7 @@
   "ops": "開源庫",
   "share": "分享 Sprinter",
   "filter": "篩選",
-  "applyFilter": "應用過濾器"
+  "applyFilter": "應用過濾器",
+  "removed": "刪除",
+  "undo": "復原"
 }

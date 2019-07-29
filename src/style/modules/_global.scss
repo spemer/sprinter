@@ -64,8 +64,8 @@ button {
   &:focus,
   &:active,
     {
-    border: none;
-    outline: none;
+    border: none !important;
+    outline: none !important;
   }
 }
 
@@ -79,16 +79,16 @@ textarea:focus {
 
   &::-ms-clear,
   &::-ms-reveal {
-    display: none;
+    display: none !important;
   }
 
   &::-webkit-contacts-auto-fill-button,
   &::-webkit-credentials-auto-fill-button {
     right: 0;
-    position: absolute;
-    visibility: hidden;
-    pointer-events: none;
     display: none !important;
+    position: absolute !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
   }
 }
 

@@ -167,7 +167,6 @@ export default {
         cursor: pointer;
         display: inline-block;
         @include border-radius(100%);
-        // @include transition(background-color 0.25s ease);
 
         &:not(:first-child) {
           margin-left: $grid2x;

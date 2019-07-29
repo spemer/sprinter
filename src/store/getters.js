@@ -37,6 +37,10 @@ export const getters = {
     return state.langs
   },
 
+  getCurrentLang: (state) => {
+    return state.currentLang
+  },
+
 
   // bottom sheet
   getBottomSheet: (state) => {

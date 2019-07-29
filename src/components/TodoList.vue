@@ -99,7 +99,7 @@ export default {
   },
 
   watch: {
-    getSelectedColors() {
+    getSelectedColors () {
       let todoListEach = document.querySelectorAll('.todolist__list-each')
       let getTodoColor = document.querySelectorAll('.todolist__list-left-color')
 
@@ -112,6 +112,7 @@ export default {
         }
       }
     },
+
     deep: true,
   },
 
@@ -131,6 +132,7 @@ export default {
   methods: {
     ...mapMutations([
       'SET_TODOS',
+      'SET_COLORED_TODOS_LENGTH',
     ]),
 
     undoEditText (todo) {

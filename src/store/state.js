@@ -38,6 +38,7 @@ export const state = {
     'en': 'English',
     'zh-CN': '中文',
   },
+  currentLang: 'en',
 
   // bottom sheet
   bottomSheet: false,

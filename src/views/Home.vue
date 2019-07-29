@@ -197,6 +197,8 @@ export default {
           background-color: $black08;
           width: calc(100% - #{$grid8x});
           @include border-radius();
+          @include font-size($grid4x);
+          @include line-height(0px);
 
           svg {
             margin-left: $grid2x;
@@ -219,13 +221,11 @@ export default {
   margin: 0 auto;
   padding: $grid2x 0;
   border-radius: $grid4x;
-  background-color: transparent;
   max-width: 320px !important;
+  background-color: transparent;
   width: calc(100% - #{$grid32x}) !important;
 
   .v-card {
-    background-color: #fff;
-    background-color: $text333 !important;
     @include border-radius(0);
 
     .v-card__title,
@@ -239,33 +239,59 @@ export default {
     .v-card__title {
       font-weight: 700;
       padding-bottom: 0;
-      color: $white87 !important;
       @include font-size($grid5x);
     }
 
     .v-card__text {
       padding-top: 0;
-      color: $black54;
-      color: $white87 !important;
       @include font-size($grid4x);
     }
 
     .v-card__actions {
-      padding: 0 0 $grid2x 0;
       width: 100%;
+      padding: 0 0 $grid2x 0;
 
       button {
         width: 50%;
         height: $grid12x;
 
-        &.cancel {
-          color: $black54;
-          color: $white54 !important;
-        }
-
         &.logout {
           font-weight: 700;
           color: $brand_red;
+        }
+      }
+    }
+  }
+}
+
+.theme--light {
+  .v-dialog {
+    .v-card__title,
+    .v-card__text {
+      color: $text333 !important;
+    }
+
+    .v-card__actions {
+      button {
+        &.cancel {
+          color: $text777 !important;
+        }
+      }
+    }
+  }
+}
+
+.theme--dark {
+  .v-dialog {
+    .v-card__title,
+    .v-card__text {
+      color: $white87 !important;
+    }
+
+    .v-card__actions {
+      button {
+        &.cancel {
+          color: $white54 !important;
         }
       }
     }

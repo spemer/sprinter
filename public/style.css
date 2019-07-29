@@ -30,7 +30,7 @@
   font-weight: 700 !important;
 }
 
-.update-notification {
+/* .update-notification {
   cursor: pointer;
   z-index: 100;
   width: calc(100% - 32px);
@@ -51,4 +51,4 @@
     --safe-area-inset-bottom: env(safe-area-inset-bottom);
     padding-bottom: calc(var(--safe-area-inset-bottom) + 16px) !important;
   }
-}
+} */

@@ -1,5 +1,6 @@
 // lightmode
-.lightmode {
+.lightmode,
+.theme--light {
   color: $black78 !important;
   background-color: #fff !important;
 
@@ -20,7 +21,8 @@
 }
 
 // darkmode
-.darkmode {
+.darkmode,
+.theme--dark {
   color: $white87 !important;
   background-color: $text333 !important;
 

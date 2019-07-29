@@ -3,9 +3,11 @@ import {
   SET_STATUS,
   SET_ERROR,
   SET_TODOS,
+  SET_COLORED_TODOS_LENGTH,
   SET_FILTER_SHOW,
   SET_SELECTED_COLORS,
   SET_DARKMODE,
+  SET_CURRENT_LANG,
   SET_BOTTOM_SHEET
 } from '@/store/mutation-types'
 
@@ -30,6 +32,10 @@ export const mutations = {
     return state.todos = payload
   },
 
+  [SET_COLORED_TODOS_LENGTH]: (state, [j, payload]) => {
+    return state.colors[j][3] = payload
+  },
+
   [SET_FILTER_SHOW]: (state, i) => {
     return state.colors[i][2] = !state.colors[i][2]
   },
@@ -46,6 +52,10 @@ export const mutations = {
   // appearance
   [SET_DARKMODE]: (state, payload) => {
     return state.darkmode = payload
+  },
+
+  [SET_CURRENT_LANG]: (state, payload) => {
+    return state.currentLang = payload
   },
 
 

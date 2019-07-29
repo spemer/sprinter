@@ -26,6 +26,7 @@
           i.fas.fa-globe
           select(
             v-model="$i18n.locale"
+            @change="setCurrentLang($i18n.locale)"
           )
             option(
               v-for="(lang, index, key) in getLangs"
@@ -74,12 +75,17 @@ export default {
     ...mapGetters([
       'getDarkmode',
       'getLangs',
+      'getCurrentLang',
     ]),
   },
 
   methods: {
     ...mapActions([
       'setDarkmodeAction',
+    ]),
+
+    ...mapMutations([
+      'SET_CURRENT_LANG'
     ]),
 
     shareApi () {
@@ -90,6 +96,11 @@ export default {
           url: 'https://sprinter-web.web.app',
         })
       }
+    },
+
+    setCurrentLang (index) {
+      this.SET_CURRENT_LANG(index)
+      console.log(this.getCurrentLang)
     },
 
     goOpensource () {
@@ -135,10 +146,8 @@ export default {
 
 <style lang="scss" scoped>
 .v-overlay {
-  // top: 0 !important;
-  // left: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
+  width: 200vw !important;
+  height: 200vh !important;
   position: fixed !important;
   overflow: hidden !important;
   top: 0;

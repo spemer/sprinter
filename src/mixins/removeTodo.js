@@ -12,12 +12,12 @@ export const removeTodo = {
       todo.isRemoved = true
       this.isRemoved = true
 
-      this.$toasted.show(`${todo.text} removed`, {
+      this.$toasted.show(`${todo.text} ${this.$i18n.t('removed')}`, {
         theme: 'primary',
         position: 'bottom-center',
         duration: delay,
         action: {
-          text: 'UNDO',
+          text: `${this.$i18n.t('undo')}`,
           dontClose: true,
           onClick: (e, toastObject) => {
             todo.isRemoved = false
@@ -37,7 +37,7 @@ export const removeTodo = {
               console.log(error)
             })
         }
-      }, delay)
+      }, delay + 500)
     },
   },
 
