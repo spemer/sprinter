@@ -7,9 +7,11 @@ YELLOW=$(tput setaf 3)
 BLUE=$(tput setaf 4)
 PURPLE=$(tput setaf 5)
 
+
 echo "${BOLD}============================================================"
 echo "${PWD##*/}"
 echo "============================================================${RESET}"
+
 
 #============================================================
 # run dev server or deploy directly
@@ -17,7 +19,8 @@ echo "============================================================${RESET}"
 dev_or_deploy() {
   while true; do
     printf "\n"
-    read -p "${BOLD}${GREEN}Run dev server (R) or Deploy directly? (D) ${RESET}" rd
+    printf "${YELLOW}Select one below\n${RESET}"
+    read -p "${BOLD}${GREEN}Run dev server (R) / Deploy directly (D) / Install dependencies (I): ${RESET}" rd
     case ${rd} in
       [Rr]* )
         printf "\n"
@@ -37,10 +40,41 @@ dev_or_deploy() {
         echo "${BOLD}${PURPLE}🔥 firebase deploy 🔥${RESET}"
         firebase deploy;
         break;;
-      * ) echo "${YELLOW}Please answer R(un) or D(eploy).${RESET}";;
+
+      [Ii]* )
+        printf "\n"
+        echo "${BOLD}${PURPLE}🔥 install dependencies 🔥${RESET}"
+        npm_install
+        break;;
+      * ) echo "${YELLOW}Please answer R(un) / D(eploy) / I(nstall).${RESET}";;
     esac
   done
 }
+
+
+#============================================================
+# get OS type && install dependencies
+#============================================================
+npm_install() {
+  while true; do
+    printf "\n"
+    if [[ "$OSTYPE" == "win32" || "cygwin" || "msys" ]]; then
+      npm install --no-optional
+    else
+      read -p "${BOLD}${GREEN}sudo install? (Y/n) ${RESET}" yn
+      case ${yn} in
+        [Yy]* )
+          sudo npm install
+          break;;
+        [Nn]* )
+          npm install
+          break;;
+        * ) echo "${YELLOW}Please answer yes or no.${RESET}";;
+      esac
+    fi
+  done
+}
+
 
 #============================================================
 # run gulpfile.js image resizer
@@ -62,6 +96,7 @@ image_resizer() {
   done
 }
 
+
 #============================================================
 # serve with hot reload at localhost:5000
 #============================================================
@@ -76,6 +111,7 @@ npm_run_serve() {
     esac
   done
 }
+
 
 #============================================================
 # build for production with minification
@@ -92,6 +128,7 @@ npm_run_build() {
   done
 }
 
+
 #============================================================
 # deploy with firebase cli
 #============================================================
@@ -106,6 +143,7 @@ firebase_deploy() {
     esac
   done
 }
+
 
 #============================================================
 # git commit
@@ -138,6 +176,7 @@ git_commit() {
   done
 }
 
+
 #============================================================
 # git push
 #============================================================
@@ -156,6 +195,7 @@ git_push() {
     esac
   done
 }
+
 
 #============================================================
 # main

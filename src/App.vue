@@ -12,5 +12,13 @@
   </v-app>
 </template>
 
+<script>
+export default {
+  metaInfo: _ => ({
+    title: globalVar.appName,
+  }),
+}
+</script>
+
 <style lang="scss">
 </style>
