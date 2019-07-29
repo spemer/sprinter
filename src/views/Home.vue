@@ -80,15 +80,15 @@ import { globalVar } from '@/globalVar'
 export default {
   name: 'home',
 
-  metaInfo: _ => ({
-    title: globalVar.appName,
-    titleTemplate: `%s`,
-  }),
-
   data: _ => ({
     dialog: false,
     drawer: false,
     isDarkmode: false,
+  }),
+
+  metaInfo: _ => ({
+    title: globalVar.appName,
+    titleTemplate: `%s`,
   }),
 
   mounted () {

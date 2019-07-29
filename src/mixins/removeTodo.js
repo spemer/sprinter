@@ -3,11 +3,11 @@ import {
 } from '@/firebase'
 
 export const removeTodo = {
-  methods: {
-    data: _ => ({
-      isRemoved: false,
-    }),
+  data: _ => ({
+    isRemoved: false,
+  }),
 
+  methods: {
     removeTodo(todo, delay) {
       todo.isRemoved = true
       this.isRemoved = true

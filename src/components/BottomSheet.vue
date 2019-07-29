@@ -44,11 +44,19 @@
 <script>
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import { db, auth } from '@/firebase'
+import { globalVar } from '@/globalVar'
 import Button from '@/components/Button'
 
 export default {
   props: {
     bottomSheetTitle: String,
+  },
+
+  metaInfo () {
+    return {
+      title: globalVar.appName,
+      titleTemplate: `%s - ${this.$t('filter')}`,
+    }
   },
 
   data: _ => ({
