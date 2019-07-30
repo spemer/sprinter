@@ -226,7 +226,6 @@ export default {
   border-radius: $grid4x;
   max-width: 320px !important;
   background-color: transparent;
-  width: calc(100% - #{$grid32x}) !important;
 
   .v-card {
     @include user-select();

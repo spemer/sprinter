@@ -37,6 +37,11 @@
       "sizes": "192x192",
       "type": "image\/png",
       "density": "4.0"
+    },
+    {
+      "src": "./img/icons/launcher.png",
+      "sizes": "144x144",
+      "type": "image/png"
     }
   ],
   "start_url": "./index.html",
@@ -51,5 +56,6 @@
   "browser_action": {
     "default_icon": "./img/icons/android-icon-192x192.png",
     "default_title": "Sprinter"
-  }
+  },
+  "scope": "/"
 }

@@ -29,7 +29,7 @@ export const shareApi = {
         let msg = successful ? 'successful' : 'unsuccessful'
         console.log('Copying text command was ' + msg)
       } catch (err) {
-        console.log('Oops, unable to copy')
+        console.log('Unable to copy')
       }
 
       document.body.removeChild(textArea)
@@ -40,7 +40,7 @@ export const shareApi = {
         navigator.share({
           title: globalVar.appName,
           text: globalVar.appDescription,
-          url: 'https://sprinter-web.web.app',
+          url: globalVar.url,
         })
       } else if (!navigator.share) {
         this.copyTextToClipboard(globalVar.url)

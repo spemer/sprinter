@@ -1,6 +1,5 @@
 <template lang="pug">
   div#todolist.bg
-
     BarLoader.spinner.bg(
       v-if="!timeout"
     )
