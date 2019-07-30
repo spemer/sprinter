@@ -11,7 +11,7 @@
           i.fas.fa-bars
       div.header__right(
         slot="header__right"
-        @click="toggleSheet(true)"
+        @click="SET_BOTTOM_SHEET(true)"
       )
         button {{ $t('filter') }}
 
@@ -122,10 +122,6 @@ export default {
       setTimeout(() => {
         this.logout()
       }, 250)
-    },
-
-    toggleSheet(bool) {
-      this.SET_BOTTOM_SHEET(bool)
     },
   },
 

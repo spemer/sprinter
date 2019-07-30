@@ -14,7 +14,7 @@
       div.drawer__list-each
         div.drawer__list-darkmode
           div.drawer__list-switch(
-            @click="toggleDarkmode"
+            @click="setDarkmodeAction(!getDarkmode)"
           )
             span.drawer__list-switch-text {{ $t('darkmode') }}
             input(
@@ -28,7 +28,7 @@
           i.fas.fa-globe
           select(
             v-model="$i18n.locale"
-            @change="setCurrentLang($i18n.locale)"
+            @change="SET_CURRENT_LANG($i18n.locale)"
           )
             option(
               v-for="(lang, index, key) in getLangs"
@@ -79,7 +79,6 @@ export default {
     ...mapGetters([
       'getDarkmode',
       'getLangs',
-      'getCurrentLang',
     ]),
   },
 
@@ -92,16 +91,8 @@ export default {
       'SET_CURRENT_LANG'
     ]),
 
-    setCurrentLang (index) {
-      this.SET_CURRENT_LANG(index)
-    },
-
     goOpensource () {
       this.$router.push('/opensource')
-    },
-
-    toggleDarkmode () {
-      this.setDarkmodeAction(!this.getDarkmode)
     },
 
     setPhotoUrl (provider) {
