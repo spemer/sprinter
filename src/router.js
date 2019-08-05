@@ -14,7 +14,7 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: () => {
-        return import('./views/Home.vue')
+        return import(/* webpackChunkName: 'router - views/Home' */ './views/Home.vue')
       },
       beforeEnter: requireAuth,
     },
@@ -22,14 +22,14 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: () => {
-        return import('./views/Login.vue')
+        return import(/* webpackChunkName: 'router - views/Login' */ './views/Login.vue')
       },
     },
     {
       path: '/opensource',
       name: 'opensource',
       component: () => {
-        return import('./views/Opensource.vue')
+        return import(/* webpackChunkName: 'router - views/Opensource' */ './views/Opensource.vue')
       },
     },
 

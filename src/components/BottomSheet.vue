@@ -43,10 +43,12 @@
 </template>
 
 <script>
+const Button = () =>
+  import(/* webpackChunkName: 'components/Button' */ '@/components/Button')
+
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import { db, auth } from '@/firebase'
 import { globalVar } from '@/globalVar'
-import Button from '@/components/Button'
 
 export default {
   props: {
@@ -55,12 +57,12 @@ export default {
 
   metaInfo () {
     return {
-      title: globalVar.appName,
-      titleTemplate: `%s - ${this.$t('filter')}`,
+      title: `${globalVar.appName} - ${this.$t('filter')}`,
+      titleTemplate: `%s`,
     }
   },
 
-  data: _ => ({
+  data: () => ({
     isActive: true,
     refresh: true,
   }),
@@ -95,12 +97,9 @@ export default {
       })
 
       let el = this.$refs.colorEach
-      if (! el[i].classList.contains('selected')) {
-        this.SET_SELECTED_COLORS(['add', getComputedStyle(el[i]).backgroundColor])
-      }
-      else {
-        this.SET_SELECTED_COLORS(['remove', getComputedStyle(el[i]).backgroundColor])
-      }
+      return (! el[i].classList.contains('selected'))
+        ? this.SET_SELECTED_COLORS(['add', getComputedStyle(el[i]).backgroundColor])
+        : this.SET_SELECTED_COLORS(['remove', getComputedStyle(el[i]).backgroundColor])
     },
 
     applyFilter () {

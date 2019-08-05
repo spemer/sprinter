@@ -52,11 +52,16 @@
 </template>
 
 <script>
+const Header = () =>
+  import(/* webpackChunkName: 'components/Header' */ '@/components/Header')
+const AddTodo = () =>
+  import(/* webpackChunkName: 'components/AddTodo' */ '@/components/AddTodo')
+const TodoList = () =>
+  import(/* webpackChunkName: 'components/TodoList' */ '@/components/TodoList')
+const DrawerList = () =>
+  import(/* webpackChunkName: 'components/DrawerList' */ '@/components/DrawerList')
+
 import firebase from 'firebase/app'
-import Header from '@/components/Header'
-import AddTodo from '@/components/AddTodo'
-import TodoList from '@/components/TodoList'
-import DrawerList from '@/components/DrawerList'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import { logout } from '@/mixins/logout'
 import { toast } from '@/mixins/toast'
@@ -66,7 +71,7 @@ import { auth } from '@/firebase'
 export default {
   name: 'home',
 
-  data: _ => ({
+  data: () => ({
     dialog: false,
     userInfo: {
       displayName: auth.currentUser.displayName,

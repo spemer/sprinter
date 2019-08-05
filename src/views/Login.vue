@@ -35,8 +35,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import firebase from 'firebase/app'
+import { mapGetters } from 'vuex'
 import { globalVar } from '@/globalVar'
 import { fbLogin, googleLogin, twitterLogin } from '@/mixins/login'
 
@@ -45,8 +45,8 @@ export default {
 
   metaInfo () {
     return {
-      title: globalVar.appName,
-      titleTemplate: `%s - ${this.$t('login')}`,
+      title: `${globalVar.appName} - ${this.$t('login')}`,
+      titleTemplate: `%s`,
     }
   },
 

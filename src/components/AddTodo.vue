@@ -25,6 +25,7 @@
           button(
             type="submit"
             @click.prevent="addTodo()"
+            v-scroll-to="{el: 'body', duration: 0}"
           )
             i.fas.fa-plus
 </template>
@@ -44,7 +45,7 @@ export default {
   },
 
   mounted () {
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged((user) => {
       return (user)
         && this.SET_USER(user.uid)
     })

@@ -1,7 +1,8 @@
+require('es6-promise').polyfill()
 const ansiRegex = require('ansi-regex')
 
 module.exports = {
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     config.module.rules.delete('eslint')
   },
 

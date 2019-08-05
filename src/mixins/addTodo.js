@@ -67,7 +67,7 @@ export const addTodo = {
         this.selectedColor = 'transparent'
 
         let el = this.$refs.addColorEach;
-        [...el].forEach(e => {
+        [...el].forEach((e) => {
           e.style.backgroundColor = 'transparent'
         })
       } else if (!this.newTodo) {

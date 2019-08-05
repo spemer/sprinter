@@ -77,7 +77,7 @@ import { removeTodo } from '@/mixins/removeTodo'
 import { BarLoader } from '@saeris/vue-spinners'
 
 export default {
-  data: _ => ({
+  data: () => ({
     todos: [],
     currentlyEditing: null,
     todoEditText: '',
@@ -85,7 +85,7 @@ export default {
     editTextChanged: true,
   }),
 
-  firestore: _ => {
+  firestore: () => {
     return {
       todos: db.collection(auth.currentUser.uid).orderBy('createdAt', 'desc')
     }

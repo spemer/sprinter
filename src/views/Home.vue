@@ -67,11 +67,17 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
-import AddTodo from '@/components/AddTodo'
-import TodoList from '@/components/TodoList'
-import DrawerList from '@/components/DrawerList'
-import BottomSheet from '@/components/BottomSheet'
+const Header = () =>
+  import(/* webpackChunkName: 'components/Header' */ '@/components/Header')
+const AddTodo = () =>
+  import(/* webpackChunkName: 'components/AddTodo' */ '@/components/AddTodo')
+const TodoList = () =>
+  import(/* webpackChunkName: 'components/TodoList' */ '@/components/TodoList')
+const DrawerList = () =>
+  import(/* webpackChunkName: 'components/DrawerList' */ '@/components/DrawerList')
+const BottomSheet = () =>
+  import(/* webpackChunkName: 'components/BottomSheet' */ '@/components/BottomSheet')
+
 import { mapGetters, mapMutations } from 'vuex'
 import { logout } from '@/mixins/logout'
 import { auth } from '@/firebase'
@@ -80,19 +86,19 @@ import { globalVar } from '@/globalVar'
 export default {
   name: 'home',
 
-  data: _ => ({
+  data: () => ({
     dialog: false,
     drawer: false,
     isDarkmode: false,
   }),
 
-  metaInfo: _ => ({
-    title: globalVar.appName,
+  metaInfo: () => ({
+    title: `${globalVar.appName}`,
     titleTemplate: `%s`,
   }),
 
   mounted () {
-    window.onpopstate = event => {
+    window.onpopstate = (event) => {
       if (auth.currentUser !== null && this.$route.path == '/login') {
         this.$router.replace('/')
       }

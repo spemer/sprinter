@@ -26,7 +26,9 @@
 </template>
 
 <script>
-import Header from '@/components/Header'
+const Header = () =>
+  import(/* webpackChunkName: 'components/Header' */ '@/components/Header')
+
 import OPS_ENTRIES from '@/opensource/list.json'
 import { globalVar } from '@/globalVar'
 
@@ -35,8 +37,8 @@ export default {
 
   metaInfo () {
     return {
-      title: globalVar.appName,
-      titleTemplate: `%s - ${this.$t('ops')}`,
+      title: `${globalVar.appName} - ${this.$t('ops')}`,
+      titleTemplate: `%s`,
     }
   },
 
