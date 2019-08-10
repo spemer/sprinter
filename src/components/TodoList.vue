@@ -103,14 +103,15 @@ export default {
     getSelectedColors () {
       let todoListEach = this.$refs.todoListEach
       let getTodoColor = this.$refs.todoListEachColor
-
       for (let j = 0; j < getTodoColor.length; j++) {
-        return (this.getSelectedColors.includes(getComputedStyle(getTodoColor[j]).backgroundColor))
-          ? todoListEach[j].style.display = 'block'
-          : todoListEach[j].style.display = 'none'
+        if (this.getSelectedColors.includes(getComputedStyle(getTodoColor[j]).backgroundColor)) {
+          todoListEach[j].style.display = 'block'
+        }
+        else {
+          todoListEach[j].style.display = 'none'
+        }
       }
     },
-
     deep: true,
   },
 

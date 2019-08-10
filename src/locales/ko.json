@@ -20,5 +20,6 @@
   "filter": "필터",
   "applyFilter": "필터 적용하기",
   "removed": "삭제됨",
-  "undo": "취소"
+  "undo": "취소",
+  "privacyPolicy": "개인정보처리방침"
 }

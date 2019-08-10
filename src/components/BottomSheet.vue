@@ -103,6 +103,7 @@ export default {
     },
 
     applyFilter () {
+      console.log('applyFilter')
       this.setBottomsheetAction(false)
       this.isActive = false
     },

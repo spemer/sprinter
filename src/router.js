@@ -32,6 +32,13 @@ const router = new Router({
         return import(/* webpackChunkName: 'router - views/Opensource' */ './views/Opensource.vue')
       },
     },
+    {
+      path: '/terms',
+      name: 'terms',
+      component: () => {
+        return import(/* webpackChunkName: 'router - views/Terms' */ './views/Terms.vue')
+      },
+    },
 
     // redirect
     {

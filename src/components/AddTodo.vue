@@ -59,7 +59,7 @@ export default {
 
   mixins: [
     toast,
-    addTodo,
+    addTodo
   ],
 
 }

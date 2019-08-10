@@ -20,8 +20,8 @@ dev_or_deploy() {
   while true; do
     printf "\n"
     printf "${YELLOW}Select one below\n${RESET}"
-    read -p "${BOLD}${GREEN}Run dev server (R) / Deploy directly (D) / Install dependencies (I): ${RESET}" rd
-    case ${rd} in
+    read -p "${BOLD}${GREEN}Run dev server (R) / Deploy (D) / Lint (L) / Install (I) ${RESET}" rdli
+    case ${rdli} in
       [Rr]* )
         printf "\n"
         echo "${BOLD}${PURPLE}🔥 Run dev server 🔥${RESET}"
@@ -34,6 +34,9 @@ dev_or_deploy() {
 
       [Dd]* )
         printf "\n"
+        echo "${BOLD}${PURPLE}🔥 lint 🔥${RESET}"
+        npm run lint;
+        printf "\n"
         echo "${BOLD}${PURPLE}🔥 npm run build 🔥${RESET}"
         npm run build;
         printf "\n"
@@ -41,11 +44,18 @@ dev_or_deploy() {
         firebase deploy;
         break;;
 
+      [Ll]* )
+        printf "\n"
+        echo "${BOLD}${PURPLE}🔥 Lint fix 🔥${RESET}"
+        npm run lint;
+        break;;
+
       [Ii]* )
         printf "\n"
-        echo "${BOLD}${PURPLE}🔥 install dependencies 🔥${RESET}"
+        echo "${BOLD}${PURPLE}🔥 Install dependencies 🔥${RESET}"
         npm_install
         break;;
+
       * ) echo "${YELLOW}Please answer R(un) / D(eploy) / I(nstall).${RESET}";;
     esac
   done
