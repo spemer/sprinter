@@ -97,7 +97,7 @@ export default {
     ]),
 
     goOpensource () {
-      this.$router.push('/opensource')
+      this.$router.push('/opensource/')
     },
 
     setPhotoUrl (provider) {

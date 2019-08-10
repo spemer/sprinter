@@ -19,21 +19,21 @@ const router = new Router({
       beforeEnter: requireAuth,
     },
     {
-      path: '/login',
+      path: '/login/',
       name: 'login',
       component: () => {
         return import(/* webpackChunkName: 'router - views/Login' */ './views/Login.vue')
       },
     },
     {
-      path: '/opensource',
+      path: '/opensource/',
       name: 'opensource',
       component: () => {
         return import(/* webpackChunkName: 'router - views/Opensource' */ './views/Opensource.vue')
       },
     },
     {
-      path: '/terms',
+      path: '/terms/',
       name: 'terms',
       component: () => {
         return import(/* webpackChunkName: 'router - views/Terms' */ './views/Terms.vue')

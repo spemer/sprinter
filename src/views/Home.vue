@@ -99,7 +99,7 @@ export default {
 
   mounted () {
     window.onpopstate = (event) => {
-      if (auth.currentUser !== null && this.$route.path == '/login') {
+      if (auth.currentUser !== null && this.$route.path == '/login/') {
         this.$router.replace('/')
       }
     }

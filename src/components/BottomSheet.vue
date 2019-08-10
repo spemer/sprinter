@@ -15,7 +15,9 @@
                 @click="toggleHandler(false)"
               )
                 button
-                  i.fas.fa-times
+                  font-awesome-icon.fas(
+                    icon="times"
+                  )
               div.bottomsheet__header-title
                 div.bottomsheet__header-title-text {{ bottomSheetTitle }}
 
@@ -31,7 +33,9 @@
                   :style="{'background-color': color[0]}"
                   :class="{'selected': color[2]}"
                 )
-                  i.fas.fa-check
+                  font-awesome-icon.fas(
+                    icon="check"
+                  )
 
               Button(
                 :btnLabel="$t('applyFilter')"
@@ -49,6 +53,11 @@ const Button = () =>
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import { db, auth } from '@/firebase'
 import { globalVar } from '@/globalVar'
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
+import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
+library.add(faTimes, faCheck);
 
 export default {
   props: {

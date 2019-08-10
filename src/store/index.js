@@ -24,6 +24,7 @@ export default new Vuex.Store({
       'darkmode',
       'langs',
       'currentLang',
+      'colors',
     ],
   })],
 

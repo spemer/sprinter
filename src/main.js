@@ -1,6 +1,5 @@
-import '@babel/polyfill'
+// import '@babel/polyfill'
 import 'es6-promise/auto'
-import 'event-source-polyfill'
 import 'promise-polyfill/src/polyfill'
 
 import Vue from 'vue'
@@ -25,6 +24,9 @@ Vue.use(VueProgressBar, {
   failedColor: 'rgb(255, 255, 255)',
   height: '4px',
 })
+
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 import Vuetify from 'vuetify'
 import VueMeta from 'vue-meta'
