@@ -8,7 +8,9 @@
         @click.stop="drawer = !drawer"
       )
         button
-          i.fas.fa-bars
+          font-awesome-icon.fas(
+            :icon="['fas', 'bars']"
+          )
       div.header__right(
         slot="header__right"
         @click="SET_BOTTOM_SHEET(true)"
@@ -33,13 +35,17 @@
           @click.stop="drawer = !drawer"
         )
           button
-            i.fas.fa-times
+            font-awesome-icon.fas(
+              :icon="['fas', 'times']"
+            )
         DrawerList
         div.drawer__logout(
           @click="dialog = true"
         )
           button.drawer__logout-btn {{ $t('logout') }}
-            i.fas.fa-power-off
+            font-awesome-icon.fas(
+              :icon="['fas', 'power-off']"
+            )
 
     div.wrapper
       div.home__container
@@ -67,16 +73,11 @@
 </template>
 
 <script>
-const Header = () =>
-  import(/* webpackChunkName: 'components/Header' */ '@/components/Header')
-const AddTodo = () =>
-  import(/* webpackChunkName: 'components/AddTodo' */ '@/components/AddTodo')
-const TodoList = () =>
-  import(/* webpackChunkName: 'components/TodoList' */ '@/components/TodoList')
-const DrawerList = () =>
-  import(/* webpackChunkName: 'components/DrawerList' */ '@/components/DrawerList')
-const BottomSheet = () =>
-  import(/* webpackChunkName: 'components/BottomSheet' */ '@/components/BottomSheet')
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
+import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
+import { faPowerOff } from "@fortawesome/free-solid-svg-icons/faPowerOff";
+library.add(faBars, faTimes, faPowerOff);
 
 import { mapGetters, mapMutations } from 'vuex'
 import { logout } from '@/mixins/logout'
@@ -132,11 +133,11 @@ export default {
   },
 
   components: {
-    Header,
-    AddTodo,
-    TodoList,
-    DrawerList,
-    BottomSheet,
+    Header: () => import(/* webpackChunkName: 'components/Header' */ '@/components/Header'),
+    AddTodo: () => import(/* webpackChunkName: 'components/AddTodo' */ '@/components/AddTodo'),
+    TodoList: () => import(/* webpackChunkName: 'components/TodoList' */ '@/components/TodoList'),
+    DrawerList: () => import(/* webpackChunkName: 'components/DrawerList' */ '@/components/DrawerList'),
+    BottomSheet: () => import(/* webpackChunkName: 'components/BottomSheet' */ '@/components/BottomSheet'),
   },
 
 }

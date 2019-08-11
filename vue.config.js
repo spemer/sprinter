@@ -1,38 +1,38 @@
 require('es6-promise').polyfill();
-const path = require("path");
+// const path = require("path");
 const ansiRegex = require('ansi-regex');
-const PrerenderSPAPlugin = require("prerender-spa-plugin");
-const PuppeteerRenderer = PrerenderSPAPlugin.PuppeteerRenderer;
+// const PrerenderSPAPlugin = require("prerender-spa-plugin");
+// const PuppeteerRenderer = PrerenderSPAPlugin.PuppeteerRenderer;
 
 module.exports = {
   chainWebpack: (config) => {
     config.module.rules.delete('eslint')
   },
 
-  configureWebpack: {
-    plugins: [
-      new PrerenderSPAPlugin({
-        staticDir: path.join(__dirname, "dist"),
-        routes: [
-          "/login",
-        ],
-        renderer: new PuppeteerRenderer(),
-        minify: {
-          caseSensitive: true,
-          collapseBooleanAttributes: true,
-          collapseWhitespace: true,
-          collapseInlineTagWhitespace: true,
-          decodeEntities: true,
-          minifyCSS: true,
-          keepClosingSlash: true,
-          sortAttributes: true,
-          removeComments: true,
-          removeScriptTypeAttributes: true,
-          removeStyleLinkTypeAttributes: true
-        }
-      })
-    ]
-  },
+  // configureWebpack: {
+  //   plugins: [
+  //     new PrerenderSPAPlugin({
+  //       staticDir: path.join(__dirname, "dist"),
+  //       routes: [
+  //         "/login/",
+  //       ],
+  //       renderer: new PuppeteerRenderer(),
+  //       minify: {
+  //         caseSensitive: true,
+  //         collapseBooleanAttributes: true,
+  //         collapseWhitespace: true,
+  //         collapseInlineTagWhitespace: true,
+  //         decodeEntities: true,
+  //         minifyCSS: true,
+  //         keepClosingSlash: true,
+  //         sortAttributes: true,
+  //         removeComments: true,
+  //         removeScriptTypeAttributes: true,
+  //         removeStyleLinkTypeAttributes: true
+  //       }
+  //     })
+  //   ]
+  // },
 
   css: {
     loaderOptions: {

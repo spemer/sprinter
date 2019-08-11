@@ -8,7 +8,9 @@
         @click="$router.replace('/')"
       )
         button
-          i.fas.fa-times
+          font-awesome-icon.fas(
+            :icon="['fas', 'times']"
+          )
 
     div(
       v-for="(section, index) in Object.keys(opsEntries)"
@@ -26,8 +28,9 @@
 </template>
 
 <script>
-const Header = () =>
-  import(/* webpackChunkName: 'components/Header' */ '@/components/Header')
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
+library.add(faTimes);
 
 import OPS_ENTRIES from '@/opensource/list.json'
 import { globalVar } from '@/globalVar'
@@ -55,7 +58,7 @@ export default {
   },
 
   components: {
-    Header,
+    Header :() => import(/* webpackChunkName: 'components/Header' */ '@/components/Header')
   },
 
 }

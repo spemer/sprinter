@@ -16,7 +16,7 @@
               )
                 button
                   font-awesome-icon.fas(
-                    icon="times"
+                    :icon="['fas', 'times']"
                   )
               div.bottomsheet__header-title
                 div.bottomsheet__header-title-text {{ bottomSheetTitle }}
@@ -34,7 +34,7 @@
                   :class="{'selected': color[2]}"
                 )
                   font-awesome-icon.fas(
-                    icon="check"
+                    :icon="['fas', 'check']"
                   )
 
               Button(
@@ -47,17 +47,14 @@
 </template>
 
 <script>
-const Button = () =>
-  import(/* webpackChunkName: 'components/Button' */ '@/components/Button')
-
-import { mapGetters, mapMutations, mapActions } from 'vuex'
-import { db, auth } from '@/firebase'
-import { globalVar } from '@/globalVar'
-
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
 import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
 library.add(faTimes, faCheck);
+
+import { mapGetters, mapMutations, mapActions } from 'vuex'
+import { db, auth } from '@/firebase'
+import { globalVar } from '@/globalVar'
 
 export default {
   props: {
@@ -124,7 +121,7 @@ export default {
   },
 
   components: {
-    Button,
+    Button: () => import(/* webpackChunkName: 'components/Button' */ '@/components/Button')
   },
 
 }

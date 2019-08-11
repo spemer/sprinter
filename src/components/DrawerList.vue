@@ -5,8 +5,9 @@
         :src="setPhotoUrl(userInfo.provider)"
       )
       p.drawer__userInfo-displayName {{ userInfo.displayName }}
-        i.fab(
-          :class="getProvider(userInfo.provider)"
+        font-awesome-icon.fab(
+          :class="`fa-${getProvider(userInfo.provider)}`"
+          :icon="['fab', `${getProvider(userInfo.provider)}`]"
         )
       p.drawer__userInfo-email {{ userInfo.email }}
 
@@ -25,7 +26,9 @@
 
       div.drawer__list-each
         div.drawer__list-locale
-          i.fas.fa-globe
+          font-awesome-icon.fas.fa-globe(
+            :icon="['fas', 'globe']"
+          )
           select(
             v-model="$i18n.locale"
             @change="SET_CURRENT_LANG($i18n.locale)"
@@ -38,28 +41,42 @@
 
       div.drawer__list-each
         div.drawer__list-ops(
-          @click="goOpensource"
+          @click="$router.push({ path: '/opensource' })"
         )
-          i.fas.fa-code
+          font-awesome-icon.fas(
+            :icon="['fas', 'code']"
+          )
           span {{ $t('ops') }}
+
+      div.drawer__list-each
+        div.drawer__list-ops(
+          @click="$router.push({ path: '/privacy-policy' })"
+        )
+          font-awesome-icon.fas(
+            :icon="['fas', 'user-shield']"
+          )
+          span {{ $t('privacyPolicy') }}
 
       div.drawer__list-each
         div.drawer__list-ops(
           @click="shareApi"
         )
-          i.fas.fa-share-square
+          font-awesome-icon.fas(
+            :icon="['fas', 'share-square']"
+          )
           span {{ $t('share') }}
 </template>
 
 <script>
-const Header = () =>
-  import(/* webpackChunkName: 'components/Header' */ '@/components/Header')
-const AddTodo = () =>
-  import(/* webpackChunkName: 'components/AddTodo' */ '@/components/AddTodo')
-const TodoList = () =>
-  import(/* webpackChunkName: 'components/TodoList' */ '@/components/TodoList')
-const DrawerList = () =>
-  import(/* webpackChunkName: 'components/DrawerList' */ '@/components/DrawerList')
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons/faFacebookSquare";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons/faTwitter";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons/faGlobe";
+import { faCode } from "@fortawesome/free-solid-svg-icons/faCode";
+import { faUserShield } from "@fortawesome/free-solid-svg-icons/faUserShield";
+import { faShareSquare } from "@fortawesome/free-solid-svg-icons/faShareSquare";
+library.add(faFacebookSquare, faGoogle, faTwitter, faGlobe, faCode, faUserShield, faShareSquare);
 
 import firebase from 'firebase/app'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
@@ -96,10 +113,6 @@ export default {
       'SET_CURRENT_LANG'
     ]),
 
-    goOpensource () {
-      this.$router.push('/opensource/')
-    },
-
     setPhotoUrl (provider) {
       return (provider === 'facebook.com')
         ? `${auth.currentUser.photoURL}/picture?height=500`
@@ -108,13 +121,13 @@ export default {
 
     getProvider (provider) {
       if (provider === 'facebook.com') {
-        return 'fa-facebook-square'
+        return 'facebook-square'
       }
       else if (provider === 'google.com') {
-        return 'fa-google'
+        return 'google'
       }
       else if (provider === 'twitter.com') {
-        return 'fa-twitter-square'
+        return 'twitter-square'
       }
     },
   },
@@ -125,10 +138,10 @@ export default {
   ],
 
   components: {
-    Header,
-    AddTodo,
-    TodoList,
-    DrawerList,
+    Header: () => import(/* webpackChunkName: 'components/Header' */ '@/components/Header'),
+    AddTodo: () => import(/* webpackChunkName: 'components/AddTodo' */ '@/components/AddTodo'),
+    TodoList: () => import(/* webpackChunkName: 'components/TodoList' */ '@/components/TodoList'),
+    DrawerList: () => import(/* webpackChunkName: 'components/DrawerList' */ '@/components/DrawerList'),
   },
 
 }

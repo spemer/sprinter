@@ -45,11 +45,15 @@
             v-if="!todo.isCompleted"
             @click="editTodo(todo)"
           )
-            i.fas.fa-pen
+            font-awesome-icon.fas(
+              :icon="['fas', 'pen']"
+            )
           div.todolist__list-remove(
             @click="removeTodo(todo, 2500)"
           )
-            i.far.fa-trash-alt
+            font-awesome-icon.fas(
+              :icon="['fas', 'trash-alt']"
+            )
 
         div.todolist__list-editing(
           v-else
@@ -63,7 +67,9 @@
               type="button"
               @click="undoEditText(todo)"
             )
-              i.fas.fa-undo
+              font-awesome-icon.fas(
+                :icon="['fas', 'undo']"
+              )
             button.todolist__list-save(
               type="submit"
               @click.prevent="updateTodoText(todo)"
@@ -71,6 +77,12 @@
 </template>
 
 <script>
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faPen } from "@fortawesome/free-solid-svg-icons/faPen";
+import { faUndo } from "@fortawesome/free-solid-svg-icons/faUndo";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons/faTrashAlt";
+library.add(faPen, faUndo, faTrashAlt);
+
 import { db, auth } from '@/firebase'
 import { mapGetters, mapMutations } from 'vuex'
 import { removeTodo } from '@/mixins/removeTodo'

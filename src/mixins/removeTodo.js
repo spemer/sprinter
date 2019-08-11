@@ -1,6 +1,4 @@
-import {
-  db
-} from '@/firebase'
+import { db } from '@/firebase'
 
 export const removeTodo = {
   data: _ => ({
@@ -40,5 +38,4 @@ export const removeTodo = {
       }, delay + 500)
     },
   },
-
 }

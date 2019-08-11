@@ -26,17 +26,17 @@ const router = new Router({
       },
     },
     {
-      path: '/opensource/',
+      path: '/opensource',
       name: 'opensource',
       component: () => {
         return import(/* webpackChunkName: 'router - views/Opensource' */ './views/Opensource.vue')
       },
     },
     {
-      path: '/terms/',
-      name: 'terms',
+      path: '/privacy-policy',
+      name: 'privacy',
       component: () => {
-        return import(/* webpackChunkName: 'router - views/Terms' */ './views/Terms.vue')
+        return import(/* webpackChunkName: 'router - views/Privacy' */ './views/Privacy.vue')
       },
     },
 

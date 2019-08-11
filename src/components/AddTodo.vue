@@ -20,7 +20,9 @@
             v-if="newTodo"
             @click="clearForm"
           )
-            i.fas.fa-times-circle
+            font-awesome-icon.fas(
+              :icon="['fas', 'times-circle']"
+            )
         div.addTodo__form-btn
           button(
             type="submit"
@@ -31,6 +33,10 @@
 </template>
 
 <script>
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons/faTimesCircle";
+library.add(faTimesCircle);
+
 import { mapGetters, mapMutations } from 'vuex'
 import { auth } from '@/firebase'
 import { toast } from '@/mixins/toast'

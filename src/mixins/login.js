@@ -1,10 +1,6 @@
 import firebase from 'firebase/app'
-import {
-  auth
-} from '@/firebase'
-import {
-  toast
-} from '@/mixins/toast'
+import { auth } from '@/firebase'
+import { toast } from '@/mixins/toast'
 
 export const fbLogin = {
   methods: {

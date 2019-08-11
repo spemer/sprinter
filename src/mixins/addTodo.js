@@ -1,7 +1,4 @@
-import {
-  db,
-  auth
-} from '@/firebase'
+import { db, auth } from '@/firebase'
 
 export const addTodo = {
   data: _ => ({
@@ -75,5 +72,4 @@ export const addTodo = {
       }
     },
   },
-
 }

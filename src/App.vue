@@ -1,7 +1,8 @@
 <template lang="pug">
   v-app(:dark="getDarkmode")
     div#app(:class="{'noscroll': getBottomSheet, 'darkmode': getDarkmode, 'lightmode': !getDarkmode}")
-      router-view
+      keep-alive
+        router-view
       vue-progress-bar
 </template>
 

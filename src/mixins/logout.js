@@ -19,5 +19,4 @@ export const logout = {
   mixins: [
     toast,
   ],
-
 }

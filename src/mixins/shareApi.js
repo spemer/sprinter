@@ -1,9 +1,5 @@
-import {
-  globalVar
-} from '@/globalVar'
-import {
-  toast
-} from '@/mixins/toast'
+import { globalVar } from '@/globalVar'
+import { toast } from '@/mixins/toast'
 
 export const shareApi = {
   methods: {
@@ -53,5 +49,4 @@ export const shareApi = {
   mixins: [
     toast,
   ],
-
 }
