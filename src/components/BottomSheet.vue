@@ -47,10 +47,10 @@
 </template>
 
 <script>
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
-import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck";
-library.add(faTimes, faCheck);
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes"
+import { faCheck } from "@fortawesome/free-solid-svg-icons/faCheck"
+library.add(faTimes, faCheck)
 
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import { db, auth } from '@/firebase'

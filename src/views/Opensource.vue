@@ -28,9 +28,9 @@
 </template>
 
 <script>
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
-library.add(faTimes);
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes"
+library.add(faTimes)
 
 import OPS_ENTRIES from '@/opensource/list.json'
 import { globalVar } from '@/globalVar'

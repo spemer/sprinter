@@ -66,9 +66,9 @@
 </template>
 
 <script>
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
-library.add(faTimes);
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes"
+library.add(faTimes)
 
 import { globalVar } from '@/globalVar'
 

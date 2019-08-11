@@ -73,11 +73,11 @@
 </template>
 
 <script>
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
-import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes";
-import { faPowerOff } from "@fortawesome/free-solid-svg-icons/faPowerOff";
-library.add(faBars, faTimes, faPowerOff);
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { faBars } from "@fortawesome/free-solid-svg-icons/faBars"
+import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes"
+import { faPowerOff } from "@fortawesome/free-solid-svg-icons/faPowerOff"
+library.add(faBars, faTimes, faPowerOff)
 
 import { mapGetters, mapMutations } from 'vuex'
 import { logout } from '@/mixins/logout'

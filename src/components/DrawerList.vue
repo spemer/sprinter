@@ -68,15 +68,15 @@
 </template>
 
 <script>
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons/faFacebookSquare";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons/faTwitter";
-import { faGlobe } from "@fortawesome/free-solid-svg-icons/faGlobe";
-import { faCode } from "@fortawesome/free-solid-svg-icons/faCode";
-import { faUserShield } from "@fortawesome/free-solid-svg-icons/faUserShield";
-import { faShareSquare } from "@fortawesome/free-solid-svg-icons/faShareSquare";
-library.add(faFacebookSquare, faGoogle, faTwitter, faGlobe, faCode, faUserShield, faShareSquare);
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons/faFacebookSquare"
+import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle"
+import { faTwitter } from "@fortawesome/free-brands-svg-icons/faTwitter"
+import { faGlobe } from "@fortawesome/free-solid-svg-icons/faGlobe"
+import { faCode } from "@fortawesome/free-solid-svg-icons/faCode"
+import { faUserShield } from "@fortawesome/free-solid-svg-icons/faUserShield"
+import { faShareSquare } from "@fortawesome/free-solid-svg-icons/faShareSquare"
+library.add(faFacebookSquare, faGoogle, faTwitter, faGlobe, faCode, faUserShield, faShareSquare)
 
 import firebase from 'firebase/app'
 import { mapGetters, mapMutations, mapActions } from 'vuex'

@@ -29,13 +29,16 @@
             @click.prevent="addTodo()"
             v-scroll-to="{el: 'body', duration: 0}"
           )
-            i.fas.fa-plus
+            font-awesome-icon.fas(
+              :icon="['fas', 'plus']"
+            )
 </template>
 
 <script>
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faTimesCircle } from "@fortawesome/free-solid-svg-icons/faTimesCircle";
-library.add(faTimesCircle);
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { faTimesCircle } from "@fortawesome/free-solid-svg-icons/faTimesCircle"
+import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus"
+library.add(faTimesCircle, faPlus)
 
 import { mapGetters, mapMutations } from 'vuex'
 import { auth } from '@/firebase'
