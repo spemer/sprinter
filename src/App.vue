@@ -27,6 +27,12 @@ export default {
       },
     }
   },
+
+  created () {
+    return (localStorage.Lang)
+      ? this.$i18n.locale = localStorage.Lang
+      : this.$i18n.locale = 'en'
+  },
 }
 </script>
 

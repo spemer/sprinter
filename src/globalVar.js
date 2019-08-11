@@ -12,4 +12,6 @@ export const globalVar = {
     'rgb(149, 167, 141)',
     'rgb(255, 159, 28)',
   ],
+
+  mailTo: 'ghsspower@gmail.com'
 }

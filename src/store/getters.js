@@ -13,7 +13,6 @@ export const getters = {
     return state.error
   },
 
-
   // todo list
   getTodos: (state) => {
     return state.todos
@@ -26,21 +25,6 @@ export const getters = {
   getSelectedColors: (state) => {
     return state.selectedColors
   },
-
-
-  // appearance
-  getDarkmode: (state) => {
-    return state.darkmode
-  },
-
-  getLangs: (state) => {
-    return state.langs
-  },
-
-  getCurrentLang: (state) => {
-    return state.currentLang
-  },
-
 
   // bottom sheet
   getBottomSheet: (state) => {

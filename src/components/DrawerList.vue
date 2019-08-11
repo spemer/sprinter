@@ -31,7 +31,7 @@
           )
           select(
             v-model="$i18n.locale"
-            @change="SET_CURRENT_LANG($i18n.locale)"
+            @change="setCurrentLang($i18n.locale)"
           )
             option(
               v-for="(lang, index, key) in getLangs"
@@ -41,7 +41,7 @@
 
       div.drawer__list-each
         div.drawer__list-ops(
-          @click="$router.push({ path: '/opensource' })"
+          @click="$router.push({ path: '/opensource/' })"
         )
           font-awesome-icon.fas(
             :icon="['fas', 'code']"
@@ -50,7 +50,7 @@
 
       div.drawer__list-each
         div.drawer__list-ops(
-          @click="$router.push({ path: '/privacy-policy' })"
+          @click="$router.push({ path: '/privacy-policy/' })"
         )
           font-awesome-icon.fas(
             :icon="['fas', 'user-shield']"
@@ -110,8 +110,13 @@ export default {
     ]),
 
     ...mapMutations([
-      'SET_CURRENT_LANG'
+      'SET_CURRENT_LANG',
     ]),
+
+    setCurrentLang (lang) {
+      this.SET_CURRENT_LANG(lang)
+      localStorage.Lang = lang
+    },
 
     setPhotoUrl (provider) {
       return (provider === 'facebook.com')

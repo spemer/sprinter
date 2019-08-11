@@ -30,16 +30,6 @@ export const state = {
     globalVar.todoColors[6],
   ],
 
-  // appearance
-  darkmode: false,
-  langs: {
-    'en': 'Language',
-    'ko': '한국어',
-    'en': 'English',
-    'zh-CN': '中文',
-  },
-  currentLang: 'en',
-
   // bottom sheet
   bottomSheet: false,
 }

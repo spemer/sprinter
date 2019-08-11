@@ -9,7 +9,7 @@ export const logout = {
       this.$store.dispatch('signOutAction')
         .then(() => {
           if (this.$store.getters.getUser === null) {
-            this.$router.replace('/login')
+            this.$router.replace('/login/')
             this.$Progress.finish()
           }
         })

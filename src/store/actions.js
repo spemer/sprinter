@@ -4,6 +4,8 @@ import {
 import router from '@/router'
 
 export const actions = {
+
+  // user auth
   signInAction({
     commit
   }, payload) {
@@ -48,12 +50,7 @@ export const actions = {
     })
   },
 
-  setDarkmodeAction({
-    commit
-  }, payload) {
-    return commit('SET_DARKMODE', payload)
-  },
-
+  // bottom sheet
   setBottomsheetAction({
     commit
   }, bool) {

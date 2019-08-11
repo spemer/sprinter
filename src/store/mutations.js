@@ -6,8 +6,6 @@ import {
   SET_COLORED_TODOS_LENGTH,
   SET_FILTER_SHOW,
   SET_SELECTED_COLORS,
-  SET_DARKMODE,
-  SET_CURRENT_LANG,
   SET_BOTTOM_SHEET
 } from '@/store/mutation-types'
 
@@ -25,7 +23,6 @@ export const mutations = {
   [SET_ERROR]: (state, payload) => {
     return state.error = payload
   },
-
 
   // todo list
   [SET_TODOS]: (state, payload) => {
@@ -47,17 +44,6 @@ export const mutations = {
       return state.selectedColors.splice(state.selectedColors.indexOf(payload), 1)
     }
   },
-
-
-  // appearance
-  [SET_DARKMODE]: (state, payload) => {
-    return state.darkmode = payload
-  },
-
-  [SET_CURRENT_LANG]: (state, payload) => {
-    return state.currentLang = payload
-  },
-
 
   // bottom sheet
   [SET_BOTTOM_SHEET]: (state, bool) => {
