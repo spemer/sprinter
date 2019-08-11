@@ -23,14 +23,17 @@
         p(
           @click="openNewTab(entry.href)"
         ) {{ entry.id }}
-          i.fas.fa-external-link-square-alt
+          font-awesome-icon.fas(
+            :icon="['fas', 'external-link-square-alt']"
+          )
         span {{ entry.desc}}
 </template>
 
 <script>
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes"
-library.add(faTimes)
+import { faExternalLinkSquareAlt } from "@fortawesome/free-solid-svg-icons/faExternalLinkSquareAlt"
+library.add(faTimes, faExternalLinkSquareAlt)
 
 import OPS_ENTRIES from '@/opensource/list.json'
 import { globalVar } from '@/globalVar'
@@ -43,6 +46,16 @@ export default {
       title: `${globalVar.appName} - ${this.$t('ops')}`,
       titleTemplate: `%s`,
     }
+  },
+
+  mounted () {
+    [...document.querySelectorAll(".notices__list p")].forEach(anchor => {
+      let getAnchorTarget = anchor.getAttribute("target");
+      if (!getAnchorTarget) {
+        anchor.setAttribute("target", "_blank");
+        anchor.setAttribute("rel", "noopener noreferrer");
+      }
+    })
   },
 
   computed: {
