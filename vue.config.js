@@ -14,6 +14,7 @@ module.exports = {
       new PrerenderSPAPlugin({
         staticDir: path.join(__dirname, 'dist'),
         routes: [
+          '/',
           '/login/',
           '/opensource/',
           '/privacy-policy/',

@@ -3,6 +3,7 @@
     div.wrapper
       div.login__launcher
         img.login__launcher-img(
+          alt="appName"
           src="../assets/launcher.svg"
         )
       div.login__container
@@ -38,6 +39,11 @@
               )
             div.login__btn-right
               span {{ $t('twitterLogin') }}
+
+        div.login__container-policy
+          router-link(
+            to="/privacy-policy/"
+          ) {{ $t('loginPolicy') }}
 </template>
 
 <script>
@@ -54,6 +60,10 @@ import { fbLogin, googleLogin, twitterLogin } from '@/mixins/login'
 
 export default {
   name: 'login',
+
+  data: () => ({
+    appName: globalVar.appName,
+  }),
 
   metaInfo () {
     return {
@@ -162,6 +172,22 @@ export default {
           }
         }
       }
+
+      .login__container-policy {
+        margin: $grid4x 0 0;
+
+        a {
+          @include font-size($grid4x);
+        }
+      }
+    }
+  }
+}
+
+.lightmode, .darkmode {
+  .login__container-policy {
+    a {
+      color: #fff !important;
     }
   }
 }

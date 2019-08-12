@@ -31,6 +31,7 @@ const router = new Router({
       component: () => {
         return import(/* webpackChunkName: 'router - views/Opensource' */ './views/Opensource.vue')
       },
+      beforeEnter: requireAuth,
     },
     {
       path: '/privacy-policy/',

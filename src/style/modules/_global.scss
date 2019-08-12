@@ -61,8 +61,7 @@ button {
   background-color: transparent;
 
   &:focus,
-  &:active,
-    {
+  &:active {
     border: none !important;
     outline: none !important;
   }
