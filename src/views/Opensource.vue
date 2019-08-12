@@ -21,6 +21,7 @@
         :key="entry.id"
       )
         p(
+          ref="link"
           @click="openNewTab(entry.href)"
         ) {{ entry.id }}
           font-awesome-icon.fas(
@@ -49,11 +50,11 @@ export default {
   },
 
   mounted () {
-    [...document.querySelectorAll(".notices__list p")].forEach(anchor => {
-      let getAnchorTarget = anchor.getAttribute("target");
+    [...this.$refs.link].forEach(anchor => {
+      let getAnchorTarget = anchor.getAttribute('target')
       if (!getAnchorTarget) {
-        anchor.setAttribute("target", "_blank");
-        anchor.setAttribute("rel", "noopener noreferrer");
+        anchor.setAttribute('target', '_blank')
+        anchor.setAttribute('rel', 'noopener noreferrer')
       }
     })
   },

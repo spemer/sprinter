@@ -16,9 +16,7 @@
       h1 {{ $t('privacyPolicy') }}
       p {{ $t('p_header') }}
 
-      br
-      hr
-      br
+      div.divider
 
       h3 {{ $t('p-1-title') }}
       p {{ $t('p-1-subtitle') }}
@@ -27,17 +25,12 @@
         li {{ $t('p-1-essentialInformation-desc_1') }}
         li {{ $t('p-1-essentialInformation-desc_2') }}
 
-      br
-      hr
-      br
+      div.divider
 
       h3 {{ $t('p-2-pop-title') }}
       p {{ $t('p-2-pop-desc') }}
 
-      br
-      hr
-      br
-
+      div.divider
 
       h3 {{ $t('p-3-dop-title') }}
       p {{ $t('p-3-dop-subtitle') }}
@@ -45,16 +38,12 @@
         li {{ $t('p-3-dop-desc_1') }}
         li {{ $t('p-3-dop-desc_2') }}
 
-      br
-      hr
-      br
+      div.divider
 
       h3 {{ $t('p-4-ros-title') }}
       p {{ $t('p-4-ros-desc') }}
 
-      br
-      hr
-      br
+      div.divider
 
       h3 {{ $t('p-5-pim-title') }}
       p {{ $t('p-5-pim-subtitle') }}
@@ -108,6 +97,32 @@ export default {
     padding-top: calc(
       env(safe-area-inset-top) + #{$header} + #{$grid4x}
     ) !important;
+  }
+
+  h1 {
+    @include font-size($grid8x)
+  }
+
+  h3 {
+    @include font-size($grid6x)
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    margin: $grid16x 0;
+  }
+}
+
+.lightmode {
+  .divider {
+    border-bottom: 1px solid $texteee;
+  }
+}
+
+.darkmode {
+  .divider {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 </style>

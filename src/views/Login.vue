@@ -11,7 +11,9 @@
             @click="fbLogin"
           )
             div.login__btn-left
-              i.fab.fa-facebook-square
+              font-awesome-icon.fab(
+                :icon="['fab', 'facebook-square']"
+              )
             div.login__btn-right
               span {{ $t('fbLogin') }}
 
@@ -20,7 +22,9 @@
             @click="googleLogin"
           )
             div.login__btn-left
-              i.fab.fa-google
+              font-awesome-icon.fab(
+                :icon="['fab', 'google']"
+              )
             div.login__btn-right
               span {{ $t('googleLogin') }}
 
@@ -29,12 +33,20 @@
             @click="twitterLogin"
           )
             div.login__btn-left
-              i.fab.fa-twitter-square
+              font-awesome-icon.fab(
+                :icon="['fab', 'twitter-square']"
+              )
             div.login__btn-right
               span {{ $t('twitterLogin') }}
 </template>
 
 <script>
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons/faFacebookSquare"
+import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle"
+import { faTwitterSquare } from "@fortawesome/free-brands-svg-icons/faTwitterSquare"
+library.add(faFacebookSquare, faGoogle, faTwitterSquare)
+
 import firebase from 'firebase/app'
 import { mapGetters } from 'vuex'
 import { globalVar } from '@/globalVar'

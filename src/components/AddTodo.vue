@@ -5,7 +5,7 @@
         div.addTodo__color
           div.addTodo__color-each(
             v-for="(color, i) in getColors"
-            @click="setColor(color, i)"
+            @click="setColor(i)"
             ref="addColorEach"
             :style="{ border: '6px solid ' + `${color[0]}` }"
           )
@@ -27,7 +27,6 @@
           button(
             type="submit"
             @click.prevent="addTodo()"
-            v-scroll-to="{el: 'body', duration: 0}"
           )
             font-awesome-icon.fas(
               :icon="['fas', 'plus']"

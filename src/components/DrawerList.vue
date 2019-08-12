@@ -26,7 +26,7 @@
 
       div.drawer__list-each
         div.drawer__list-locale
-          font-awesome-icon.fas.fa-globe(
+          font-awesome-icon.fas(
             :icon="['fas', 'globe']"
           )
           select(
@@ -107,14 +107,11 @@ export default {
   methods: {
     ...mapActions([
       'setDarkmodeAction',
-    ]),
-
-    ...mapMutations([
-      'SET_CURRENT_LANG',
+      'setCurrentLangAction',
     ]),
 
     setCurrentLang (lang) {
-      this.SET_CURRENT_LANG(lang)
+      this.setCurrentLangAction(lang)
       localStorage.Lang = lang
     },
 

@@ -1,14 +1,34 @@
 import {
-  auth
-} from '@/firebase'
+  SET_USER,
+  SET_STATUS,
+  SET_ERROR
+} from '@/store/mutation-types'
+
+import { auth } from '@/firebase'
 import router from '@/router'
 
-export const actions = {
+const state = {
+  user: null,
+  status: null,
+  error: null,
+}
 
-  // user auth
-  signInAction({
-    commit
-  }, payload) {
+const mutations = {
+  [SET_USER]: (state, payload) => {
+    return state.user = payload
+  },
+
+  [SET_STATUS]: (state, payload) => {
+    return state.status = payload
+  },
+
+  [SET_ERROR]: (state, payload) => {
+    return state.error = payload
+  },
+}
+
+const actions = {
+  signInAction({ commit }, payload) {
     commit('SET_STATUS', 'loading')
     return new Promise((resolve, reject) => {
       auth
@@ -29,9 +49,7 @@ export const actions = {
     })
   },
 
-  signOutAction({
-    commit
-  }) {
+  signOutAction({ commit }) {
     return new Promise((resolve, reject) => {
       auth
         .signOut()
@@ -49,18 +67,22 @@ export const actions = {
         })
     })
   },
+}
 
-  // bottom sheet
-  setBottomsheetAction({
-    commit
-  }, bool) {
-    if (bool === false) {
-      setTimeout(() => {
-        return commit('SET_BOTTOM_SHEET', false)
-      }, 250)
-    } else {
-      return commit('SET_BOTTOM_SHEET', true)
-    }
+const getters = {
+  getUser: (state) => {
+    return state.user
   },
 
+  getStatus: (state) => {
+    return state.status
+  },
+
+  getError: (state) => {
+    return state.error
+  },
+}
+
+export default {
+  state, mutations, actions, getters
 }

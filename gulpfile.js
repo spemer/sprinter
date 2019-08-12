@@ -4,33 +4,36 @@ const {
   src,
   dest,
   lastRun,
-  series,
+  series
 } = require('gulp')
 
 const imagemin = require('gulp-imagemin')
-const imageminGifsicle = require("imagemin-gifsicle");
-const imageminJpegtran = require("imagemin-jpegtran");
-const imageminOptipng = require("imagemin-optipng");
-const imageminSvgo = require("imagemin-svgo");
+const imageminGifsicle = require("imagemin-gifsicle")
+const imageminJpegtran = require("imagemin-jpegtran")
+const imageminOptipng = require("imagemin-optipng")
+const imageminSvgo = require("imagemin-svgo")
 
 const options = [
   imageminGifsicle({
-    interlaced: true
+    interlaced: true,
   }),
   imageminJpegtran({
     progressive: true,
-    arithmetic: true
+    arithmetic: true,
   }),
   imageminOptipng({
     optimizationLevel: 7,
     bitDepthReduction: true,
     colorTypeReduction: true,
-    paletteReduction: true
+    paletteReduction: true,
   }),
   imageminSvgo({
-    plugins: [{ removeViewBox: true }, { cleanupIDs: true }]
-  })
-];
+    plugins: [
+      { removeViewBox: true },
+      { cleanupIDs: true },
+    ],
+  }),
+]
 
 // image resize - asset
 function imagemin_asset() {
@@ -47,5 +50,5 @@ function imagemin_asset() {
 
 // exports
 exports.default = series(
-  imagemin_asset,
+  imagemin_asset
 )

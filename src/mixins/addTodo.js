@@ -19,7 +19,7 @@ export const addTodo = {
       this.newTodo = ''
     },
 
-    setColor(color, i) {
+    setColor(i) {
       let el = this.$refs.addColorEach
 
       for (let j = 0; j < el.length; j++) {
@@ -55,6 +55,10 @@ export const addTodo = {
           })
           .then(docRef => {
             console.log(`ID: ${docRef.id}`)
+            this.$scrollTo({
+              el: 'body',
+              duration: 0,
+            })
           })
           .catch(error => {
             console.error(error)

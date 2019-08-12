@@ -25,10 +25,12 @@ const mutations = {
 }
 
 const actions = {
-  setDarkmodeAction({
-    commit
-  }, payload) {
+  setDarkmodeAction({ commit }, payload) {
     return commit('SET_DARKMODE', payload)
+  },
+
+  setCurrentLangAction({ commit }, payload) {
+    return commit('SET_CURRENT_LANG', payload)
   },
 }
 
