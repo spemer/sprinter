@@ -1,14 +1,14 @@
 import { db, auth } from '@/firebase'
 
 export const addTodo = {
-  data: _ => ({
+  data: () => ({
     newTodo: '',
     todos: [],
     selectedColor: 'transparent',
     selectedArray: [],
   }),
 
-  firestore: _ => {
+  firestore: () => {
     return {
       todos: db.collection(auth.currentUser.uid).orderBy('createdAt', 'desc')
     }
@@ -26,7 +26,7 @@ export const addTodo = {
         if (i === j) {
           let getBgColor = getComputedStyle(el[i]).backgroundColor
 
-          if (getBgColor == 'rgba(0, 0, 0, 0)') {
+          if (getBgColor === 'rgba(0, 0, 0, 0)') {
             el[i].style.backgroundColor = this.getColors[i][0]
             this.selectedColor = this.getColors[i][0]
             this.getColors[i][1] = this.getColors[i][0]
@@ -53,14 +53,14 @@ export const addTodo = {
             uid: this.getUser,
             createdAt: new Date(),
           })
-          .then(docRef => {
+          .then((docRef) => {
             console.log(`ID: ${docRef.id}`)
             this.$scrollTo({
               el: 'body',
               duration: 0,
             })
           })
-          .catch(error => {
+          .catch((error) => {
             console.error(error)
           })
 

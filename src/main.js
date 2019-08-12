@@ -25,8 +25,8 @@ Vue.use(VueProgressBar, {
   height: '4px',
 })
 
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-Vue.component("font-awesome-icon", FontAwesomeIcon);
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 import Vuetify from 'vuetify'
 import VueMeta from 'vue-meta'

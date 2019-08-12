@@ -43,9 +43,9 @@ const mutations = {
   },
 
   [SET_SELECTED_COLORS]: (state, [type, payload]) => {
-    if (type == 'add') {
+    if (type === 'add') {
       return state.selectedColors.push(payload)
-    } else if (type == 'remove') {
+    } else if (type === 'remove') {
       return state.selectedColors.splice(state.selectedColors.indexOf(payload), 1)
     }
   },

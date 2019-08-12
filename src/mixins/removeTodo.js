@@ -1,7 +1,7 @@
 import { db } from '@/firebase'
 
 export const removeTodo = {
-  data: _ => ({
+  data: () => ({
     isRemoved: false,
   }),
 
@@ -31,7 +31,7 @@ export const removeTodo = {
             .then((response) => {
               console.log(response)
             })
-            .catch(error => {
+            .catch((error) => {
               console.log(error)
             })
         }

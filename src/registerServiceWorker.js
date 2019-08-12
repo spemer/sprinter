@@ -58,7 +58,7 @@ function displayUpdateNotification() {
   link.classList.add('update-notification')
   link.innerHTML = 'Update is available. Click here to install.'
 
-  link.addEventListener('click', e => {
+  link.addEventListener('click', (e) => {
     e.preventDefault()
     location.reload(true)
   })

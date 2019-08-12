@@ -33,14 +33,14 @@ const actions = {
     return new Promise((resolve, reject) => {
       auth
         .signInWithPopup(payload)
-        .then(response => {
+        .then((response) => {
           commit('SET_USER', response.user)
           commit('SET_STATUS', 'success')
           commit('SET_ERROR', null)
           router.replace('/')
           resolve()
         })
-        .catch(error => {
+        .catch((error) => {
           commit('SET_STATUS', 'failure')
           commit('SET_ERROR', error.message)
           console.error(error)
@@ -53,13 +53,13 @@ const actions = {
     return new Promise((resolve, reject) => {
       auth
         .signOut()
-        .then(response => {
+        .then((response) => {
           commit('SET_USER', null)
           commit('SET_STATUS', 'success')
           commit('SET_ERROR', null)
           resolve()
         })
-        .catch(error => {
+        .catch((error) => {
           commit('SET_STATUS', 'failure')
           commit('SET_ERROR', error.message)
           console.error(error)
