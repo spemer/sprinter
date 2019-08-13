@@ -1,8 +1,8 @@
-import { debounce } from 'lodash'
+import debounce from 'lodash/debounce'
 
 export const toast = {
   methods: {
-    toast: _.debounce(
+    toast: debounce(
       function (msg, duration, btn) {
         if (btn) {
           this.$toasted.show(msg, {

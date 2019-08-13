@@ -1,33 +1,33 @@
 <template lang="pug">
   div#drawerlist.drawer.bg
-    div.drawer__userInfo
-      img.drawer__userInfo-img(
+    div.drawer_userInfo
+      img.drawer_userInfo-img(
         :src="setPhotoUrl(userInfo.provider)"
       )
-      p.drawer__userInfo-displayName {{ userInfo.displayName }}
+      p.drawer_userInfo-displayName {{ userInfo.displayName }}
         font-awesome-icon.fab(
           :class="`fa-${getProvider(userInfo.provider)}`"
           :icon="['fab', `${getProvider(userInfo.provider)}`]"
         )
-      p.drawer__userInfo-email {{ userInfo.email }}
+      p.drawer_userInfo-email {{ userInfo.email }}
 
-    div.drawer__list
-      div.drawer__list-container
+    div.drawer_list
+      div.drawer_list-container
 
-        div.drawer__list-each
-          div.drawer__list-darkmode
-            div.drawer__list-switch(
+        div.drawer_list-each
+          div.drawer_list-darkmode
+            div.drawer_list-switch(
               @click="setDarkmodeAction(!getDarkmode)"
             )
-              span.drawer__list-switch-text {{ $t('darkmode') }}
+              span.drawer_list-switch-text {{ $t('darkmode') }}
               input(
                 type="checkbox"
                 :checked="getDarkmode"
               )
               span.checkmark
 
-        div.drawer__list-each
-          div.drawer__list-locale
+        div.drawer_list-each
+          div.drawer_list-locale
             font-awesome-icon.fas(
               :icon="['fas', 'globe']"
             )
@@ -41,8 +41,8 @@
                 :value="index"
               ) {{ lang }}
 
-        div.drawer__list-each
-          div.drawer__list-ops(
+        div.drawer_list-each
+          div.drawer_list-ops(
             @click="$router.push({ path: '/opensource/' })"
           )
             font-awesome-icon.fas(
@@ -50,8 +50,8 @@
             )
             span {{ $t('ops') }}
 
-        div.drawer__list-each
-          div.drawer__list-ops(
+        div.drawer_list-each
+          div.drawer_list-ops(
             @click="$router.push({ path: '/privacy-policy/' })"
           )
             font-awesome-icon.fas(
@@ -59,8 +59,8 @@
             )
             span {{ $t('privacyPolicy') }}
 
-        div.drawer__list-each
-          div.drawer__list-ops(
+        div.drawer_list-each
+          div.drawer_list-ops(
             @click="shareApi"
           )
             font-awesome-icon.fas(
@@ -68,8 +68,8 @@
             )
             span {{ $t('share') }}
 
-        div.drawer__list-each
-          div.drawer__list-ops(
+        div.drawer_list-each
+          div.drawer_list-ops(
             @click="$router.push({ path: '/delete-account/' })"
           )
             font-awesome-icon.fas(
@@ -179,12 +179,12 @@ export default {
     background-color: transparent !important;
   }
 
-  .drawer__userInfo {
+  .drawer_userInfo {
     z-index: 1;
     padding: $grid4x;
     border-bottom: 1px solid $texteee;
 
-    .drawer__userInfo-img {
+    .drawer_userInfo-img {
       width: $grid16x;
       height: $grid16x;
       display: inline-block;
@@ -192,12 +192,12 @@ export default {
       @include border-radius($grid16x);
     }
 
-    .drawer__userInfo-displayName,
-    .drawer__userInfo-email {
+    .drawer_userInfo-displayName,
+    .drawer_userInfo-email {
       margin: 0 auto;
     }
 
-    .drawer__userInfo-displayName {
+    .drawer_userInfo-displayName {
       font-weight: 700;
       @include font-size($grid5x);
 
@@ -218,13 +218,13 @@ export default {
       }
     }
 
-    .drawer__userInfo-email {
+    .drawer_userInfo-email {
       font-weight: 400;
       color: $black54;
     }
   }
 
-  .drawer__list {
+  .drawer_list {
     $list: $grid8x;
 
     z-index: 0;
@@ -232,23 +232,23 @@ export default {
     padding: $grid2x $grid4x $grid4x;
     height: calc(100vh - #{$grid48x} - #{$header} - #{$grid20x} - #{$grid2x});
 
-    .drawer__list-container {
+    .drawer_list-container {
 
-      .drawer__list-each {
+      .drawer_list-each {
         width: 100%;
         cursor: pointer;
         padding: $grid2x 0;
         border-bottom: 1px solid $texteee;
         height: calc(#{$list} + #{$grid2x});
 
-        .drawer__list-switch {
+        .drawer_list-switch {
           width: 100%;
           height: $list;
           position: relative;
           display: inline-block;
           padding-top: $grid2x;
 
-          .drawer__list-switch-text {
+          .drawer_list-switch-text {
             padding-left: $grid8x;
           }
 
@@ -258,7 +258,7 @@ export default {
           }
         }
 
-        .drawer__list-locale {
+        .drawer_list-locale {
           position: relative;
           height: calc(#{$list} + #{$grid4x});
 
@@ -277,7 +277,7 @@ export default {
           }
         }
 
-        .drawer__list-ops {
+        .drawer_list-ops {
           position: relative;
           height: calc(#{$list} + #{$grid4x});
 
@@ -304,11 +304,11 @@ export default {
 }
 
 .darkmode {
-  .drawer__userInfo,
-  .drawer__list-each {
+  .drawer_userInfo,
+  .drawer_list-each {
     border-bottom: 1px solid $white10 !important;
 
-    .drawer__list-locale {
+    .drawer_list-locale {
       svg {
         color: $white87;
       }

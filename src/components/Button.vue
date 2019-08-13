@@ -1,10 +1,10 @@
 <template lang="pug">
   div#bottombutton
-    div.bottomButton__wrapper
+    div.bottomButton_wrapper
       slot.btn_slot(
         name="btn_slot"
       )
-      p.bottomButton__label {{ btnLabel }}
+      p.bottomButton_label {{ btnLabel }}
 </template>
 
 <script>
@@ -27,7 +27,7 @@ export default {
     padding-bottom: calc(env(safe-area-inset-bottom)) !important;
   }
 
-  .bottomButton__wrapper {
+  .bottomButton_wrapper {
     width: 100%;
     height: $header;
     cursor: pointer;
@@ -39,7 +39,7 @@ export default {
       width: calc(100% - #{$grid8x}) !important;
     }
 
-    .bottomButton__label {
+    .bottomButton_label {
       color: $brand;
       height: $header;
       font-weight: 700;
@@ -50,14 +50,14 @@ export default {
 }
 
 .lightmode {
-  .bottomButton__wrapper {
+  .bottomButton_wrapper {
     color: $brand;
     background-color: $brand_16;
   }
 }
 
 .darkmode {
-  .bottomButton__wrapper {
+  .bottomButton_wrapper {
     color: $white87;
     background-color: $white10;
   }

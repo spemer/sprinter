@@ -3,8 +3,8 @@
     Header(
       :headerTitle="$t('deleteAccount')"
     )
-      div.header__left(
-        slot="header__left"
+      div.header_left(
+        slot="header_left"
         @click="$router.replace('/')"
       )
         button
@@ -12,8 +12,8 @@
             :icon="['fas', 'times']"
           )
 
-    div.deleteAccount__button
-      Button.deleteAccount__button-btn(
+    div.deleteAccount_button
+      Button.deleteAccount_button-btn(
         :btnLabel="$t('deleteAccount')"
       )
         div.btn_slot(
@@ -86,7 +86,7 @@ export default {
     @include font-size($grid6x)
   }
 
-  .deleteAccount__button {
+  .deleteAccount_button {
     left: 0;
     bottom: 0;
     width: 100%;
@@ -99,7 +99,7 @@ export default {
       ) !important;
     }
 
-    .deleteAccount__button-btn {
+    .deleteAccount_button-btn {
       .btn_slot {
         height: $grid14x;
       }

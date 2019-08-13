@@ -10,26 +10,26 @@
     @include user-select();
     @include border-radius(0);
 
-    .v-card__title,
-    .v-card__text {
+    .v-card_title,
+    .v-card_text {
       margin: 0 auto;
       text-align: center;
       display: inline-block;
       width: calc(100% - #{$grid8x});
     }
 
-    .v-card__title {
+    .v-card_title {
       font-weight: 700;
       padding-bottom: 0;
       @include font-size($grid5x);
     }
 
-    .v-card__text {
+    .v-card_text {
       padding-top: 0;
       @include font-size($grid4x);
     }
 
-    .v-card__actions {
+    .v-card_actions {
       width: 100%;
       padding: 0 0 $grid2x 0;
 
@@ -46,14 +46,14 @@
   }
 }
 
-.theme--light {
+.theme-light {
   .v-dialog {
-    .v-card__title,
-    .v-card__text {
+    .v-card_title,
+    .v-card_text {
       color: $text333 !important;
     }
 
-    .v-card__actions {
+    .v-card_actions {
       button {
         &.cancel {
           color: $text777 !important;
@@ -63,14 +63,14 @@
   }
 }
 
-.theme--dark {
+.theme-dark {
   .v-dialog {
-    .v-card__title,
-    .v-card__text {
+    .v-card_title,
+    .v-card_text {
       color: $white87 !important;
     }
 
-    .v-card__actions {
+    .v-card_actions {
       button {
         &.cancel {
           color: $white54 !important;

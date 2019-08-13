@@ -1,17 +1,17 @@
 <template lang="pug">
   div#headercomp.bg
-    div.header__wrapper
+    div.header_wrapper
 
-      slot.header__left(
-        name="header__left"
+      slot.header_left(
+        name="header_left"
       )
 
-      div.header__title(
+      div.header_title(
         v-scroll-to="{el: 'body', duration: 0}"
       ) {{ headerTitle }}
 
-      slot.header__right(
-        name="header__right"
+      slot.header_right(
+        name="header_right"
       )
 </template>
 
@@ -42,17 +42,17 @@ export default {
     padding-top: calc(env(safe-area-inset-top)) !important;
   }
 
-  .header__wrapper {
+  .header_wrapper {
     position: relative;
 
-    .header__left,
-    .header__right {
+    .header_left,
+    .header_right {
       height: $header;
       cursor: pointer;
       position: absolute;
     }
 
-    .header__left {
+    .header_left {
       left: 0;
       z-index: 5;
       width: $header;
@@ -70,7 +70,7 @@ export default {
       }
     }
 
-    .header__right {
+    .header_right {
       right: 0 !important;
       text-align: right !important;
       padding: 0 $grid4x !important;
@@ -78,7 +78,7 @@ export default {
       @include line-height($grid9x);
     }
 
-    .header__title {
+    .header_title {
       cursor: pointer;
       height: $header;
       overflow: hidden;

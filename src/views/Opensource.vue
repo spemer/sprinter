@@ -3,8 +3,8 @@
     Header(
       :headerTitle="$t('ops')"
     )
-      div.header__left(
-        slot="header__left"
+      div.header_left(
+        slot="header_left"
         @click="$router.replace('/')"
       )
         button
@@ -16,7 +16,7 @@
       v-for="(section, index) in Object.keys(opsEntries)"
       :key="index"
     )
-      div.notices__list(
+      div.notices_list(
         v-for="entry in opsEntries[section]"
         :key="entry.id"
       )
@@ -96,7 +96,7 @@ export default {
     ) !important;
   }
 
-  .notices__list {
+  .notices_list {
     p {
       cursor: pointer;
       font-weight: 700;

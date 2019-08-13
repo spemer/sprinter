@@ -4,14 +4,14 @@
       v-if="!timeout"
     )
 
-    div.todolist__list
-      div.todolist__list-empty(
+    div.todolist_list
+      div.todolist_list-empty(
         v-if="todos.length === 0 && timeout"
       )
         p {{ $t('emptyTodo') }}
         i.fas.fa-arrow-down
 
-      div.todolist__list-each(
+      div.todolist_list-each(
         v-if="todos"
         v-for="todo in todos"
         ref="todoListEach"
@@ -19,13 +19,13 @@
         :class="{'completed': todo.isCompleted, 'removed': todo.isRemoved}"
       )
 
-        div.todolist__list-left(
+        div.todolist_list-left(
           v-if="currentlyEditing !== todo.id"
         )
           label(
             :for="todo.id"
           )
-            div.todolist__list-left-color(
+            div.todolist_list-left-color(
               ref="todoListEachColor"
               :style="{'background-color': todo.color}"
             )
@@ -38,24 +38,24 @@
           )
           span.checkmark
 
-        div.todolist__list-right(
+        div.todolist_list-right(
           v-if="currentlyEditing !== todo.id"
         )
-          div.todolist__list-edit(
+          div.todolist_list-edit(
             v-if="!todo.isCompleted"
             @click="editTodo(todo)"
           )
             font-awesome-icon.fas(
               :icon="['fas', 'pen']"
             )
-          div.todolist__list-remove(
+          div.todolist_list-remove(
             @click="removeTodo(todo, 2500)"
           )
             font-awesome-icon.fas(
               :icon="['fas', 'trash-alt']"
             )
 
-        div.todolist__list-editing(
+        div.todolist_list-editing(
           v-else
         )
           form
@@ -63,14 +63,14 @@
               type="text"
               v-model.trim="todoEditText"
             )
-            button.todolist__list-undo(
+            button.todolist_list-undo(
               type="button"
               @click="undoEditText(todo)"
             )
               font-awesome-icon.fas(
                 :icon="['fas', 'undo']"
               )
-            button.todolist__list-save(
+            button.todolist_list-save(
               type="submit"
               @click.prevent="updateTodoText(todo)"
             ) {{ $t('save') }}
@@ -195,10 +195,10 @@ export default {
     padding-bottom: calc(env(safe-area-inset-bottom) + #{$grid40x}) !important;
   }
 
-  .todolist__list {
+  .todolist_list {
     padding: 0;
 
-    .todolist__list-empty {
+    .todolist_list-empty {
       text-align: center;
       width: 100%;
       opacity: 0.38;
@@ -233,7 +233,7 @@ export default {
       }
     }
 
-    .todolist__list-each {
+    .todolist_list-each {
       @include animation(addedTodo 0.25s normal forwards ease);
 
       @keyframes addedTodo {
@@ -249,7 +249,7 @@ export default {
       }
 
       &.completed {
-        .todolist__list-left {
+        .todolist_list-left {
           label {
             opacity: 0.38;
 
@@ -264,7 +264,7 @@ export default {
         display: none;
       }
 
-      .todolist__list-editing {
+      .todolist_list-editing {
         input {
           border: none;
           outline: none;
@@ -275,7 +275,7 @@ export default {
           @include border-radius();
         }
 
-        .todolist__list-undo {
+        .todolist_list-undo {
           top: 0;
           width: $list;
           right: $grid20x;
@@ -283,7 +283,7 @@ export default {
           height: $list !important;
         }
 
-        .todolist__list-save {
+        .todolist_list-save {
           float: right;
           color: $brand;
           font-weight: 700;
@@ -294,10 +294,10 @@ export default {
         }
       }
 
-      .todolist__list-left {
+      .todolist_list-left {
         width: calc(100% - #{$grid8x} - #{$grid12x});
 
-        .todolist__list-left-color {
+        .todolist_list-left-color {
           top: $grid4x;
           width: $grid2x;
           height: $grid2x;
@@ -332,7 +332,7 @@ export default {
         }
       }
 
-      .todolist__list-right {
+      .todolist_list-right {
         top: 0;
         right: 0;
         float: right;
@@ -343,14 +343,14 @@ export default {
         width: calc(#{$list} + #{$list});
         @include line-height($line);
 
-        .todolist__list-edit {
+        .todolist_list-edit {
           float: left;
           height: $list;
           text-align: center;
           width: calc(#{$list} + #{$grid2x});
         }
 
-        .todolist__list-remove {
+        .todolist_list-remove {
           float: right;
           height: $list;
           width: calc(#{$list} - #{$grid2x});

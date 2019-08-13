@@ -1,21 +1,21 @@
 <template lang="pug">
   div#addTodo.bg
-    div.addTodo__container
-      form.addTodo__form
-        div.addTodo__color
-          div.addTodo__color-each(
+    div.addTodo_container
+      form.addTodo_form
+        div.addTodo_color
+          div.addTodo_color-each(
             v-for="(color, i) in getColors"
             @click="setColor(i)"
             ref="addColorEach"
             :style="{ border: '6px solid ' + `${color[0]}` }"
           )
-        div.addTodo__form-input
+        div.addTodo_form-input
           input(
             type="text"
             v-model.trim="newTodo"
             :placeholder="$t('newTodo')"
           )
-          button.addTodo__form-clear(
+          button.addTodo_form-clear(
             type="button"
             v-if="newTodo"
             @click="clearForm"
@@ -23,7 +23,7 @@
             font-awesome-icon.fas(
               :icon="['fas', 'times-circle']"
             )
-        div.addTodo__form-btn
+        div.addTodo_form-btn
           button(
             type="submit"
             @click.prevent="addTodo()"
@@ -88,7 +88,7 @@ export default {
     background-color: transparent !important;
   }
 
-  .addTodo__container {
+  .addTodo_container {
     padding: $grid4x;
 
     @supports (padding-bottom: env(safe-area-inset-bottom)) {
@@ -97,10 +97,10 @@ export default {
       ) !important;
     }
 
-    .addTodo__color {
+    .addTodo_color {
       padding-bottom: $grid4x;
 
-      .addTodo__color-each {
+      .addTodo_color-each {
         width: $grid6x;
         height: $grid6x;
         cursor: pointer;
@@ -113,19 +113,19 @@ export default {
       }
     }
 
-    .addTodo__form {
+    .addTodo_form {
       height: $grid12x;
 
-      .addTodo__form-input,
-      .addTodo__form-btn {
+      .addTodo_form-input,
+      .addTodo_form-btn {
         position: relative;
         display: inline-block;
       }
 
-      .addTodo__form-input {
+      .addTodo_form-input {
         width: calc(100% - #{$btn} - #{$btn} - #{$grid8x});
 
-        .addTodo__form-clear {
+        .addTodo_form-clear {
           top: 0;
           width: $btn;
           height: $btn;
@@ -164,7 +164,7 @@ export default {
         }
       }
 
-      .addTodo__form-btn {
+      .addTodo_form-btn {
         width: $btn;
         float: right;
 

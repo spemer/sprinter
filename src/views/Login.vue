@@ -1,46 +1,49 @@
 <template lang="pug">
   div#login.bg
     div.wrapper
-      div.login__launcher
-        img.login__launcher-img(
+      div.login_launcher
+        img.login_launcher-img(
           alt="appName"
           src="../assets/launcher.svg"
         )
-      div.login__container
-        div.login__container-fb
-          button.login__btn(
+      div.login_container
+        div.login_container-fb
+          button.login_btn(
             @click="fbLogin"
+            rel="noopener noreferrer"
           )
-            div.login__btn-left
+            div.login_btn-left
               font-awesome-icon.fab(
                 :icon="['fab', 'facebook-square']"
               )
-            div.login__btn-right
+            div.login_btn-right
               span {{ $t('fbLogin') }}
 
-        div.login__container-google
-          button.login__btn(
+        div.login_container-google
+          button.login_btn(
             @click="googleLogin"
+            rel="noopener noreferrer"
           )
-            div.login__btn-left
+            div.login_btn-left
               font-awesome-icon.fab(
                 :icon="['fab', 'google']"
               )
-            div.login__btn-right
+            div.login_btn-right
               span {{ $t('googleLogin') }}
 
-        div.login__container-twitter
-          button.login__btn(
+        div.login_container-twitter
+          button.login_btn(
             @click="twitterLogin"
+            rel="noopener noreferrer"
           )
-            div.login__btn-left
+            div.login_btn-left
               font-awesome-icon.fab(
                 :icon="['fab', 'twitter-square']"
               )
-            div.login__btn-right
+            div.login_btn-right
               span {{ $t('twitterLogin') }}
 
-        div.login__container-policy
+        div.login_container-policy
           router-link(
             to="/privacy-policy/"
           ) {{ $t('loginPolicy') }}
@@ -107,10 +110,10 @@ export default {
   .wrapper {
     background-color: $brand !important;
 
-    .login__launcher {
+    .login_launcher {
       background-color: $brand !important;
 
-      .login__launcher-img {
+      .login_launcher-img {
         margin: 0 auto;
         display: block;
         width: $grid32x;
@@ -118,7 +121,7 @@ export default {
       }
     }
 
-    .login__container {
+    .login_container {
       bottom: 0;
       position: fixed;
       margin-bottom: $grid8x;
@@ -133,7 +136,7 @@ export default {
         padding-bottom: calc(env(safe-area-inset-bottom));
       }
 
-      .login__btn {
+      .login_btn {
         width: 100%;
         cursor: pointer;
         height: $grid14x;
@@ -142,7 +145,7 @@ export default {
         background-color: $brand_16 !important;
         @include border-radius();
 
-        .login__btn-left {
+        .login_btn-left {
           float: left;
           width: $grid12x;
           height: $grid14x;
@@ -156,7 +159,7 @@ export default {
           }
         }
 
-        .login__btn-right {
+        .login_btn-right {
           margin: 0 auto;
           height: $grid14x;
           margin-right: $grid6x;
@@ -173,7 +176,7 @@ export default {
         }
       }
 
-      .login__container-policy {
+      .login_container-policy {
         margin: $grid4x 0 0;
 
         a {
@@ -185,7 +188,7 @@ export default {
 }
 
 .lightmode, .darkmode {
-  .login__container-policy {
+  .login_container-policy {
     a {
       color: #fff !important;
     }

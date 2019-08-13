@@ -46,6 +46,7 @@ const router = new Router({
       component: () => {
         return import(/* webpackChunkName: 'router - views/DeleteAccount' */ './views/DeleteAccount.vue')
       },
+      beforeEnter: requireAuth,
     },
 
     // redirect

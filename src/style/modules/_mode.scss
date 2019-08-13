@@ -10,8 +10,8 @@
     background-color: #fff !important;
   }
 
-  .bottomsheet__header-left>button,
-  .todolist__list-undo>svg {
+  .bottomsheet_header-left>button,
+  .todolist_list-undo>svg {
     color: $black54 !important;
   }
 
@@ -32,7 +32,7 @@
     background-color: $text333 !important;
   }
 
-  .drawer__logout-btn {
+  .drawer_logout-btn {
     color: $white87 !important;
     background-color: $white10 !important;
   }
@@ -95,15 +95,15 @@
   input,
   label,
   select,
-  .header__right>button {
+  .header_right>button {
     color: $white87 !important;
   }
 
-  .drawer__userInfo-email {
+  .drawer_userInfo-email {
     color: $white54 !important;
   }
 
-  .notices__list {
+  .notices_list {
     span {
       color: $white54 !important;
     }

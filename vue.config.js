@@ -3,6 +3,8 @@ const path = require('path');
 const ansiRegex = require('ansi-regex');
 const PrerenderSPAPlugin = require('prerender-spa-plugin');
 const PuppeteerRenderer = PrerenderSPAPlugin.PuppeteerRenderer;
+// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+//   .BundleAnalyzerPlugin;
 
 module.exports = {
   chainWebpack: (config) => {
@@ -11,6 +13,8 @@ module.exports = {
 
   configureWebpack: {
     plugins: [
+      // new BundleAnalyzerPlugin(),
+
       new PrerenderSPAPlugin({
         staticDir: path.join(__dirname, 'dist'),
         routes: [

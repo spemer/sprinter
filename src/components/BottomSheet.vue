@@ -1,32 +1,32 @@
 <template lang="pug">
   div#bottomSheet
-    div.bottomSheet__dim(
+    div.bottomSheet_dim(
       @click="toggleHandler(false)"
       :class="{'active': !isActive}"
     )
-    div.bottomsheet__sheet-wrapper
-      div.bottomsheet__sheet-box
-        div.bottomsheet__sheet.bg(
+    div.bottomsheet_sheet-wrapper
+      div.bottomsheet_sheet-box
+        div.bottomsheet_sheet.bg(
           :class="{'active': isActive}"
         )
-          div.bottomsheet__wrapper
-            div.bottomsheet__header.bg
-              div.bottomsheet__header-left(
+          div.bottomsheet_wrapper
+            div.bottomsheet_header.bg
+              div.bottomsheet_header-left(
                 @click="toggleHandler(false)"
               )
                 button
                   font-awesome-icon.fas(
                     :icon="['fas', 'times']"
                   )
-              div.bottomsheet__header-title
-                div.bottomsheet__header-title-text {{ bottomSheetTitle }}
+              div.bottomsheet_header-title
+                div.bottomsheet_header-title-text {{ bottomSheetTitle }}
 
-            div.bottomsheet__list-wrapper
-              div.bottomsheet__list(
+            div.bottomsheet_list-wrapper
+              div.bottomsheet_list(
                 v-for="(color, i) in getColors"
                 :key="i"
               )
-                div.bottomsheet__list-each(
+                div.bottomsheet_list-each(
                   v-if="refresh"
                   ref="colorEach"
                   @click="toggleEachFilter(color, i)"
@@ -139,7 +139,7 @@ export default {
     background-color: transparent !important;
   }
 
-  .bottomSheet__dim {
+  .bottomSheet_dim {
     z-index: 10;
     width: 100vw;
     height: 100vh;
@@ -173,15 +173,15 @@ export default {
     }
   }
 
-  .bottomsheet__sheet-wrapper {
-    .bottomsheet__sheet-box {
+  .bottomsheet_sheet-wrapper {
+    .bottomsheet_sheet-box {
       bottom: 0;
       z-index: 15;
       height: 100vh;
       position: fixed;
       @include drop-shadow(0, 0, $grid4x, $black24);
 
-      .bottomsheet__sheet {
+      .bottomsheet_sheet {
         bottom: 0;
         z-index: 20;
         width: 100vw;
@@ -234,17 +234,17 @@ export default {
           }
         }
 
-        .bottomsheet__wrapper {
+        .bottomsheet_wrapper {
           position: relative;
 
-          .bottomsheet__header {
+          .bottomsheet_header {
             width: 100%;
             position: absolute;
             height: $grid12x;
             padding-top: $grid2x;
             @include border-radius();
 
-            .bottomsheet__header-left {
+            .bottomsheet_header-left {
               position: absolute;
 
               button {
@@ -253,8 +253,8 @@ export default {
               }
             }
 
-            .bottomsheet__header-title {
-              .bottomsheet__header-title-text {
+            .bottomsheet_header-title {
+              .bottomsheet_header-title-text {
                 position: absolute;
                 height: $grid12x;
                 overflow: hidden;
@@ -272,10 +272,10 @@ export default {
             }
           }
 
-          .bottomsheet__list-wrapper {
+          .bottomsheet_list-wrapper {
             padding-top: $header;
 
-            .bottomsheet__list {
+            .bottomsheet_list {
               display: inline-block;
               height: $grid12x;
               padding: $grid2x 0;
@@ -287,7 +287,7 @@ export default {
                 padding-right: $grid4x;
               }
 
-              .bottomsheet__list-each {
+              .bottomsheet_list-each {
                 width: 100%;
                 height: 100%;
                 opacity: 0.24;
@@ -321,17 +321,17 @@ export default {
             }
           }
 
-          .bottomsheet__body {
+          .bottomsheet_body {
             height: auto;
 
-            .bottomsheet__body-list {
+            .bottomsheet_body-list {
               cursor: pointer;
               height: $grid12x;
               @include font-size($grid4x);
               @include line-height($grid8x);
             }
 
-            .bottomsheet__body-p {
+            .bottomsheet_body-p {
               height: auto;
             }
           }

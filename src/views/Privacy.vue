@@ -3,8 +3,8 @@
     Header(
       :headerTitle="$t('privacyPolicy')"
     )
-      div.header__left(
-        slot="header__left"
+      div.header_left(
+        slot="header_left"
         @click="$router.replace('/')"
       )
         button

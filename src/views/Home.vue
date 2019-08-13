@@ -3,16 +3,16 @@
     Header(
       headerTitle="Sprinter"
     )
-      div.header__left(
-        slot="header__left"
+      div.header_left(
+        slot="header_left"
         @click.stop="drawer = !drawer"
       )
         button
           font-awesome-icon.fas(
             :icon="['fas', 'bars']"
           )
-      div.header__right(
-        slot="header__right"
+      div.header_right(
+        slot="header_right"
         @click="SET_BOTTOM_SHEET(true)"
       )
         button {{ $t('filter') }}
@@ -31,7 +31,7 @@
         absolute
         temporary
       )
-        div.drawer__close(
+        div.drawer_close(
           @click.stop="drawer = !drawer"
         )
           button
@@ -39,16 +39,16 @@
               :icon="['fas', 'times']"
             )
         DrawerList
-        div.drawer__logout(
+        div.drawer_logout(
           @click="dialog = true"
         )
-          button.drawer__logout-btn {{ $t('logout') }}
+          button.drawer_logout-btn {{ $t('logout') }}
             font-awesome-icon.fas(
               :icon="['fas', 'power-off']"
             )
 
     div.wrapper
-      div.home__container
+      div.home_container
         TodoList
 
     AddTodo
@@ -83,6 +83,8 @@ import { mapGetters, mapMutations } from 'vuex'
 import { logout } from '@/mixins/logout'
 import { auth } from '@/firebase'
 import { globalVar } from '@/globalVar'
+
+import { VCard, VDialog, VLayout, VNavigationDrawer } from 'vuetify/lib'
 
 export default {
   name: 'home',
@@ -138,6 +140,7 @@ export default {
     TodoList: () => import(/* webpackChunkName: 'components/TodoList' */ '@/components/TodoList'),
     DrawerList: () => import(/* webpackChunkName: 'components/DrawerList' */ '@/components/DrawerList'),
     BottomSheet: () => import(/* webpackChunkName: 'components/BottomSheet' */ '@/components/BottomSheet'),
+    VCard, VDialog, VLayout, VNavigationDrawer
   },
 
 }
@@ -160,7 +163,7 @@ export default {
     .drawer {
       @include user-select();
 
-      .drawer__close {
+      .drawer_close {
         top: 0;
         left: 0;
         width: $header;
@@ -181,7 +184,7 @@ export default {
         }
       }
 
-      .drawer__logout {
+      .drawer_logout {
         bottom: 0;
         z-index: 1;
         width: 100%;
@@ -193,7 +196,7 @@ export default {
           padding-bottom: calc(env(safe-area-inset-bottom) + #{$grid4x});
         }
 
-        .drawer__logout-btn {
+        .drawer_logout-btn {
           bottom: 0;
           margin: 0 auto;
           height: $grid12x;
@@ -214,7 +217,7 @@ export default {
     }
   }
 
-  .home__container {
+  .home_container {
     padding-top: $grid16x;
 
     @supports (padding-top: env(safe-area-inset-top)) {
