@@ -47,10 +47,10 @@
 </template>
 
 <script>
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons/faFacebookSquare"
-import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle"
-import { faTwitterSquare } from "@fortawesome/free-brands-svg-icons/faTwitterSquare"
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons/faFacebookSquare'
+import { faGoogle } from '@fortawesome/free-brands-svg-icons/faGoogle'
+import { faTwitterSquare } from '@fortawesome/free-brands-svg-icons/faTwitterSquare'
 library.add(faFacebookSquare, faGoogle, faTwitterSquare)
 
 import firebase from 'firebase/app'

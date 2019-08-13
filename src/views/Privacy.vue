@@ -55,8 +55,8 @@
 </template>
 
 <script>
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes"
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes'
 library.add(faTimes)
 
 import { globalVar } from '@/globalVar'
@@ -83,10 +83,7 @@ export default {
 
 <style lang="scss" scoped>
 #privacy {
-  padding-left: $grid4x;
-  padding-right: $grid4x;
-  padding-top: calc(#{$header} + #{$grid4x});
-  padding-bottom: calc(#{$header} + #{$grid32x});
+  padding: $header $grid4x calc(#{$header} + #{$grid32x});
   @include user-select();
 
   @supports (padding-bottom: env(safe-area-inset-bottom)) {

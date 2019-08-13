@@ -40,6 +40,13 @@ const router = new Router({
         return import(/* webpackChunkName: 'router - views/Privacy' */ './views/Privacy.vue')
       },
     },
+    {
+      path: '/delete-account/',
+      name: 'deleteAccount',
+      component: () => {
+        return import(/* webpackChunkName: 'router - views/DeleteAccount' */ './views/DeleteAccount.vue')
+      },
+    },
 
     // redirect
     {

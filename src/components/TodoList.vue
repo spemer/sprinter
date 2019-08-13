@@ -77,10 +77,10 @@
 </template>
 
 <script>
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { faPen } from "@fortawesome/free-solid-svg-icons/faPen"
-import { faUndo } from "@fortawesome/free-solid-svg-icons/faUndo"
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons/faTrashAlt"
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faPen } from '@fortawesome/free-solid-svg-icons/faPen'
+import { faUndo } from '@fortawesome/free-solid-svg-icons/faUndo'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons/faTrashAlt'
 library.add(faPen, faUndo, faTrashAlt)
 
 import { db, auth } from '@/firebase'

@@ -12,75 +12,86 @@
       p.drawer__userInfo-email {{ userInfo.email }}
 
     div.drawer__list
-      div.drawer__list-each
-        div.drawer__list-darkmode
-          div.drawer__list-switch(
-            @click="setDarkmodeAction(!getDarkmode)"
-          )
-            span.drawer__list-switch-text {{ $t('darkmode') }}
-            input(
-              type="checkbox"
-              :checked="getDarkmode"
+      div.drawer__list-container
+
+        div.drawer__list-each
+          div.drawer__list-darkmode
+            div.drawer__list-switch(
+              @click="setDarkmodeAction(!getDarkmode)"
             )
-            span.checkmark
+              span.drawer__list-switch-text {{ $t('darkmode') }}
+              input(
+                type="checkbox"
+                :checked="getDarkmode"
+              )
+              span.checkmark
 
-      div.drawer__list-each
-        div.drawer__list-locale
-          font-awesome-icon.fas(
-            :icon="['fas', 'globe']"
-          )
-          select(
-            v-model="$i18n.locale"
-            @change="setCurrentLang($i18n.locale)"
-          )
-            option(
-              v-for="(lang, index, key) in getLangs"
-              :key="key"
-              :value="index"
-            ) {{ lang }}
+        div.drawer__list-each
+          div.drawer__list-locale
+            font-awesome-icon.fas(
+              :icon="['fas', 'globe']"
+            )
+            select(
+              v-model="$i18n.locale"
+              @change="setCurrentLang($i18n.locale)"
+            )
+              option(
+                v-for="(lang, index, key) in getLangs"
+                :key="key"
+                :value="index"
+              ) {{ lang }}
 
-      div.drawer__list-each
-        div.drawer__list-ops(
-          @click="$router.push({ path: '/opensource/' })"
-        )
-          font-awesome-icon.fas(
-            :icon="['fas', 'code']"
+        div.drawer__list-each
+          div.drawer__list-ops(
+            @click="$router.push({ path: '/opensource/' })"
           )
-          span {{ $t('ops') }}
+            font-awesome-icon.fas(
+              :icon="['fas', 'code']"
+            )
+            span {{ $t('ops') }}
 
-      div.drawer__list-each
-        div.drawer__list-ops(
-          @click="$router.push({ path: '/privacy-policy/' })"
-        )
-          font-awesome-icon.fas(
-            :icon="['fas', 'user-shield']"
+        div.drawer__list-each
+          div.drawer__list-ops(
+            @click="$router.push({ path: '/privacy-policy/' })"
           )
-          span {{ $t('privacyPolicy') }}
+            font-awesome-icon.fas(
+              :icon="['fas', 'user-shield']"
+            )
+            span {{ $t('privacyPolicy') }}
 
-      div.drawer__list-each
-        div.drawer__list-ops(
-          @click="shareApi"
-        )
-          font-awesome-icon.fas(
-            :icon="['fas', 'share-square']"
+        div.drawer__list-each
+          div.drawer__list-ops(
+            @click="shareApi"
           )
-          span {{ $t('share') }}
+            font-awesome-icon.fas(
+              :icon="['fas', 'share-square']"
+            )
+            span {{ $t('share') }}
+
+        div.drawer__list-each
+          div.drawer__list-ops(
+            @click="$router.push({ path: '/delete-account/' })"
+          )
+            font-awesome-icon.fas(
+              :icon="['fas', 'user-slash']"
+            )
+            span {{ $t('deleteAccount') }}
 </template>
 
 <script>
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons/faFacebookSquare"
-import { faGoogle } from "@fortawesome/free-brands-svg-icons/faGoogle"
-import { faTwitter } from "@fortawesome/free-brands-svg-icons/faTwitter"
-import { faGlobe } from "@fortawesome/free-solid-svg-icons/faGlobe"
-import { faCode } from "@fortawesome/free-solid-svg-icons/faCode"
-import { faUserShield } from "@fortawesome/free-solid-svg-icons/faUserShield"
-import { faShareSquare } from "@fortawesome/free-solid-svg-icons/faShareSquare"
-library.add(faFacebookSquare, faGoogle, faTwitter, faGlobe, faCode, faUserShield, faShareSquare)
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons/faFacebookSquare'
+import { faGoogle } from '@fortawesome/free-brands-svg-icons/faGoogle'
+import { faTwitter } from '@fortawesome/free-brands-svg-icons/faTwitter'
+import { faGlobe } from '@fortawesome/free-solid-svg-icons/faGlobe'
+import { faCode } from '@fortawesome/free-solid-svg-icons/faCode'
+import { faUserShield } from '@fortawesome/free-solid-svg-icons/faUserShield'
+import { faShareSquare } from '@fortawesome/free-solid-svg-icons/faShareSquare'
+import { faUserSlash } from '@fortawesome/free-solid-svg-icons/faUserSlash'
+library.add(faFacebookSquare, faGoogle, faTwitter, faGlobe, faCode, faUserShield, faShareSquare, faUserSlash)
 
 import firebase from 'firebase/app'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
-import { logout } from '@/mixins/logout'
 import { toast } from '@/mixins/toast'
 import { shareApi } from '@/mixins/shareApi'
 import { auth } from '@/firebase'
@@ -135,7 +146,6 @@ export default {
   },
 
   mixins: [
-    logout,
     shareApi,
   ],
 
@@ -170,6 +180,7 @@ export default {
   }
 
   .drawer__userInfo {
+    z-index: 1;
     padding: $grid4x;
     border-bottom: 1px solid $texteee;
 
@@ -216,68 +227,76 @@ export default {
   .drawer__list {
     $list: $grid8x;
 
+    z-index: 0;
+    overflow-x: scroll;
     padding: $grid2x $grid4x $grid4x;
+    height: calc(100vh - #{$grid48x} - #{$header} - #{$grid20x} - #{$grid2x});
 
-    .drawer__list-each {
-      width: 100%;
-      cursor: pointer;
-      padding: $grid2x 0;
-      border-bottom: 1px solid $texteee;
-      height: calc(#{$list} + #{$grid2x});
+    .drawer__list-container {
 
-      .drawer__list-switch {
+      .drawer__list-each {
         width: 100%;
-        height: $list;
-        position: relative;
-        display: inline-block;
-        padding-top: $grid2x;
+        cursor: pointer;
+        padding: $grid2x 0;
+        border-bottom: 1px solid $texteee;
+        height: calc(#{$list} + #{$grid2x});
 
-        .drawer__list-switch-text {
-          padding-left: $grid8x;
-        }
-
-        .checkmark {
-          top: -0px;
-          position: absolute;
-        }
-      }
-
-      .drawer__list-locale {
-        height: calc(#{$list} + #{$grid4x});
-
-        svg {
-          color: $black54;
-          position: absolute;
+        .drawer__list-switch {
+          width: 100%;
+          height: $list;
+          position: relative;
+          display: inline-block;
           padding-top: $grid2x;
-          @include font-size(20px);
-        }
 
-        select {
-          margin-top: -#{$grid};
-          padding-left: $grid8x;
-          width: calc(100% - #{$grid8x});
-          height: calc(#{$list} + #{$grid4x});
-        }
-      }
+          .drawer__list-switch-text {
+            padding-left: $grid8x;
+          }
 
-      .drawer__list-ops {
-        height: calc(#{$list} + #{$grid4x});
-
-        svg {
-          color: $black54;
-          position: absolute;
-          padding-top: $grid3x;
-          @include font-size($grid4x);
-
-          &.fa-share-square {
-            padding-left: 2px;
+          .checkmark {
+            top: -0px;
+            position: absolute;
           }
         }
 
-        span {
-          float: right;
-          padding-top: $grid2x;
-          width: calc(100% - #{$list});
+        .drawer__list-locale {
+          position: relative;
+          height: calc(#{$list} + #{$grid4x});
+
+          svg {
+            color: $black54;
+            position: absolute;
+            padding-top: $grid2x;
+            @include font-size(20px);
+          }
+
+          select {
+            margin-top: -#{$grid};
+            padding-left: $grid8x;
+            width: calc(100% - #{$grid8x});
+            height: calc(#{$list} + #{$grid4x});
+          }
+        }
+
+        .drawer__list-ops {
+          position: relative;
+          height: calc(#{$list} + #{$grid4x});
+
+          svg {
+            color: $black54;
+            position: absolute;
+            padding-top: $grid3x;
+            @include font-size($grid4x);
+
+            &.fa-share-square {
+              padding-left: 2px;
+            }
+          }
+
+          span {
+            float: right;
+            padding-top: $grid2x;
+            width: calc(100% - #{$list});
+          }
         }
       }
     }

@@ -1,7 +1,3 @@
-import {
-  toast
-} from '@/mixins/toast'
-
 export const logout = {
   methods: {
     logout() {
@@ -15,8 +11,4 @@ export const logout = {
         })
     }
   },
-
-  mixins: [
-    toast,
-  ],
 }

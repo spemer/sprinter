@@ -18,6 +18,7 @@ module.exports = {
           '/login/',
           '/opensource/',
           '/privacy-policy/',
+          '/delete-account/',
         ],
         renderer: new PuppeteerRenderer(),
         minify: {

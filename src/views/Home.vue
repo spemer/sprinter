@@ -73,10 +73,10 @@
 </template>
 
 <script>
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { faBars } from "@fortawesome/free-solid-svg-icons/faBars"
-import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes"
-import { faPowerOff } from "@fortawesome/free-solid-svg-icons/faPowerOff"
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faBars } from '@fortawesome/free-solid-svg-icons/faBars'
+import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes'
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons/faPowerOff'
 library.add(faBars, faTimes, faPowerOff)
 
 import { mapGetters, mapMutations } from 'vuex'
@@ -183,6 +183,7 @@ export default {
 
       .drawer__logout {
         bottom: 0;
+        z-index: 1;
         width: 100%;
         height: $grid12x;
         padding: $grid4x;
@@ -218,88 +219,6 @@ export default {
 
     @supports (padding-top: env(safe-area-inset-top)) {
       padding-top: calc(env(safe-area-inset-top) + #{$grid16x}) !important;
-    }
-  }
-}
-
-.v-dialog {
-  opacity: 0;
-  margin: 0 auto;
-  padding: $grid2x 0;
-  border-radius: $grid4x;
-  max-width: 320px !important;
-  background-color: transparent;
-
-  .v-card {
-    @include user-select();
-    @include border-radius(0);
-
-    .v-card__title,
-    .v-card__text {
-      margin: 0 auto;
-      text-align: center;
-      display: inline-block;
-      width: calc(100% - #{$grid8x});
-    }
-
-    .v-card__title {
-      font-weight: 700;
-      padding-bottom: 0;
-      @include font-size($grid5x);
-    }
-
-    .v-card__text {
-      padding-top: 0;
-      @include font-size($grid4x);
-    }
-
-    .v-card__actions {
-      width: 100%;
-      padding: 0 0 $grid2x 0;
-
-      button {
-        width: 50%;
-        height: $grid12x;
-
-        &.logout {
-          font-weight: 700;
-          color: $brand_red;
-        }
-      }
-    }
-  }
-}
-
-.theme--light {
-  .v-dialog {
-    .v-card__title,
-    .v-card__text {
-      color: $text333 !important;
-    }
-
-    .v-card__actions {
-      button {
-        &.cancel {
-          color: $text777 !important;
-        }
-      }
-    }
-  }
-}
-
-.theme--dark {
-  .v-dialog {
-    .v-card__title,
-    .v-card__text {
-      color: $white87 !important;
-    }
-
-    .v-card__actions {
-      button {
-        &.cancel {
-          color: $white54 !important;
-        }
-      }
     }
   }
 }

@@ -31,9 +31,9 @@
 </template>
 
 <script>
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { faTimes } from "@fortawesome/free-solid-svg-icons/faTimes"
-import { faExternalLinkSquareAlt } from "@fortawesome/free-solid-svg-icons/faExternalLinkSquareAlt"
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes'
+import { faExternalLinkSquareAlt } from '@fortawesome/free-solid-svg-icons/faExternalLinkSquareAlt'
 library.add(faTimes, faExternalLinkSquareAlt)
 
 import OPS_ENTRIES from '@/opensource/list.json'

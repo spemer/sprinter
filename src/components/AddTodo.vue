@@ -34,9 +34,9 @@
 </template>
 
 <script>
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { faTimesCircle } from "@fortawesome/free-solid-svg-icons/faTimesCircle"
-import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus"
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons/faTimesCircle'
+import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
 library.add(faTimesCircle, faPlus)
 
 import { mapGetters, mapMutations } from 'vuex'
