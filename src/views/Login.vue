@@ -45,7 +45,7 @@
 
         div.login_container-policy
           router-link(
-            to="/privacy-policy/"
+            to="/privacy-policy"
           ) {{ $t('loginPolicy') }}
 </template>
 
@@ -181,6 +181,7 @@ export default {
 
         a {
           @include font-size($grid4x);
+          @include line-height($grid3x);
         }
       }
     }

@@ -1,8 +1,7 @@
-require('es6-promise').polyfill();
-const path = require('path');
+// const path = require('path');
 const ansiRegex = require('ansi-regex');
-const PrerenderSPAPlugin = require('prerender-spa-plugin');
-const PuppeteerRenderer = PrerenderSPAPlugin.PuppeteerRenderer;
+// const PrerenderSPAPlugin = require('prerender-spa-plugin');
+// const PuppeteerRenderer = PrerenderSPAPlugin.PuppeteerRenderer;
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 //   .BundleAnalyzerPlugin;
 
@@ -11,36 +10,36 @@ module.exports = {
     config.module.rules.delete('eslint')
   },
 
-  configureWebpack: {
-    plugins: [
-      // new BundleAnalyzerPlugin(),
+  // configureWebpack: {
+  //   plugins: [
+  //     // new BundleAnalyzerPlugin(),
 
-      new PrerenderSPAPlugin({
-        staticDir: path.join(__dirname, 'dist'),
-        routes: [
-          '/',
-          '/login/',
-          '/opensource/',
-          '/privacy-policy/',
-          '/delete-account/',
-        ],
-        renderer: new PuppeteerRenderer(),
-        minify: {
-          caseSensitive: true,
-          collapseBooleanAttributes: true,
-          collapseWhitespace: true,
-          collapseInlineTagWhitespace: true,
-          decodeEntities: true,
-          minifyCSS: true,
-          keepClosingSlash: true,
-          sortAttributes: true,
-          removeComments: true,
-          removeScriptTypeAttributes: true,
-          removeStyleLinkTypeAttributes: true
-        }
-      })
-    ]
-  },
+  //     new PrerenderSPAPlugin({
+  //       staticDir: path.join(__dirname, 'dist'),
+  //       routes: [
+  //         '/',
+  //         '/login/',
+  //         '/opensource/',
+  //         '/privacy-policy/',
+  //         '/delete-account/',
+  //       ],
+  //       renderer: new PuppeteerRenderer(),
+  //       minify: {
+  //         caseSensitive: true,
+  //         collapseBooleanAttributes: true,
+  //         collapseWhitespace: true,
+  //         collapseInlineTagWhitespace: true,
+  //         decodeEntities: true,
+  //         minifyCSS: true,
+  //         keepClosingSlash: true,
+  //         sortAttributes: true,
+  //         removeComments: true,
+  //         removeScriptTypeAttributes: true,
+  //         removeStyleLinkTypeAttributes: true
+  //       }
+  //     })
+  //   ]
+  // },
 
   css: {
     loaderOptions: {

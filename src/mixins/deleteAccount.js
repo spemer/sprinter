@@ -34,7 +34,7 @@ export const deleteAccount = {
       // .then(() => {
         auth.currentUser.delete()
         .then(() => {
-          this.$router.replace('/login/')
+          this.$router.replace('/login')
         })
         .catch((error) => {
           this.toast(`${this.$t('loginAgain')}`, 2000, this.$t('close'))

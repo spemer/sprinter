@@ -34,10 +34,8 @@ if (process.env.NODE_ENV === 'production') {
     updated(registration) {
       console.info('New content is available please refresh.')
       document.dispatchEvent(
-        new CustomEvent('swUpdated', {
-          detail: registration
-        })
-      )
+        new CustomEvent('swUpdated', { detail: registration })
+      );
       // displayUpdateNotification()
     },
 

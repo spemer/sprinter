@@ -19,14 +19,14 @@ const router = new Router({
       beforeEnter: requireAuth,
     },
     {
-      path: '/login/',
+      path: '/login',
       name: 'login',
       component: () => {
         return import(/* webpackChunkName: 'router - views/Login' */ './views/Login.vue')
       },
     },
     {
-      path: '/opensource/',
+      path: '/opensource',
       name: 'opensource',
       component: () => {
         return import(/* webpackChunkName: 'router - views/Opensource' */ './views/Opensource.vue')
@@ -34,14 +34,14 @@ const router = new Router({
       beforeEnter: requireAuth,
     },
     {
-      path: '/privacy-policy/',
+      path: '/privacy-policy',
       name: 'privacy',
       component: () => {
         return import(/* webpackChunkName: 'router - views/Privacy' */ './views/Privacy.vue')
       },
     },
     {
-      path: '/delete-account/',
+      path: '/delete-account',
       name: 'deleteAccount',
       component: () => {
         return import(/* webpackChunkName: 'router - views/DeleteAccount' */ './views/DeleteAccount.vue')
