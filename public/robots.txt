@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://sprinter-web.web.app/sitemap.xml
